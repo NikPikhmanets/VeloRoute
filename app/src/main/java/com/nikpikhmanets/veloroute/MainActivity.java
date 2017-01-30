@@ -7,22 +7,30 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nikpikhmanets.veloroute.emulRoute.EmulListRoute;
-import com.nikpikhmanets.veloroute.emulRoute.RouteListAdapter;
-
-import java.util.List;
+import com.nikpikhmanets.veloroute.fragments.AboutFragment;
+import com.nikpikhmanets.veloroute.fragments.FilterFragment;
+import com.nikpikhmanets.veloroute.fragments.IntrestingPlacesFragment;
+import com.nikpikhmanets.veloroute.fragments.MainFragment;
+import com.nikpikhmanets.veloroute.fragments.MyRoutesFragment;
+import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
+import com.nikpikhmanets.veloroute.fragments.WaterSourcesFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private RecyclerView mRecyclerView;
+    private MainFragment mainFragment;
+    private FilterFragment filterFragment;
+    private MyRoutesFragment myRoutesFragment;
+    private SettingsFragment settingsFragment;
+    private IntrestingPlacesFragment intrestingPlacesFragment;
+    private WaterSourcesFragment waterSourcesFragment;
+    private AboutFragment aboutFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +38,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -49,14 +48,19 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        RecyclerView rv = (RecyclerView) findViewById(R.id.listRouteRecyclerView);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
-        rv.setHasFixedSize(true);
+        mainFragment = new MainFragment();
+        filterFragment = new FilterFragment();
+        myRoutesFragment = new MyRoutesFragment();
+        settingsFragment = new SettingsFragment();
+        waterSourcesFragment = new WaterSourcesFragment();
+        intrestingPlacesFragment = new IntrestingPlacesFragment();
+        aboutFragment = new AboutFragment();
 
-        List<EmulListRoute> routeList = new EmulListRoute(this).getRouteList();
-        RouteListAdapter adapter = new RouteListAdapter(routeList);
-        rv.setAdapter(adapter);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
+        }
+
+
     }
 
     @Override
@@ -69,51 +73,33 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_sourceWater) {
-
-        } else if (id == R.id.nav_places) {
-
-        } else if (id == R.id.nav_myRoute) {
-
-        } else if (id == R.id.nav_maps) {
-
-            Intent maps = new Intent(this, MapsActivity.class);
-            startActivity(maps);
-
-        } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_about) {
-
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();
+                break;
+            case R.id.nav_sourceWater:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, waterSourcesFragment).commit();
+                break;
+            case R.id.nav_places:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, intrestingPlacesFragment).commit();
+                break;
+            case R.id.nav_myRoute:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myRoutesFragment).commit();
+                break;
+            case R.id.nav_maps:
+                Intent maps = new Intent(this, MapsActivity.class);
+                startActivity(maps);
+                break;
+            case R.id.nav_settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, settingsFragment).commit();
+                break;
+            case R.id.nav_about:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

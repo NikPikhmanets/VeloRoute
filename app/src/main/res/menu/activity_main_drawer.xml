@@ -5,6 +5,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
+            android:checked="true"
             android:title="Главная" />
         <item
             android:id="@+id/nav_sourceWater"
@@ -19,18 +20,25 @@
             android:icon="@drawable/ic_directions_bike_black_24dp"
             android:title="Мои треки" />
         <item
-            android:id="@+id/nav_maps"
-            android:icon="@drawable/ic_map_black_24dp"
-            android:title="Карта" />
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Настройки" />
 
     </group>
 
-    <item android:title="Допольнительно">
+    <item
+        android:id="@+id/nav_maps"
+        android:icon="@drawable/ic_map_black_24dp"
+        android:title="Карта" />
+    <item
+        android:id="@+id/nav_record_route"
+        android:title="записать трек"
+        />
+
+    <item
+        android:title="Допольнительно">
         <menu>
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Настройки" />
+
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_info_black_24dp"

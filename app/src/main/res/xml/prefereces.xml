@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="Category 1">
+
+        <android.support.v7.preference.ListPreference
+            android:entries="@array/entries"
+            android:entryValues="@array/entry_values"
+            android:key="list1"
+            android:summary="list1_summary"
+            android:title="Language" />
+
+        <android.support.v7.preference.CheckBoxPreference
+            android:key="chb1"
+            android:summary="summary"
+            android:title="checkbox1_title" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>
