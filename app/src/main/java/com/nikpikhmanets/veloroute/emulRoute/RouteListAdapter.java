@@ -66,7 +66,7 @@ public class RouteListAdapter extends RecyclerView.Adapter <RouteListAdapter.Rou
         }
 
         void bind(EmulListRoute route) {
-            imageRoute.setImageResource(route.getImageRoute());
+            imageRoute.setImageBitmap(route.getImageRoute());
             nameRoute.setText(route.getNameRoute());
             ground.setText(route.getGround());
             distance.setText(route.getDistance());

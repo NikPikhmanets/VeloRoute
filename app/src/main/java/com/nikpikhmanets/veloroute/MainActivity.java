@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        List<EmulListRoute> routeList = new EmulListRoute().getRouteList();
+        List<EmulListRoute> routeList = new EmulListRoute(this).getRouteList();
         RouteListAdapter adapter = new RouteListAdapter(routeList);
         rv.setAdapter(adapter);
     }
