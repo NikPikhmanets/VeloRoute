@@ -1,6 +1,5 @@
 package com.nikpikhmanets.veloroute;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,19 +8,23 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.FilterFragment;
+import com.nikpikhmanets.veloroute.fragments.GoogleMapsFragment;
 import com.nikpikhmanets.veloroute.fragments.IntrestingPlacesFragment;
 import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MyRoutesFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.WaterSourcesFragment;
 
+import static com.nikpikhmanets.veloroute.R.menu.maps_menu;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
     private RecyclerView mRecyclerView;
     private MainFragment mainFragment;
@@ -30,7 +33,10 @@ public class MainActivity extends AppCompatActivity
     private SettingsFragment settingsFragment;
     private IntrestingPlacesFragment intrestingPlacesFragment;
     private WaterSourcesFragment waterSourcesFragment;
+    private GoogleMapsFragment googleMapsFragment;
     private AboutFragment aboutFragment;
+
+    boolean boolMaps; // temp
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +60,44 @@ public class MainActivity extends AppCompatActivity
         settingsFragment = new SettingsFragment();
         waterSourcesFragment = new WaterSourcesFragment();
         intrestingPlacesFragment = new IntrestingPlacesFragment();
+        googleMapsFragment = new GoogleMapsFragment();
         aboutFragment = new AboutFragment();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
         }
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (boolMaps) {
+            getMenuInflater().inflate(maps_menu, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.main, menu);
+        }
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.no_map:
+                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
+                break;
+            case R.id.normal_map:
+                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
+                break;
+            case R.id.satellite_map:
+                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_SATELLITE);
+                break;
+            case R.id.terrain_map:
+                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_TERRAIN);
+                break;
+            case R.id.hybrid_map:
+                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_HYBRID);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -77,7 +114,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        boolMaps = false;
+
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();
                 break;
@@ -91,8 +130,8 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myRoutesFragment).commit();
                 break;
             case R.id.nav_maps:
-                Intent maps = new Intent(this, MapsActivity.class);
-                startActivity(maps);
+                boolMaps = true;
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, googleMapsFragment).commit();
                 break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, settingsFragment).commit();
@@ -100,10 +139,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
                 break;
-        }
 
+        }
+        invalidateOptionsMenu();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
