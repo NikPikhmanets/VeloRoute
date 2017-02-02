@@ -6,6 +6,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/geekhub"/>
+            android:src="@drawable/sports_mountain_biking_icon"/>
     </item>
 </layer-list>
