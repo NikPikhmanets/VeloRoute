@@ -4,6 +4,9 @@ package com.nikpikhmanets.veloroute.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -102,12 +105,46 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.maps_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.no_map:
+                setTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
+                break;
+            case R.id.normal_map:
+                setTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
+                break;
+            case R.id.satellite_map:
+                setTypeGoogleMap(GoogleMap.MAP_TYPE_SATELLITE);
+                break;
+            case R.id.terrain_map:
+                setTypeGoogleMap(GoogleMap.MAP_TYPE_TERRAIN);
+                break;
+            case R.id.hybrid_map:
+                setTypeGoogleMap(GoogleMap.MAP_TYPE_HYBRID);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
     }
 
-    public void SetTypeGoogleMap(int type) {
+    public void setTypeGoogleMap(int type) {
         mMap.setMapType(type);
     }
 

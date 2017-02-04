@@ -8,10 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.GoogleMap;
 import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.FilterFragment;
 import com.nikpikhmanets.veloroute.fragments.GoogleMapsFragment;
@@ -20,8 +18,6 @@ import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MyRoutesFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.WaterSourcesFragment;
-
-import static com.nikpikhmanets.veloroute.R.menu.maps_menu;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,37 +64,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (boolMaps) {
-            getMenuInflater().inflate(maps_menu, menu);
-        } else {
-            getMenuInflater().inflate(R.menu.main, menu);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.no_map:
-                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
-                break;
-            case R.id.normal_map:
-                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
-                break;
-            case R.id.satellite_map:
-                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_SATELLITE);
-                break;
-            case R.id.terrain_map:
-                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_TERRAIN);
-                break;
-            case R.id.hybrid_map:
-                googleMapsFragment.SetTypeGoogleMap(GoogleMap.MAP_TYPE_HYBRID);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onBackPressed() {
@@ -130,7 +95,6 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myRoutesFragment).commit();
                 break;
             case R.id.nav_maps:
-                boolMaps = true;
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, googleMapsFragment).commit();
                 break;
             case R.id.nav_settings:

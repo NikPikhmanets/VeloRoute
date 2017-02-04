@@ -1,8 +1,79 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.nikpikhmanets.veloroute.fragments.FilterFragment">
 
+    <RadioGroup
+        android:id="@+id/rg_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="дистанция: "
+            android:textColor="#ff000000"/>
+        <RadioButton
+            android:id="@+id/rb_length_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="все"/>
+        <RadioButton
+            android:id="@+id/rb_length_short"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="короткие ( до 25 км)"/>
+        <RadioButton
+            android:id="@+id/rb_length_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="средние (25-100 км)"/>
+        <RadioButton
+            android:id="@+id/rb_length_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="длинные (более 100 км)"/>
+    </RadioGroup>
 
-</FrameLayout>
+    <RadioGroup
+        android:id="@+id/rg_road"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="грунт/асфальт:"
+            android:textColor="#ff000000"/>
+        <RadioButton
+            android:id="@+id/rb_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="все"/>
+        <RadioButton
+            android:id="@+id/rb_dirt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="больше грунта"/>
+        <RadioButton
+            android:id="@+id/rb_50_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50/50"/>
+        <RadioButton
+            android:id="@+id/rb_road"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="больше асфальта"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_filter_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ok"/>
+
+</LinearLayout>
