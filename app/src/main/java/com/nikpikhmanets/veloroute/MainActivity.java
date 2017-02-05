@@ -6,7 +6,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -22,7 +21,6 @@ import com.nikpikhmanets.veloroute.fragments.WaterSourcesFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private RecyclerView mRecyclerView;
     private MainFragment mainFragment;
     private FilterFragment filterFragment;
     private MyRoutesFragment myRoutesFragment;
@@ -31,8 +29,6 @@ public class MainActivity extends AppCompatActivity
     private WaterSourcesFragment waterSourcesFragment;
     private GoogleMapsFragment googleMapsFragment;
     private AboutFragment aboutFragment;
-
-    boolean boolMaps; // temp
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +60,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -79,14 +74,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        boolMaps = false;
-
         switch (item.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();
                 break;
             case R.id.nav_sourceWater:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, waterSourcesFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, /*waterSourcesFragment*/ googleMapsFragment).commit();
                 break;
             case R.id.nav_places:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, intrestingPlacesFragment).commit();
@@ -104,12 +97,16 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
                 break;
 
+            //            BuildRoute bRoute = new BuildRoute(this);
+//            bRoute.loadGpxFile("my_route/real_sofiin_stovp.gpx");
+//
+//            Bundle bundle = new Bundle();
+//            bundle.putParcelable("key", bRoute);
+//            googleMapsFragment.setArguments(bundle);
+
         }
-        invalidateOptionsMenu();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }

@@ -30,7 +30,7 @@
                 android:layout_height="80dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                tools:src="@drawable/image_route_buky" />
+                tools:src="@drawable/image_route_budische" />
 
             <TextView
                 android:id="@+id/nameRoute"

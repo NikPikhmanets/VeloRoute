@@ -19,7 +19,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.Route.BuildRoute;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +30,8 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
     private GoogleMap mMap;
     private MapView mapView;
+
+    BuildRoute route;
 
 
     public GoogleMapsFragment() {
@@ -53,7 +57,6 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        // Add a marker in Sydney and move the camera
         LatLng monast = new LatLng(49.153743, 32.2545142);
 
         mMap.addMarker(new MarkerOptions().position(monast).title("Monastyr"));
@@ -81,15 +84,9 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(monast, 15));
         mMap.setOnMarkerClickListener(this);
 
-//        PolylineOptions rectOptions = new PolylineOptions()
-//                .add(new LatLng(37.35, -122.0))
-//                .add(new LatLng(37.45, -122.0))  // North of the previous point, but at the same longitude
-//                .add(new LatLng(37.45, -122.2))  // Same latitude, and 30km to the west
-//                .add(new LatLng(37.35, -122.2))  // Same longitude, and 16km to the south
-//                .add(new LatLng(37.35, -122.0)); // Closes the polyline.
-//
-//// Get back the mutable Polyline
-//        Polyline polyline = mMap.addPolyline(rectOptions);
+        BuildRoute br = new BuildRoute(getContext());
+        PolylineOptions rectOptions = br.getPolylineOptionsRout();
+        mMap.addPolyline(rectOptions);
     }
 
     @Override
@@ -150,11 +147,11 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        if(marker.getTitle().equals("Козацький склик")) // if marker source is clicked
+        if (marker.getTitle().equals("Козацький склик")) // if marker source is clicked
         {
             Toast.makeText(getContext(), "!!", Toast.LENGTH_SHORT).show();
         }
-            
+
         return true;
     }
 }

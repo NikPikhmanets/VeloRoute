@@ -1,4 +1,4 @@
-package com.nikpikhmanets.veloroute.emulRoute;
+package com.nikpikhmanets.veloroute.Route;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import com.nikpikhmanets.veloroute.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmulListRoute {
+public class RouteData {
 
     private int id;
     private String nameRoute;
@@ -18,7 +18,7 @@ public class EmulListRoute {
     private String distance;
     private Bitmap bmpImage;
 
-    public EmulListRoute(Context ctx) {
+    public RouteData(Context ctx) {
         this.ctx = ctx;
     }
 
@@ -67,17 +67,17 @@ public class EmulListRoute {
         this.distance = distance;
     }
 
-    public List <EmulListRoute> getRouteList() {
-        List <EmulListRoute> route = new ArrayList<>();
+    public List <RouteData> getRouteList() {
+        List <RouteData> route = new ArrayList<>();
         initDataRoute(route);
         return route;
     }
 
-    private void initDataRoute(List<EmulListRoute> listRoute) {
+    private void initDataRoute(List<RouteData> listRoute) {
 
         int id = 1;
 
-        EmulListRoute route = new EmulListRoute(ctx);
+        RouteData route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Софиин стовп");
         route.setDistance("45 км");
@@ -85,7 +85,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_sofiin_stovp);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Будище");
         route.setDistance("60 км");
@@ -93,7 +93,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_budische);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Буки");
         route.setDistance("25 км");
@@ -101,7 +101,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_buky);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Камянский каньон");
         route.setDistance("100 км");
@@ -109,7 +109,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_kam_canyon);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Канев");
         route.setDistance("80 км");
@@ -117,7 +117,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_kaniv);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Малосмелянский карьер");
         route.setDistance("50 км");
@@ -125,7 +125,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_malo_smila_karyer);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Орбита");
         route.setDistance("110 км");
@@ -133,7 +133,7 @@ public class EmulListRoute {
         route.setImageRoute(R.drawable.image_route_orbita);
         listRoute.add(route);
 
-        route = new EmulListRoute(ctx);
+        route = new RouteData(ctx);
         route.setId(id++);
         route.setNameRoute("Живун");
         route.setDistance("120 км");

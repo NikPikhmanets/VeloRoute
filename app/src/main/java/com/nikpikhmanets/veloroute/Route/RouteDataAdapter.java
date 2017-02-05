@@ -1,5 +1,7 @@
-package com.nikpikhmanets.veloroute.emulRoute;
+package com.nikpikhmanets.veloroute.Route;
 
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,26 +10,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.fragments.RouteFragment;
 
 import java.util.List;
 
-public class RouteListAdapter extends RecyclerView.Adapter <RouteListAdapter.RouteListViewHolder>{
+public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.RouteListViewHolder> {
 
-    private List<EmulListRoute> route;
+    private List<RouteData> route;
     private LayoutInflater inflater;
+    private Context context;
 
-    public RouteListAdapter(List<EmulListRoute> route) {
+    public RouteDataAdapter(List<RouteData> route, Context context) {
         this.route = route;
+        this.context = context;
         setHasStableIds(true);
     }
 
+    public RouteDataAdapter() {
+
+    }
 
     @Override
     public RouteListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (inflater == null) {
+
+        if (inflater == null)
             inflater = LayoutInflater.from(parent.getContext());
-        }
-        return RouteListViewHolder.create(inflater, parent);
+
+        View v = inflater.inflate(R.layout.item_list_route, parent, false);
+        return new RouteListViewHolder(v);
     }
 
     @Override
@@ -45,7 +55,7 @@ public class RouteListAdapter extends RecyclerView.Adapter <RouteListAdapter.Rou
         return route == null ? 0 : route.size();
     }
 
-    static class RouteListViewHolder extends RecyclerView.ViewHolder {
+    class RouteListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView nameRoute;
         private ImageView imageRoute;
@@ -59,17 +69,25 @@ public class RouteListAdapter extends RecyclerView.Adapter <RouteListAdapter.Rou
             nameRoute = (TextView) itemView.findViewById(R.id.nameRoute);
             ground = (TextView) itemView.findViewById(R.id.groundRoute);
             distance = (TextView) itemView.findViewById(R.id.distanceRoute);
+
+            itemView.setOnClickListener(this);
         }
 
-        static RouteListViewHolder create(LayoutInflater inflater, ViewGroup parent) {
-            return new RouteListViewHolder(inflater.inflate(R.layout.item_listroute, parent, false));
-        }
-
-        void bind(EmulListRoute route) {
+        void bind(RouteData route) {
             imageRoute.setImageBitmap(route.getImageRoute());
             nameRoute.setText(route.getNameRoute());
             ground.setText(route.getGround());
             distance.setText(route.getDistance());
+        }
+
+        @Override
+        public void onClick(View view) {
+
+//            indexItem = view.getId();
+            RouteFragment routeFragment = new RouteFragment();
+            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_main, routeFragment)
+                    .commit();
         }
     }
 }

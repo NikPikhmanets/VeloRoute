@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.emulRoute.EmulListRoute;
-import com.nikpikhmanets.veloroute.emulRoute.RouteListAdapter;
+import com.nikpikhmanets.veloroute.Route.RouteData;
+import com.nikpikhmanets.veloroute.Route.RouteDataAdapter;
 
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class MainFragment extends Fragment {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        List<EmulListRoute> routeList = new EmulListRoute(getContext()).getRouteList();
-        RouteListAdapter adapter = new RouteListAdapter(routeList);
+        List<RouteData> routeList = new RouteData(getContext()).getRouteList();
+        RouteDataAdapter adapter = new RouteDataAdapter(routeList, getContext());
         rv.setAdapter(adapter);
     }
 
