@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.Route.RouteData;
-import com.nikpikhmanets.veloroute.Route.RouteDataAdapter;
+import com.nikpikhmanets.veloroute.adapters.RouteDataAdapter;
 
 
 public class RouteFragment extends Fragment {
@@ -30,14 +29,14 @@ public class RouteFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_route, container, false);
 
         nameRoute = (TextView) v.findViewById(R.id.nameRouteText);
-        imageMap = (ImageView) v.findViewById(R.id.imageRoute);
+        imageMap = (ImageView) v.findViewById(R.id.iv_route_image);
 //        pathFile = v.findViewById(R.id.);
 
 
         RouteDataAdapter adapter = new RouteDataAdapter();
-        RouteData rd = adapter.getDataRoute();
+//        RouteData rd = adapter.getDataRoute();
 
-        nameRoute.setText(rd.getNameRoute());
+//        nameRoute.setText(rd.getNameRoute());
         return v;
     }
 }

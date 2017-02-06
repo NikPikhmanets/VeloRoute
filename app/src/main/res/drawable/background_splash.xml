@@ -5,7 +5,8 @@
 
     <item>
         <bitmap
-            android:gravity="center"
-            android:src="@drawable/sports_mountain_biking_icon"/>
+            android:dither="false"
+            android:src="@drawable/splash"
+            />
     </item>
 </layer-list>

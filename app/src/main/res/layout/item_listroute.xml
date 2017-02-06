@@ -25,7 +25,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageRoute"
+                android:id="@+id/iv_route_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="8dp"
@@ -33,17 +33,17 @@
                 tools:src="@drawable/image_route_buky" />
 
             <TextView
-                android:id="@+id/nameRoute"
+                android:id="@+id/tv_route_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_toEndOf="@+id/imageRoute"
+                android:layout_toEndOf="@+id/iv_route_image"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Холодный Яр" />
 
             <TextView
-                android:id="@+id/distanceRoute"
+                android:id="@+id/tv_route_length"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -56,12 +56,12 @@
                 tools:text="140 км" />
 
             <TextView
-                android:id="@+id/groundRoute"
+                android:id="@+id/tv_route_road"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nameRoute"
+                android:layout_below="@+id/tv_route_name"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/imageRoute"
+                android:layout_toEndOf="@+id/iv_route_image"
                 tools:text="асфальт 100% / грунт 100%" />
 
         </RelativeLayout>

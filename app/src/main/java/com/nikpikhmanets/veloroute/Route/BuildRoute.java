@@ -23,7 +23,7 @@ import io.ticofab.androidgpxparser.parser.domain.TrackSegment;
 public class BuildRoute implements GetPolylineOptionsRoute {
 
     private Context context;
-    public List<Route> routeList = new ArrayList<>();
+    public List<RoutePoint> routeList = new ArrayList<>();
 
     public BuildRoute(Context context) {
         this.context = context;
@@ -50,7 +50,7 @@ public class BuildRoute implements GetPolylineOptionsRoute {
 
                         for (TrackPoint trackPoint : segment.getTrackPoints()) {
 
-                            Route route = new Route();
+                            RoutePoint route = new RoutePoint();
                             route.setLongitude(trackPoint.getLongitude());
                             route.setLatitude(trackPoint.getLatitude());
 

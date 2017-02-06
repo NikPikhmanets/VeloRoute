@@ -2,7 +2,7 @@ package com.nikpikhmanets.veloroute.Route;
 
 import org.joda.time.DateTime;
 
-public class Route {
+public class RoutePoint {
 
     private Double Latitude;
     private Double Longitude;
