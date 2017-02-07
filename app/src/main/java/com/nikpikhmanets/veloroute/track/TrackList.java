@@ -1,12 +1,8 @@
 package com.nikpikhmanets.veloroute.track;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
-
-import com.nikpikhmanets.veloroute.MainActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;

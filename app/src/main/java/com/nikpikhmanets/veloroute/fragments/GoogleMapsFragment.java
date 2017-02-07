@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.Route.BuildRoute;
+import com.nikpikhmanets.veloroute.route.BuildRoute;
 
 /**
  * A simple {@link Fragment} subclass.

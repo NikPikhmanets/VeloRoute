@@ -1,4 +1,4 @@
-package com.nikpikhmanets.veloroute.Route;
+package com.nikpikhmanets.veloroute.route;
 
 import android.content.Context;
 import android.content.res.AssetManager;
