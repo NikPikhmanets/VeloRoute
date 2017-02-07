@@ -1,6 +1,7 @@
 package com.nikpikhmanets.veloroute.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.activity.RouteActivity;
 import com.nikpikhmanets.veloroute.adapters.OnRecyclerItemClickListener;
 import com.nikpikhmanets.veloroute.adapters.RouteDataAdapter;
 import com.nikpikhmanets.veloroute.models.Route;
@@ -50,10 +52,12 @@ public class MainFragment extends Fragment {
         adapter.setOnItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(Route route) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_main, new RouteFragment())
-                        .commit();
+//                getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.content_main, new RouteFragment())
+//                        .commit();
+                Intent intent = new Intent(getContext(), RouteActivity.class);
+                startActivity(intent);
             }
         });
 
