@@ -27,6 +27,7 @@
                 android:layout_width="80dp"
                 android:layout_height="62dp"
                 android:layout_margin="8dp"
+                android:adjustViewBounds="true"
                 tools:src="@drawable/image_route_budische" />
 
             <TextView
@@ -34,10 +35,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_toEndOf="@+id/iv_route_image"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Холодный Яр" />
+                tools:text="Name Route"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_toStartOf="@+id/tv_route_length"
+                android:layout_toEndOf="@+id/iv_route_image" />
 
             <TextView
                 android:id="@+id/tv_route_length"
@@ -47,7 +51,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@android:color/holo_green_light"
+                android:background="@drawable/textview_distance_shape"
                 android:padding="5dp"
                 android:textColor="@android:color/white"
                 tools:text="140 км" />
