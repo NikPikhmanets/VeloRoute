@@ -85,7 +85,7 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
         mMap.setOnMarkerClickListener(this);
 
         BuildRoute br = new BuildRoute(getContext());
-        PolylineOptions rectOptions = br.getPolylineOptionsRout();
+        PolylineOptions rectOptions = br.getPolylineOptionsRout("");
         mMap.addPolyline(rectOptions);
     }
 

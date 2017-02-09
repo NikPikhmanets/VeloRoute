@@ -5,5 +5,5 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 interface GetPolylineOptionsRoute {
 
-    PolylineOptions getPolylineOptionsRout();
+    PolylineOptions getPolylineOptionsRout(String gpxFile);
 }

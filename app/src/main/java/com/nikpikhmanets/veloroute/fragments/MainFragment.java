@@ -52,11 +52,12 @@ public class MainFragment extends Fragment {
         adapter.setOnItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(Route route) {
-//                getActivity().getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.content_main, new RouteFragment())
-//                        .commit();
                 Intent intent = new Intent(getContext(), RouteActivity.class);
+                intent.putExtra("name", route.getName_ru());
+                intent.putExtra("length", route.getLength());
+                intent.putExtra("road", route.getRoad());
+                intent.putExtra("image", route.getImage());
+                intent.putExtra("dirt", route.getDirt());
                 startActivity(intent);
             }
         });
@@ -99,7 +100,7 @@ public class MainFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_filter:
                 (new FilterFragment()).show(getActivity().getSupportFragmentManager(), "filter");
                 break;

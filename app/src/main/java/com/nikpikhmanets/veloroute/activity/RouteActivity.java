@@ -1,16 +1,119 @@
 package com.nikpikhmanets.veloroute.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
 
-public class RouteActivity extends AppCompatActivity {
+public class RouteActivity extends AppCompatActivity implements View.OnClickListener {
+
+    TextView nameRoute;
+    TextView lengthRoute;
+    TextView roadRoute;
+    TextView roadRouteLabel;
+    ImageView imageRoute;
+
+    Button showOnMapsBtn;
+
+    String gpxFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route);
         setTitle("Описание маршрута");
+
+        nameRoute = (TextView) findViewById(R.id.nameRouteLabel);
+        roadRouteLabel = (TextView) findViewById(R.id.groundRouteLabel);
+        lengthRoute = (TextView) findViewById(R.id.distance);
+        roadRoute = (TextView) findViewById(R.id.roadRoute);
+        imageRoute = (ImageView) findViewById(R.id.imageRoute);
+
+        showOnMapsBtn = (Button) findViewById(R.id.showOnMaps);
+        showOnMapsBtn.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            setViewDescriptionRoute(intent);
+        }
+    }
+
+    private void setViewDescriptionRoute(Intent intent) {
+        if (intent != null) {
+            int defaultValue = 0;
+
+            String name = intent.getStringExtra("name");
+            int length = intent.getIntExtra("length", defaultValue);
+            int road = intent.getIntExtra("road", defaultValue);
+            int dirt = intent.getIntExtra("dirt", defaultValue);
+
+            nameRoute.setText(name);
+            lengthRoute.setText(String.format("%s км", length));
+            if (road == 0) {
+                roadRouteLabel.setText("Грунт:");
+                roadRoute.setText(String.format("%s", dirt));
+            }
+            if (dirt == 0) {
+                roadRouteLabel.setText("Асфальт:");
+                roadRoute.setText(String.format("%s", road));
+            } else {
+                roadRouteLabel.setText("Грунт/асфальт:");
+                roadRoute.setText(String.format("%s / %s", dirt, road));
+            }
+
+            //костыль
+            String mDrawableName = intent.getStringExtra("image");
+
+            // костыль, проверка построения маршрута
+            if (mDrawableName.equals("image_route_budische")) {
+                gpxFile = "budyshche.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_budische);
+            }
+            if (mDrawableName.equals("image_route_buky")) {
+                gpxFile = "buky.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_buky);
+            }
+            if (mDrawableName.equals("image_route_kam_canyon")) {
+                gpxFile = "kamyansky_canyon.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_kam_canyon);
+            }
+            if (mDrawableName.equals("image_route_kaniv")) {
+                gpxFile = "kaniv.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_kaniv);
+            }
+            if (mDrawableName.equals("image_route_malo_smila_karyer")) {
+                gpxFile = "malosmilyansky_career.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_malo_smila_karyer);
+            }
+            if (mDrawableName.equals("image_route_orbita")) {
+                gpxFile = "orbita.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_orbita);
+            }
+            if (mDrawableName.equals("image_route_sofiin_stovp")) {
+                gpxFile = "sofiin_stovp.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_sofiin_stovp);
+            }
+            if (mDrawableName.equals("image_route_zyvun")) {
+                gpxFile = "zhyvun.gpx";
+                imageRoute.setImageResource(R.drawable.image_route_zyvun);
+            }
+
+//            int resID = getResources().getIdentifier(mDrawableName , "drawable", "com.nikpikhmanets.veloroute");
+//            imageRoute.setImageResource(resID);
+
+
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("gpx", gpxFile);
+        startActivity(intent);
     }
 }

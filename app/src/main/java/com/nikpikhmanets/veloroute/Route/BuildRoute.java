@@ -72,9 +72,9 @@ public class BuildRoute implements GetPolylineOptionsRoute {
     }
 
     @Override
-    public PolylineOptions getPolylineOptionsRout() {
+    public PolylineOptions getPolylineOptionsRout(String gpxFile) {
 
-        loadGpxFile("my_route/real_sofiin_stovp.gpx");
+        loadGpxFile("my_route/" + gpxFile);
         PolylineOptions rectOptions = new PolylineOptions();
 
         if(routeList != null) {

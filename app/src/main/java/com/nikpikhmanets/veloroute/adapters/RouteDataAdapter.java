@@ -81,8 +81,10 @@ public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.Rout
 
         void bind(Route route) {
             tvName.setText(route.getName_ru());
+
             tvRoad.setText("грунт/асфальт: " + route.getDirt() + "/" + route.getRoad());
-            tvLength.setText(route.getLength() + " км");
+
+            tvLength.setText(String.format("%s км", route.getLength()));
             StorageReference imageReference = directoryReference.child(route.getImage() + ".jpg");
             imageReference.getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
@@ -95,15 +97,5 @@ public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.Rout
                 }
             });
         }
-
-//        @Override
-//        public void onClick(View view) {
-//
-//            indexItem = view.getId();
-//            RouteFragment routeFragment = new RouteFragment();
-//            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.content_main, routeFragment)
-//                    .commit();
-//        }
     }
 }

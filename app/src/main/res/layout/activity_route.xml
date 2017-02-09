@@ -21,10 +21,17 @@
                 android:layout_height="290dp"
                 android:src="@drawable/image_route_budische" />
 
+            <Button
+                android:id="@+id/showOnMaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Показать на карте"
+                android:foregroundGravity="bottom|right"
+               />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/imageRoute"
                 android:layout_margin="5dp"
                 android:lineSpacingMultiplier="1.1"
                 android:text="@string/XY" />
@@ -32,15 +39,14 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/hol2"/>
+                android:src="@drawable/hol2" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/imageRoute"
                 android:layout_margin="5dp"
                 android:lineSpacingMultiplier="1.1"
-                android:text="@string/XY" />
+                tools:text="@string/XY" />
 
         </LinearLayout>
 
@@ -56,11 +62,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Холодный яр"
+            android:layout_marginTop="5dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            tools:text="Холодный яр" />
 
         <TextView
             android:id="@+id/distanceRouteLabel"
@@ -78,9 +85,9 @@
             android:layout_below="@+id/nameRouteLabel"
             android:layout_margin="5dp"
             android:layout_toEndOf="@+id/distanceRouteLabel"
-            android:text="120 km"
             android:textColor="@android:color/holo_green_light"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="120 km" />
 
 
         <TextView
@@ -90,14 +97,25 @@
             android:layout_gravity="end"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="грунт 10%/асфальт 90%"
             android:textColor="@android:color/holo_green_light"
             android:textStyle="bold"
+            tools:text="10/90"
+            android:layout_alignBaseline="@+id/groundRouteLabel"
+            android:layout_alignBottom="@+id/groundRouteLabel"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/groundRouteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Грунт/асфальт, %:"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_alignBaseline="@+id/distance"
             android:layout_alignBottom="@+id/distance"
-            android:layout_toEndOf="@+id/distance" />
+            android:layout_toStartOf="@+id/roadRoute" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>
