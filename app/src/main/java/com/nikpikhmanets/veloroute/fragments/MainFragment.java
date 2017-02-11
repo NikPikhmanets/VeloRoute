@@ -36,7 +36,7 @@ public class MainFragment extends Fragment {
 
     public static final String TAG = "tag";
 
-    private int filterMode;
+    private int filterCheckedId = R.id.rb_length_all;
     private List<Route> routesList;
     private RouteDataAdapter adapter;
 
@@ -69,6 +69,10 @@ public class MainFragment extends Fragment {
             }
         });
 
+        if (savedInstanceState != null) {
+            filterCheckedId = savedInstanceState.getInt("filter_checked_id");
+        }
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
         DatabaseReference routesReference = ref.child("routes");
@@ -80,7 +84,7 @@ public class MainFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     routesList.add(snapshot.getValue(Route.class));
                 }
-                adapter.setData(routesList);
+                filterRoutesList();
                 view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
             }
 
@@ -115,32 +119,41 @@ public class MainFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("filter_checked_id", filterCheckedId);
+    }
+
     private void showFilterFragment() {
         FilterFragment filterFragment = new FilterFragment();
         filterFragment.setOnFilterChangeListener(new OnFilterChange() {
             @Override
-            public void onFilterChanged(int filterMode) {
-                MainFragment.this.filterMode = filterMode;
-                filterRoutes();
+            public void onFilterChanged(int filterCheckedId) {
+                MainFragment.this.filterCheckedId = filterCheckedId;
+                filterRoutesList();
             }
         });
+        Bundle arguments = new Bundle();
+        arguments.putInt("checked_id", filterCheckedId);
+        filterFragment.setArguments(arguments);
         filterFragment.show(getActivity().getSupportFragmentManager(), "filter");
     }
 
-    private void filterRoutes(){
+    private void filterRoutesList(){
         int minLength = 0;
         int maxLength = 1000;
-        switch (filterMode) {
-            case FilterFragment.FILTER_ROUTE_LENGTH_ALL:
+        switch (filterCheckedId) {
+            case R.id.rb_length_all:
                 break;
-            case FilterFragment.FILTER_ROUTE_LENGTH_LONG:
+            case R.id.rb_length_long:
                 minLength = 100;
                 break;
-            case FilterFragment.FILTER_ROUTE_LENGTH_MIDDLE:
+            case R.id.rb_length_middle:
                 minLength = 50;
                 maxLength = 100;
                 break;
-            case FilterFragment.FILTER_ROUTE_LENGTH_SHORT:
+            case R.id.rb_length_short:
                 maxLength = 50;
                 break;
         }
@@ -154,5 +167,10 @@ public class MainFragment extends Fragment {
         }
         adapter.setData(filteredList);
     }
+
+    private void loadGpxFromFirebase(Route route, String gpxName) {
+
+    }
+
 
 }

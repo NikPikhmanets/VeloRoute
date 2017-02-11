@@ -16,6 +16,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     TextView lengthRoute;
     TextView roadRoute;
     TextView roadRouteLabel;
+    TextView tvRouteDescription;
     ImageView imageRoute;
 
     Button showOnMapsBtn;
@@ -33,6 +34,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         lengthRoute = (TextView) findViewById(R.id.distance);
         roadRoute = (TextView) findViewById(R.id.roadRoute);
         imageRoute = (ImageView) findViewById(R.id.imageRoute);
+        tvRouteDescription = (TextView) findViewById(R.id.tv_description);
 
         showOnMapsBtn = (Button) findViewById(R.id.showOnMaps);
         showOnMapsBtn.setOnClickListener(this);
@@ -48,9 +50,12 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             int defaultValue = 0;
 
             String name = intent.getStringExtra("name");
+            String description = intent.getStringExtra("description");
             int length = intent.getIntExtra("length", defaultValue);
             int road = intent.getIntExtra("road", defaultValue);
             int dirt = intent.getIntExtra("dirt", defaultValue);
+
+            tvRouteDescription.setText(description);
 
             nameRoute.setText(name);
             lengthRoute.setText(String.format("%s км", length));

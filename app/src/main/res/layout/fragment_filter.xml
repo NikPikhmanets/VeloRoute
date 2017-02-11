@@ -25,12 +25,12 @@
             android:id="@+id/rb_length_short"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="короткие ( до 25 км)"/>
+            android:text="короткие ( до 50 км)"/>
         <RadioButton
             android:id="@+id/rb_length_middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="средние (25-100 км)"/>
+            android:text="средние (50-100 км)"/>
         <RadioButton
             android:id="@+id/rb_length_long"
             android:layout_width="wrap_content"

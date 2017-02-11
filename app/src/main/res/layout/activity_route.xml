@@ -98,6 +98,7 @@
                />
 
             <TextView
+                android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
@@ -107,10 +108,10 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/hol2" />
+                android:src="@drawable/hol2"
+                android:adjustViewBounds="true"/>
 
             <TextView
-                android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"

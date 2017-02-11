@@ -5,5 +5,5 @@ package com.nikpikhmanets.veloroute.interfaces;
  */
 
 public interface OnFilterChange {
-    void onFilterChanged(int filterMode);
+    void onFilterChanged(int filterCheckedId);
 }

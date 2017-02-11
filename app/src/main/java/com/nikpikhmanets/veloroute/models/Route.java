@@ -20,17 +20,19 @@ public class Route {
     private String name_ua;
     private String image;
     private String description;
+    private String gpx;
 
     public Route() {
     }
 
-    public Route(int length, int road, String name_en, String name_ru, String name_ua, String image, String description) {
+    public Route(int length, int road, String name_en, String name_ru, String name_ua, String image, String description, String gpx) {
         this.length = length;
         this.road = road;
         this.name_en = name_en;
         this.name_ru = name_ru;
         this.name_ua = name_ua;
         this.description = description;
+        this.gpx = gpx;
         Log.d(TAG, "name: " + name_ru + "; length: " + length + "; road: " + road + "; image: " + image);
     }
 
@@ -62,6 +64,10 @@ public class Route {
         this.description = description;
     }
 
+    public void setGpx(String gpx) {
+        this.gpx = gpx;
+    }
+
     public int getLength() {
         return length;
     }
@@ -80,6 +86,10 @@ public class Route {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getGpx() {
+        return gpx;
     }
 
     @Exclude

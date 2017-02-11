@@ -39,30 +39,14 @@ public class FilterFragment extends DialogFragment {
         final RadioGroup rgLength = (RadioGroup)view.findViewById(R.id.rg_length);
 //        RadioGroup rgRoad = (RadioGroup)view.findViewById(R.id.rg_road);
 //        rgRoad.check(R.id.rb_all);
-        rgLength.check(R.id.rb_length_all);
+
+        rgLength.check(getArguments().getInt("checked_id"));
         rgLength.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int filterMode = 0;
-                switch (checkedId) {
-                    case R.id.rb_length_all:
-                        filterMode = FILTER_ROUTE_LENGTH_ALL;
-                        break;
-                    case R.id.rb_length_long:
-                        filterMode = FILTER_ROUTE_LENGTH_LONG;
-                        break;
-                    case R.id.rb_length_middle:
-                        filterMode = FILTER_ROUTE_LENGTH_MIDDLE;
-                        break;
-                    case R.id.rb_length_short:
-                        filterMode = FILTER_ROUTE_LENGTH_SHORT;
-                        break;
-                }
-
                 if (listener != null) {
-                    listener.onFilterChanged(filterMode);
+                    listener.onFilterChanged(checkedId);
                 }
-
             }
         });
 
