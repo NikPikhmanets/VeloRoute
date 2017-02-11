@@ -21,8 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.activity.RouteActivity;
-import com.nikpikhmanets.veloroute.adapters.OnRecyclerItemClickListener;
+import com.nikpikhmanets.veloroute.activities.RouteActivity;
+import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
+import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
 import com.nikpikhmanets.veloroute.adapters.RouteDataAdapter;
 import com.nikpikhmanets.veloroute.models.Route;
 
@@ -32,7 +33,12 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
+
     public static final String TAG = "tag";
+
+    private int filterMode;
+    private List<Route> routesList;
+    private RouteDataAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,8 +50,8 @@ public class MainFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final List<Route> routesList = new ArrayList<>();
-        final RouteDataAdapter adapter = new RouteDataAdapter();
+        routesList = new ArrayList<>();
+        adapter = new RouteDataAdapter();
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listRouteRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
@@ -58,6 +64,7 @@ public class MainFragment extends Fragment {
                 intent.putExtra("road", route.getRoad());
                 intent.putExtra("image", route.getImage());
                 intent.putExtra("dirt", route.getDirt());
+                intent.putExtra("description", route.getDescription());
                 startActivity(intent);
             }
         });
@@ -102,9 +109,50 @@ public class MainFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_filter:
-                (new FilterFragment()).show(getActivity().getSupportFragmentManager(), "filter");
+                showFilterFragment();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void showFilterFragment() {
+        FilterFragment filterFragment = new FilterFragment();
+        filterFragment.setOnFilterChangeListener(new OnFilterChange() {
+            @Override
+            public void onFilterChanged(int filterMode) {
+                MainFragment.this.filterMode = filterMode;
+                filterRoutes();
+            }
+        });
+        filterFragment.show(getActivity().getSupportFragmentManager(), "filter");
+    }
+
+    private void filterRoutes(){
+        int minLength = 0;
+        int maxLength = 1000;
+        switch (filterMode) {
+            case FilterFragment.FILTER_ROUTE_LENGTH_ALL:
+                break;
+            case FilterFragment.FILTER_ROUTE_LENGTH_LONG:
+                minLength = 100;
+                break;
+            case FilterFragment.FILTER_ROUTE_LENGTH_MIDDLE:
+                minLength = 50;
+                maxLength = 100;
+                break;
+            case FilterFragment.FILTER_ROUTE_LENGTH_SHORT:
+                maxLength = 50;
+                break;
+        }
+
+        List<Route> filteredList = new ArrayList<>();
+
+        for (Route route : routesList) {
+            if (route.getLength() >= minLength && route.getLength() < maxLength) {
+                filteredList.add(route);
+            }
+        }
+        adapter.setData(filteredList);
+    }
+
 }

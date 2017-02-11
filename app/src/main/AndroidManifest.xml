@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
@@ -45,9 +45,9 @@
             android:name="io.fabric.ApiKey"
             android:value="6151dc554ac719a59396c04813a7e8f21b008fc2" />
 
-        <activity android:name=".activity.RouteActivity" />
+        <activity android:name=".activities.RouteActivity" />
         <activity
-            android:name=".activity.MapsActivity"
+            android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.nikpikhmanets.veloroute.adapters;
+package com.nikpikhmanets.veloroute.interfaces;
 
 import com.nikpikhmanets.veloroute.models.Route;
 

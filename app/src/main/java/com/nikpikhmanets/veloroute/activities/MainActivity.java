@@ -1,4 +1,4 @@
-package com.nikpikhmanets.veloroute.activity;
+package com.nikpikhmanets.veloroute.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;

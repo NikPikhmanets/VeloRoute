@@ -38,37 +38,37 @@
             android:text="длинные (более 100 км)"/>
     </RadioGroup>
 
-    <RadioGroup
-        android:id="@+id/rg_road"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="грунт/асфальт:"
-            android:textColor="#ff000000"/>
-        <RadioButton
-            android:id="@+id/rb_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="все"/>
-        <RadioButton
-            android:id="@+id/rb_dirt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="больше грунта"/>
-        <RadioButton
-            android:id="@+id/rb_50_50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50/50"/>
-        <RadioButton
-            android:id="@+id/rb_road"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="больше асфальта"/>
-    </RadioGroup>
+    <!--<RadioGroup-->
+        <!--android:id="@+id/rg_road"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="грунт/асфальт:"-->
+            <!--android:textColor="#ff000000"/>-->
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_all"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="все"/>-->
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_dirt"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="больше грунта"/>-->
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_50_50"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="50/50"/>-->
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_road"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="больше асфальта"/>-->
+    <!--</RadioGroup>-->
 
     <Button
         android:id="@+id/btn_filter_ok"

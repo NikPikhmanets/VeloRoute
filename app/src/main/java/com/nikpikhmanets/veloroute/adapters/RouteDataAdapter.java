@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
 import com.nikpikhmanets.veloroute.models.Route;
 
 import java.util.List;
