@@ -7,10 +7,16 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="name_route"> Name Route</string>
 
     <string name="XY"> <b>Холодный яр</b> – святое место для украинцев. Эта уникальная местность таит в себе загадки многих исторических событий Украины: Колиивщина, освободительная борьба, казацкое сопротивление, Холодноярская республика, партизанское движение. Сама местность имеет уникальный ландшафт: разнообразная и неповторимая природа, крутые склоны оврагов и балок, покрытых густым лесом с тысячелетними великанами – дубами и ясенями. В самом названии "Холодный Яр" есть какая-то таинственная, притягательная и магическая сила. По легенде во времена монголо-татарского нашествия над рекой Серебрянкой в лесных чащах пряталась Меланка Холодная с детьми. Со временем к ней присоединились другие беглецы, и возникло поселение с названием Холодное. С тех пор и леса вокруг него назвали Холодноярскими. Но вероятнее, название "Холодный Яр" имеет климатологическое происхождение. В глубоких лесистых впадинах и балках, как известно, летом собирается холодный воздух и из них всегда тянет прохладой. Поэтому местные жители и назвали эту территорию Холодным Яром.</string>
+    <string name="no_view_map">не отображать</string>
+    <string name="normal_mode_map">обычный режим</string>
+    <string name="satellite_mode_map">снимки со спутника</string>
+    <string name="terrain_mode_map">рельеф местности</string>
+    <string name="hybrid_mode_map">спутник+инфа</string>
+    <string name="enable_gps">Включить GPS</string>
+    <string name="enable_record">Включить запись</string>
 
     <string-array name="entries">
         <item>English</item>
@@ -21,6 +27,37 @@
         <item>English</item>
         <item>Русский</item>
         <item>Українська</item>
+    </string-array>
+
+    <string-array name="entry_map_style">
+        <item>Не отображать карту</item>
+        <item>Обычная карта</item>
+        <item>Рельеф</item>
+        <item>Спутник</item>
+        <item>Гибрид</item>
+    </string-array>
+
+    <string name="default_map_style">default_map_style</string>
+    <string-array name="entry_map_style_value">
+        <item>no_map</item>
+        <item>normal</item>
+        <item>terrain</item>
+        <item>satellite</item>
+        <item>hybrid</item>
+    </string-array>
+
+    <string name="width_line">width_line</string>
+    <string-array name="entry_width_line">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
 </resources>

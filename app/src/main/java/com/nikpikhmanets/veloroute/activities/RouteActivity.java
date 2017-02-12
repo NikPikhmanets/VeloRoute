@@ -62,8 +62,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             if (road == 0) {
                 roadRouteLabel.setText("Грунт:");
                 roadRoute.setText(String.format("%s", dirt));
-            }
-            if (dirt == 0) {
+            } else if (dirt == 0) {
                 roadRouteLabel.setText("Асфальт:");
                 roadRoute.setText(String.format("%s", road));
             } else {
@@ -71,47 +70,58 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
                 roadRoute.setText(String.format("%s / %s", dirt, road));
             }
 
-            //костыль
+//            //костыль
             String mDrawableName = intent.getStringExtra("image");
 
             // костыль, проверка построения маршрута
             if (mDrawableName.equals("image_route_budische")) {
                 gpxFile = "budyshche.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_budische);
             }
             if (mDrawableName.equals("image_route_buky")) {
                 gpxFile = "buky.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_buky);
+            }
+            if (mDrawableName.equals("image_route_chygyryn_subotiv")) {
+                gpxFile = "chygyryn_subotiv.gpx";
             }
             if (mDrawableName.equals("image_route_kam_canyon")) {
                 gpxFile = "kamyansky_canyon.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_kam_canyon);
             }
             if (mDrawableName.equals("image_route_kaniv")) {
                 gpxFile = "kaniv.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_kaniv);
             }
             if (mDrawableName.equals("image_route_malo_smila_karyer")) {
                 gpxFile = "malosmilyansky_career.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_malo_smila_karyer);
             }
             if (mDrawableName.equals("image_route_orbita")) {
                 gpxFile = "orbita.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_orbita);
             }
             if (mDrawableName.equals("image_route_sofiin_stovp")) {
                 gpxFile = "sofiin_stovp.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_sofiin_stovp);
             }
             if (mDrawableName.equals("image_route_zyvun")) {
                 gpxFile = "zhyvun.gpx";
-                imageRoute.setImageResource(R.drawable.image_route_zyvun);
             }
-
-//            int resID = getResources().getIdentifier(mDrawableName , "drawable", "com.nikpikhmanets.veloroute");
-//            imageRoute.setImageResource(resID);
-
-
+            if (mDrawableName.equals("image_route_pavkin_krug")) {
+                gpxFile = "pavkin_krug.gpx";
+            }
+            if (mDrawableName.equals("image_route_starosilya")) {
+                gpxFile = "starosilya.gpx";
+            }
+            if (mDrawableName.equals("image_route_svydivok")) {
+                gpxFile = "svydivok.gpx";
+            }
+            if (mDrawableName.equals("image_route_vasylkivska_gatj")) {
+                gpxFile = "vasylkivska_gatj.gpx";
+            }
+            if (mDrawableName.equals("image_route_vitryak_monastyr_irdin")) {
+                gpxFile = "vitryak_vinograd_monastyr_irdin.gpx";
+            }
+            if (mDrawableName.equals("image_route_xy_dub")) {
+                gpxFile = "xy_dub.gpx";
+            }
+            if (mDrawableName.equals("image_route_xy_ground")) {
+                gpxFile = "xy_ground.gpx";
+            }
         }
     }
 

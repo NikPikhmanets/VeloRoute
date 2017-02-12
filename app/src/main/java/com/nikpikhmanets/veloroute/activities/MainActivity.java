@@ -107,14 +107,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
                 break;
-
-            //            BuildRoute bRoute = new BuildRoute(this);
-//            bRoute.loadGpxFile("my_route/real_sofiin_stovp.gpx");
-//
-//            Bundle bundle = new Bundle();
-//            bundle.putParcelable("key", bRoute);
-//            googleMapsFragment.setArguments(bundle);
-
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
