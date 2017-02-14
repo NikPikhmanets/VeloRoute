@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.routes.BuildRoute;
 
 public class RouteActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -127,8 +128,8 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        intent.putExtra("gpx", gpxFile);
-        startActivity(intent);
+
+        BuildRoute br = new BuildRoute(this);
+        br.parseGpxFile("my_route/" + gpxFile);
     }
 }

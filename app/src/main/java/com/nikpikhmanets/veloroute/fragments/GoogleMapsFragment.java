@@ -19,9 +19,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.route.BuildRoute;
+import com.nikpikhmanets.veloroute.routes.BuildRoute;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,9 +83,9 @@ public class GoogleMapsFragment extends Fragment implements OnMapReadyCallback, 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(monast, 15));
         mMap.setOnMarkerClickListener(this);
 
-        BuildRoute br = new BuildRoute(getContext());
-        PolylineOptions rectOptions = br.getPolylineOptionsRout("");
-        mMap.addPolyline(rectOptions);
+//        BuildRoute br = new BuildRoute(getContext(), fileName);
+//        PolylineOptions rectOptions = br.getPolylineOptionsRout("");
+//        mMap.addPolyline(rectOptions);
     }
 
     @Override

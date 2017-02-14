@@ -19,6 +19,7 @@ import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MyRoutesFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.WaterSourcesFragment;
+import com.nikpikhmanets.veloroute.routes.BuildRoute;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -90,7 +91,9 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();
                 break;
             case R.id.nav_sourceWater:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, /*waterSourcesFragment*/ googleMapsFragment).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, /*waterSourcesFragment*/ googleMapsFragment).commit();
+                BuildRoute br = new BuildRoute(this);
+                br.parseGpxFile("water_points.gpx");
                 break;
             case R.id.nav_places:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, intrestingPlacesFragment).commit();
