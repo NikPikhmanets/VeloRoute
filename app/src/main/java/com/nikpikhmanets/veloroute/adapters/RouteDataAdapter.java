@@ -1,7 +1,5 @@
 package com.nikpikhmanets.veloroute.adapters;
 
-import android.graphics.BitmapFactory;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
@@ -82,21 +79,9 @@ public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.Rout
 
         void bind(Route route) {
             tvName.setText(route.getName_ru());
-
             tvRoad.setText("грунт/асфальт: " + route.getDirt() + "/" + route.getRoad());
-
             tvLength.setText(String.format("%s км", route.getLength()));
-            StorageReference imageReference = directoryReference.child(route.getImage() + ".jpg");
-            imageReference.getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    ivRouteImage.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                }
-            });
+            Glide.with(itemView.getContext()).load(route.getImageURL()).into(ivRouteImage);
         }
     }
 }
