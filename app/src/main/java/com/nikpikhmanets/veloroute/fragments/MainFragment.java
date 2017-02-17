@@ -65,6 +65,7 @@ public class MainFragment extends Fragment {
                 intent.putExtra("image", route.getImage());
                 intent.putExtra("dirt", route.getDirt());
                 intent.putExtra("description", route.getDescription());
+                intent.putExtra("gpx", route.getGpx());
                 startActivity(intent);
             }
         });

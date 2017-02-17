@@ -8,8 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
 import com.nikpikhmanets.veloroute.models.Route;
@@ -17,10 +15,6 @@ import com.nikpikhmanets.veloroute.models.Route;
 import java.util.List;
 
 public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.RouteListViewHolder> {
-
-    private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private StorageReference storageReference = storage.getReference();
-    private StorageReference directoryReference = storageReference.child("routes_images/");
 
     private List<Route> data;
     private OnRecyclerItemClickListener listener;

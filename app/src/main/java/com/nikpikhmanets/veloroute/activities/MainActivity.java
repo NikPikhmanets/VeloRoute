@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_sourceWater:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, /*waterSourcesFragment*/ googleMapsFragment).commit();
                 BuildRoute br = new BuildRoute(this);
-                br.parseGpxFile("water_points.gpx");
+//                br.parseGpxFile("water_points.gpx");
                 break;
             case R.id.nav_places:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, intrestingPlacesFragment).commit();

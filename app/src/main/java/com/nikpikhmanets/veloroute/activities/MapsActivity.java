@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -115,10 +113,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (rectOptions != null)
             mMap.addPolyline(rectOptions);
 
-        LatLngBounds bounds = builder.build();
-        int padding = 0; // offset from edges of the map in pixels
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        googleMap.animateCamera(cu);
+//        LatLngBounds bounds = builder.build();
+//        int padding = 0; // offset from edges of the map in pixels
+//        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+//        googleMap.animateCamera(cu);
 
 //        mMap.moveCamera(CameraUpdateFactory.zoomIn());
         mMap.setOnMarkerClickListener(this);

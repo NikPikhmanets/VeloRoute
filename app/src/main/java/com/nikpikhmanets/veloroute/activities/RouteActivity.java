@@ -3,11 +3,15 @@ package com.nikpikhmanets.veloroute.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.routes.BuildRoute;
 
@@ -22,7 +26,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
     Button showOnMapsBtn;
 
-    String gpxFile;
+    String gpx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
         Intent intent = getIntent();
         if (intent != null) {
+            gpx = intent.getStringExtra("gpx");
             setViewDescriptionRoute(intent);
         }
     }
@@ -70,66 +75,21 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
                 roadRouteLabel.setText("Грунт/асфальт:");
                 roadRoute.setText(String.format("%s / %s", dirt, road));
             }
-
-//            //костыль
-            String mDrawableName = intent.getStringExtra("image");
-
-            // костыль, проверка построения маршрута
-            if (mDrawableName.equals("image_route_budische")) {
-                gpxFile = "budyshche.gpx";
-            }
-            if (mDrawableName.equals("image_route_buky")) {
-                gpxFile = "buky.gpx";
-            }
-            if (mDrawableName.equals("image_route_chygyryn_subotiv")) {
-                gpxFile = "chygyryn_subotiv.gpx";
-            }
-            if (mDrawableName.equals("image_route_kam_canyon")) {
-                gpxFile = "kamyansky_canyon.gpx";
-            }
-            if (mDrawableName.equals("image_route_kaniv")) {
-                gpxFile = "kaniv.gpx";
-            }
-            if (mDrawableName.equals("image_route_malo_smila_karyer")) {
-                gpxFile = "malosmilyansky_career.gpx";
-            }
-            if (mDrawableName.equals("image_route_orbita")) {
-                gpxFile = "orbita.gpx";
-            }
-            if (mDrawableName.equals("image_route_sofiin_stovp")) {
-                gpxFile = "sofiin_stovp.gpx";
-            }
-            if (mDrawableName.equals("image_route_zyvun")) {
-                gpxFile = "zhyvun.gpx";
-            }
-            if (mDrawableName.equals("image_route_pavkin_krug")) {
-                gpxFile = "pavkin_krug.gpx";
-            }
-            if (mDrawableName.equals("image_route_starosilya")) {
-                gpxFile = "starosilya.gpx";
-            }
-            if (mDrawableName.equals("image_route_svydivok")) {
-                gpxFile = "svydivok.gpx";
-            }
-            if (mDrawableName.equals("image_route_vasylkivska_gatj")) {
-                gpxFile = "vasylkivska_gatj.gpx";
-            }
-            if (mDrawableName.equals("image_route_vitryak_monastyr_irdin")) {
-                gpxFile = "vitryak_vinograd_monastyr_irdin.gpx";
-            }
-            if (mDrawableName.equals("image_route_xy_dub")) {
-                gpxFile = "xy_dub.gpx";
-            }
-            if (mDrawableName.equals("image_route_xy_ground")) {
-                gpxFile = "xy_ground.gpx";
-            }
         }
     }
 
     @Override
     public void onClick(View view) {
 
-        BuildRoute br = new BuildRoute(this);
-        br.parseGpxFile("my_route/" + gpxFile);
+        StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + gpx + ".gpx");
+        gpxReference.getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Log.d("tag", "onSuccess: ");
+                BuildRoute br = new BuildRoute(RouteActivity.this);
+                br.parseGpxFile(bytes);
+            }
+        });
+
     }
 }

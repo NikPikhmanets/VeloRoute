@@ -5,8 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -21,7 +19,7 @@ import com.nikpikhmanets.veloroute.gpx.data.GPXWayPoint;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParser;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParserHandler;
 
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 public class BuildRoute implements GpxParser.GpxParserListener, GpxParserHandler.GpxParserProgressListener {
@@ -34,15 +32,11 @@ public class BuildRoute implements GpxParser.GpxParserListener, GpxParserHandler
         this.context = context;
     }
 
-    public void parseGpxFile(String file) {
+    public void parseGpxFile(byte[] gpxData) {
 
-        AssetManager am = context.getAssets();
-        try {
-            InputStream input = am.open(file);
-            new GpxParser(input, this, this).parse();
-        } catch (IOException e) {
-            Toast.makeText(context, "Файл маршрута недоступен", Toast.LENGTH_SHORT).show();
-        }
+        InputStream input = new ByteArrayInputStream(gpxData);
+
+        new GpxParser(input, this, this).parse();
     }
 
     @Override
