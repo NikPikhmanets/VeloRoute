@@ -38,6 +38,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private String mapStyle;
     private String widthLineMap;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +85,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         rectOptions = polylineOptions;
 
-        buildWayPoints();
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         if (wayPointList.size() != 0) {
             for (int i = 0; i < wayPointList.size(); i++) {
@@ -122,6 +122,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(this);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.maps_menu, menu);
@@ -150,16 +151,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onOptionsItemSelected(item);
     }
 
-    private void buildWayPoints() {
-        for (int x = 0; x < mDocument.getWayPoints().size(); x++) {
-            WayPoint wayPoint = new WayPoint();
-            wayPoint.setLat(mDocument.getWayPoints().get(x).getLatitude());
-            wayPoint.setLon(mDocument.getWayPoints().get(x).getLongitude());
-            wayPoint.setDescription(mDocument.getWayPoints().get(x).getDescription());
-            wayPoint.setName(mDocument.getWayPoints().get(x).getName());
-            wayPointList.add(wayPoint);
-        }
-    }
+
 
     private void setTypeGoogleMap(int type) {
         mMap.setMapType(type);

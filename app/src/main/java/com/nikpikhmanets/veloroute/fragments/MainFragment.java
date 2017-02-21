@@ -25,7 +25,7 @@ import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
 import com.nikpikhmanets.veloroute.adapters.RouteDataAdapter;
-import com.nikpikhmanets.veloroute.models.Route;
+import com.nikpikhmanets.veloroute.route.Route;
 
 import java.util.ArrayList;
 import java.util.List;

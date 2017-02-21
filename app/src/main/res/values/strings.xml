@@ -47,6 +47,13 @@
     </string-array>
 
     <string name="width_line">width_line</string>
+    <string name="menu_home">Главная</string>
+    <string name="menu_source_water">Источники воды</string>
+    <string name="menu_places">Достопримечательности</string>
+    <string name="menu_my_track">Мои треки</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_maps">Карта</string>
+    <string name="menu_about">О программе</string>
     <string-array name="entry_width_line">
         <item>1</item>
         <item>2</item>

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
-import com.nikpikhmanets.veloroute.models.Route;
+import com.nikpikhmanets.veloroute.route.Route;
 
 import java.util.List;
 

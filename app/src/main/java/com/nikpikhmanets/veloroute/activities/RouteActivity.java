@@ -13,7 +13,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.routes.BuildRoute;
+import com.nikpikhmanets.veloroute.route.BuildRoute;
 
 public class RouteActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -87,7 +87,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             public void onSuccess(byte[] bytes) {
                 Log.d("tag", "onSuccess: ");
                 BuildRoute br = new BuildRoute(RouteActivity.this);
-                br.parseGpxFile(bytes);
+//                br.parseGpxFile(bytes);
             }
         });
 

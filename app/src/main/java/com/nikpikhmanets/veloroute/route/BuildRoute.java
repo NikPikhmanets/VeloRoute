@@ -1,30 +1,26 @@
-package com.nikpikhmanets.veloroute.routes;
+package com.nikpikhmanets.veloroute.route;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.nikpikhmanets.veloroute.activities.MapsActivity;
 import com.nikpikhmanets.veloroute.gpx.data.GPXDocument;
-import com.nikpikhmanets.veloroute.gpx.data.GPXRoute;
-import com.nikpikhmanets.veloroute.gpx.data.GPXRoutePoint;
-import com.nikpikhmanets.veloroute.gpx.data.GPXSegment;
-import com.nikpikhmanets.veloroute.gpx.data.GPXTrack;
-import com.nikpikhmanets.veloroute.gpx.data.GPXTrackPoint;
-import com.nikpikhmanets.veloroute.gpx.data.GPXWayPoint;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParser;
-import com.nikpikhmanets.veloroute.gpx.xml.GpxParserHandler;
 
-import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
-public class BuildRoute implements GpxParser.GpxParserListener, GpxParserHandler.GpxParserProgressListener {
+public class BuildRoute implements GpxParser.GpxParserListener  {
 
     private Context context;
+    private GoogleMap map;
     private ProgressDialog mProgressDialog = null;
     private PolylineOptions rectOptions = new PolylineOptions();
 
@@ -32,11 +28,17 @@ public class BuildRoute implements GpxParser.GpxParserListener, GpxParserHandler
         this.context = context;
     }
 
-    public void parseGpxFile(byte[] gpxData) {
+    public void parseGpxFile(String gpxData) {
 
-        InputStream input = new ByteArrayInputStream(gpxData);
+        AssetManager am = context.getAssets();
+        InputStream input = null;
+        try {
+            input = am.open(gpxData);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        new GpxParser(input, this, this).parse();
+        new GpxParser(input, this, null).parse();
     }
 
     @Override
@@ -78,35 +80,5 @@ public class BuildRoute implements GpxParser.GpxParserListener, GpxParserHandler
                     }
                 })
                 .show();
-    }
-
-    @Override
-    public void onGpxNewTrackParsed(int count, GPXTrack track) {
-        mProgressDialog.setMessage("Finished parsing track " + track.getName());
-    }
-
-    @Override
-    public void onGpxNewRouteParsed(int count, GPXRoute track) {
-        mProgressDialog.setMessage("Finished parsing route " + track.getName());
-    }
-
-    @Override
-    public void onGpxNewSegmentParsed(int count, GPXSegment segment) {
-        mProgressDialog.setMessage("Parsing track segment " + count);
-    }
-
-    @Override
-    public void onGpxNewTrackPointParsed(int count, GPXTrackPoint trackPoint) {
-
-    }
-
-    @Override
-    public void onGpxNewRoutePointParsed(int count, GPXRoutePoint routePoint) {
-
-    }
-
-    @Override
-    public void onGpxNewWayPointParsed(int count, GPXWayPoint wayPoint) {
-
     }
 }

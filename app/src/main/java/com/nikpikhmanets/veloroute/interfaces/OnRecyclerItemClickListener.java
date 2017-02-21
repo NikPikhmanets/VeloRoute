@@ -1,6 +1,6 @@
 package com.nikpikhmanets.veloroute.interfaces;
 
-import com.nikpikhmanets.veloroute.models.Route;
+import com.nikpikhmanets.veloroute.route.Route;
 
 /**
  * Created by Ivan on 06.02.2017.

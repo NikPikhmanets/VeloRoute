@@ -1,4 +1,4 @@
-package com.nikpikhmanets.veloroute.models;
+package com.nikpikhmanets.veloroute.route;
 
 import android.util.Log;
 

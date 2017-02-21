@@ -4,42 +4,38 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
             android:checked="true"
-            android:title="Главная" />
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_sourceWater"
             android:icon="@drawable/ic_local_drink_black_24dp"
-            android:title="Источники воды" />
+            android:title="@string/menu_source_water" />
         <item
             android:id="@+id/nav_places"
             android:icon="@drawable/ic_place_black_24dp"
-            android:title="Достопримечательности" />
+            android:title="@string/menu_places" />
         <item
             android:id="@+id/nav_myRoute"
             android:icon="@drawable/ic_directions_bike_black_24dp"
-            android:title="Мои треки" />
+            android:title="@string/menu_my_track" />
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Настройки" />
+            android:icon="@drawable/ic_settings_applications_black_24dp"
+            android:title="@string/menu_settings" />
 
     </group>
 
-    <item
-        android:id="@+id/nav_maps"
-        android:icon="@drawable/ic_map_black_24dp"
-        android:title="Карта" />
+    <group>
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_map_black_24dp"
+            android:title="@string/menu_maps" />
 
-    <item
-        android:title="Допольнительно">
-        <menu>
-
-            <item
-                android:id="@+id/nav_about"
-                android:icon="@drawable/ic_info_black_24dp"
-                android:title="О программе" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="@string/menu_about" />
+    </group>
 
 </menu>
