@@ -124,7 +124,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
     private void createRoute(GoogleMap googleMap) {
         if (typeFileGpx != null && typeFileGpx.equals(BUNDLE_VALUE_ROUTE) && nameFileGpx != null) {
-            route = new BuildRoute(context);
+            route = new BuildRoute(context, googleMap);
             route.parseGpxFile(nameFileGpx);
         }
     }

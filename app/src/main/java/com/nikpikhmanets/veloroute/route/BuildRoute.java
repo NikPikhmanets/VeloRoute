@@ -4,69 +4,121 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.AssetManager;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.nikpikhmanets.veloroute.activities.MapsActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.gpx.data.GPXDocument;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParser;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class BuildRoute implements GpxParser.GpxParserListener  {
+public class BuildRoute implements GpxParser.GpxParserListener {
 
     private Context context;
     private GoogleMap map;
     private ProgressDialog mProgressDialog = null;
     private PolylineOptions rectOptions = new PolylineOptions();
 
-    public BuildRoute(Context context) {
+    private GpxParser.GpxParserListener mGpxParserListener = this;
+
+    public BuildRoute(Context context, GoogleMap map) {
         this.context = context;
+        this.map = map;
     }
 
     public void parseGpxFile(String gpxData) {
 
-        AssetManager am = context.getAssets();
-        InputStream input = null;
+        File localFile = null;
+        StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + gpxData + ".gpx");
         try {
-            input = am.open(gpxData);
+            localFile = File.createTempFile("other", "gpx");
+            localFile.deleteOnExit();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert localFile != null;
+        final File finalLocalFile = localFile;
+        gpxReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                try {
+                    InputStream input = new FileInputStream(finalLocalFile);
+                    new GpxParser(input, mGpxParserListener, null).parse();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "Err open route", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        new GpxParser(input, this, null).parse();
+
+//        AssetManager am = context.getAssets();
+//        InputStream input = null;
+//        try {
+//            input = am.open(gpxData);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        if (input != null)
+//            new GpxParser(input, this, null).parse();
+//        else {
+//
+//            input = new ByteArrayInputStream(gpxData.getBytes());
+//            if (input. != null) {
+//                new GpxParser(input, this, null).parse();
+//            } else
+//                Toast.makeText(context, "Err open route", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
     public void onGpxParseStarted() {
-        mProgressDialog = ProgressDialog.show(context, "Parsing GPX", "Started");
+        mProgressDialog = ProgressDialog.show(context, "Open Route", "Started");
     }
 
     @Override
     public void onGpxParseCompleted(GPXDocument document) {
         mProgressDialog.dismiss();
 
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for (int x = 0; x < document.getTracks().size(); x++) {
             for (int y = 0; y < document.getTracks().get(x).getSegments().size(); y++) {
                 for (int z = 0; z < document.getTracks().get(x).getSegments().get(y).getTrackPoints().size(); z++) {
-                    rectOptions.add(
-                            new LatLng(
-                                    document.getTracks().get(x).getSegments().get(y).getTrackPoints().get(z).getLatitude(),
-                                    document.getTracks().get(x).getSegments().get(y).getTrackPoints().get(z).getLongitude()
-                            )
-                    );
+                    LatLng latLon = new LatLng(document.getTracks().get(x).getSegments().get(y).getTrackPoints().get(z).getLatitude(),
+                            document.getTracks().get(x).getSegments().get(y).getTrackPoints().get(z).getLongitude());
+                    rectOptions.add(latLon);
+                    builder.include(latLon);
                 }
             }
         }
+        map.addPolyline(rectOptions);
+        LatLngBounds bounds = builder.build();
+        int padding = 100; // offset from edges of the map in pixels
 
-        Intent intent = new Intent(context, MapsActivity.class);
-        MapsActivity.polylineOptions = rectOptions;
-        MapsActivity.mDocument = document;
-        context.startActivity(intent);
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        map.animateCamera(cu);
     }
 
     @Override

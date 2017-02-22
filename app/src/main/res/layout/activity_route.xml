@@ -22,6 +22,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/example_route" />
 
             <Button
@@ -29,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:foregroundGravity="bottom|right"
-                android:text="Показать на карте" />
+                android:text="@string/show_route" />
 
             <TextView
                 android:id="@+id/tv_description"
@@ -45,6 +46,7 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/headLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#7000">
@@ -67,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameRouteLabel"
             android:layout_margin="5dp"
-            android:text="Дистанция:"
+            android:text="@string/distance"
             android:textColor="@color/white" />
 
         <TextView
@@ -105,7 +107,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_toStartOf="@+id/roadRoute"
-            android:text="Грунт/асфальт, %:"
+            android:text="@string/ground_asphalt"
             android:textColor="@color/white" />
 
     </RelativeLayout>

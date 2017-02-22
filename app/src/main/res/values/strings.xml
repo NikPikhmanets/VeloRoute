@@ -54,6 +54,10 @@
     <string name="menu_settings">Настройки</string>
     <string name="menu_maps">Карта</string>
     <string name="menu_about">О программе</string>
+    <string name="description_route">Описание маршрута</string>
+    <string name="show_route">Показать маршрут на карте</string>
+    <string name="distance">Дистанция:</string>
+    <string name="ground_asphalt">Грунт/асфальт, %:</string>
     <string-array name="entry_width_line">
         <item>1</item>
         <item>2</item>

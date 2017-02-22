@@ -33,6 +33,13 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
+    final String INTENT_NAME = "name";
+    final String INTENT_LENGTH = "length";
+    final String INTENT_ROAD = "road";
+    final String INTENT_IMAGE = "image";
+    final String INTENT_DIRT = "dirt";
+    final String INTENT_DESCRIPTION = "description";
+    final String INTENT_GPX = "gpx";
 
     public static final String TAG = "tag";
 
@@ -58,15 +65,7 @@ public class MainFragment extends Fragment {
         adapter.setOnItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(Route route) {
-                Intent intent = new Intent(getContext(), RouteActivity.class);
-                intent.putExtra("name", route.getName_ru());
-                intent.putExtra("length", route.getLength());
-                intent.putExtra("road", route.getRoad());
-                intent.putExtra("image", route.getImage());
-                intent.putExtra("dirt", route.getDirt());
-                intent.putExtra("description", route.getDescription());
-                intent.putExtra("gpx", route.getGpx());
-                startActivity(intent);
+                startRouteActivity(route);
             }
         });
 
@@ -95,6 +94,18 @@ public class MainFragment extends Fragment {
             }
         });
 
+    }
+
+    private void startRouteActivity(Route route) {
+        Intent intent = new Intent(getContext(), RouteActivity.class);
+        intent.putExtra(INTENT_NAME, route.getName_ru());
+        intent.putExtra(INTENT_LENGTH, route.getLength());
+        intent.putExtra(INTENT_ROAD, route.getRoad());
+        intent.putExtra(INTENT_IMAGE, route.getImage());
+        intent.putExtra(INTENT_DIRT, route.getDirt());
+        intent.putExtra(INTENT_DESCRIPTION, route.getDescription());
+        intent.putExtra(INTENT_GPX, route.getGpx());
+        startActivity(intent);
     }
 
     @Override
