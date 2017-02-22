@@ -34,6 +34,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
+    final String BUNDLE_KEY_TITLE = "title";
 
     final String BUNDLE_VALUE_WAY_POINTS = "way_points";
     final String BUNDLE_VALUE_ROUTE = "route";
@@ -65,6 +66,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         if (bundle != null) {
             typeFileGpx = bundle.getString(BUNDLE_KEY_TYPE_GPX);
             nameFileGpx = bundle.getString(BUNDLE_KEY_FILE_NAME_GPX);
+            String title = bundle.getString(BUNDLE_KEY_TITLE);
+            if (title != null)
+                getActivity().setTitle(title);
         }
     }
 
@@ -74,45 +78,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
         createWayPoint(googleMap);
         createRoute(googleMap);
-
-//        LatLngBounds bounds = builder.build();
-//        int padding = 0; // offset from edges of the map in pixels
-//        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-//        googleMap.animateCamera(cu);
-
-
-//        mMap.getUiSettings().setZoomControlsEnabled(true);
-//
-//        LatLng monast = new LatLng(49.153743, 32.2545142);
-//
-//        mMap.addMarker(new MarkerOptions().position(monast).title("Monastyr"));
-//
-//
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(49.155061, 32.253998)).icon(
-//                BitmapDescriptorFactory
-//                        .defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-//                .title("джерело"));
-//
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(49.153232, 32.258328)).icon(
-//                BitmapDescriptorFactory.defaultMarker())
-//                .title("гайдамацький став"));
-//
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(49.154988, 32.242032)).icon(
-//                BitmapDescriptorFactory.defaultMarker())
-//                .title("памятник партизанам"));
-//
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(49.145740, 32.258490)).icon(
-//                BitmapDescriptorFactory.defaultMarker())
-//                .title("Козацький склик"))
-//                .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.kozak_resize));
-//
-//        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(monast, 15));
-//        mMap.setOnMarkerClickListener(this);
-
-//        BuildRoute br = new BuildRoute(getContext(), fileName);
-//        PolylineOptions rectOptions = br.getPolylineOptionsRout("");
-//        mMap.addPolyline(rectOptions);
     }
 
     private void createWayPoint(GoogleMap googleMap) {
@@ -150,7 +115,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.maps_menu, menu);
+//        inflater.inflate(R.menu.maps_menu, menu);
     }
 
     @Override

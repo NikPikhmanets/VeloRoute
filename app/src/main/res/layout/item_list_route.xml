@@ -1,69 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:cardUseCompatPadding="true">
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@android:color/white"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="2dp"
-        card_view:cardUseCompatPadding="true">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_route_image"
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:adjustViewBounds="true"
+            tools:src="@drawable/example_route" />
 
-            <ImageView
-                android:id="@+id/iv_route_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
-                android:adjustViewBounds="true"
-                tools:src="@drawable/example_route" />
+        <TextView
+            android:id="@+id/tv_route_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/iv_route_image"
+            android:layout_toStartOf="@+id/tv_route_length"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Name Route" />
 
-            <TextView
-                android:id="@+id/tv_route_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_toEndOf="@+id/iv_route_image"
-                android:layout_toStartOf="@+id/tv_route_length"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="Name Route" />
+        <TextView
+            android:id="@+id/tv_route_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textview_distance_shape"
+            android:padding="5dp"
+            android:textColor="@android:color/white"
+            tools:text="140 км" />
 
-            <TextView
-                android:id="@+id/tv_route_length"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/textview_distance_shape"
-                android:padding="5dp"
-                android:textColor="@android:color/white"
-                tools:text="140 км" />
+        <TextView
+            android:id="@+id/tv_route_road"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_route_name"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/iv_route_image"
+            tools:text="асфальт 100% / грунт 100%" />
 
-            <TextView
-                android:id="@+id/tv_route_road"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_route_name"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/iv_route_image"
-                tools:text="асфальт 100% / грунт 100%" />
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

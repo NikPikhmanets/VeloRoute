@@ -16,12 +16,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.prefereces);
+        addPreferencesFromResource(R.xml.preference);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getActivity().setTitle(getString(R.string.menu_settings));
+
         language = (ListPreference) getPreferenceManager().findPreference("list1");
         language.setOnPreferenceChangeListener(this);
         language.setSummary(language.getValue());

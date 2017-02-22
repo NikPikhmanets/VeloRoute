@@ -28,6 +28,8 @@ public class MyRoutesFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        getActivity().setTitle(getString(R.string.menu_my_track));
+
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listMyRoute);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(llm);

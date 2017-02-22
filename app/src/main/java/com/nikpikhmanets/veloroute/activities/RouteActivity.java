@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -118,24 +119,20 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
                 roadRoute.setText(String.format("%s / %s", dirt, road));
             }
         }
+
+        RelativeLayout Rl = (RelativeLayout) findViewById(R.id.headLayout);
+        int i = Rl.getHeight();
+//        ViewGroup.LayoutParams params = Rl.getLayoutParams();
+//
+//        ViewGroup.MarginLayoutParams mlp = new ViewGroup.MarginLayoutParams(imageRoute.getLayoutParams());
+//        mlp.setMargins(0, params.height, 0, 0);
+//        imageRoute.setLayoutParams(mlp);
     }
 
     @Override
     public void onClick(View view) {
-
         Intent intent = new Intent(this, MapsActivity.class);
         intent.putExtra(INTENT_GPX, gpx);
         startActivity(intent);
-//
-//        StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + gpx + ".gpx");
-//        gpxReference.getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-//            @Override
-//            public void onSuccess(byte[] bytes) {
-//                Log.d("tag", "onSuccess: ");
-//                BuildRoute br = new BuildRoute(RouteActivity.this);
-////                br.parseGpxFile(bytes);
-//            }
-//        });
-
     }
 }

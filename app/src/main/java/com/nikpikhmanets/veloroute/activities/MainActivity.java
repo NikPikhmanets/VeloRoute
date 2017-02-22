@@ -24,9 +24,12 @@ public class MainActivity extends AppCompatActivity
 
     final String RECREATION_POINTS_GPX = "recreation_points.gpx";
     final String WATER_POINTS_GPX = "water_points.gpx";
+    final String TITLE_SOURCE_WATER = "Источники воды";
+    final String TITLE_REST_PLACE = "Места отдыха";
 
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
+    final String BUNDLE_KEY_TITLE = "title";
 
     final String BUNDLE_VALUE_WAY_POINTS = "way_points";
 
@@ -62,6 +65,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        createFragment();
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
+        }
+    }
+
+    private void createFragment() {
         mainFragment = new MainFragment();
         filterFragment = new FilterFragment();
         myRoutesFragment = new MyRoutesFragment();
@@ -69,10 +80,6 @@ public class MainActivity extends AppCompatActivity
         intrestingPlacesFragment = new InterestingPlacesFragment();
         mapsFragment = new MapsFragment();
         aboutFragment = new AboutFragment();
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
-        }
     }
 
     @Override
@@ -94,7 +101,10 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();
                 break;
             case R.id.nav_sourceWater:
-                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, WATER_POINTS_GPX);
+                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, WATER_POINTS_GPX, TITLE_SOURCE_WATER);
+                break;
+            case R.id.nav_weekendPlace:
+                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, RECREATION_POINTS_GPX, TITLE_REST_PLACE);
                 break;
             case R.id.nav_places:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, intrestingPlacesFragment).commit();
@@ -117,13 +127,16 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void showMapsFragment(String keyType, String keyFileName) {
-        if (!mapsFragment.isAdded()) {
-            Bundle bundle = new Bundle();
-            bundle.putString(BUNDLE_KEY_TYPE_GPX, keyType);
-            bundle.putString(BUNDLE_KEY_FILE_NAME_GPX, keyFileName);
-            mapsFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();
+    private void showMapsFragment(String keyType, String keyFileName, String keyTitle) {
+        if (mapsFragment.isAdded()) {
+            mapsFragment = null;
+            mapsFragment = new MapsFragment();
         }
+        Bundle bundle = new Bundle();
+        bundle.putString(BUNDLE_KEY_TYPE_GPX, keyType);
+        bundle.putString(BUNDLE_KEY_FILE_NAME_GPX, keyFileName);
+        bundle.putString(BUNDLE_KEY_TITLE, keyTitle);
+        mapsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();
     }
 }

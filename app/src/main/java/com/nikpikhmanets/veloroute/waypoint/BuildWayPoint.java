@@ -14,7 +14,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.gpx.data.GPXDocument;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParser;
 
@@ -27,6 +26,7 @@ public class BuildWayPoint implements GpxParser.GpxParserListener {
 
     private Context context;
     private GoogleMap map;
+    float colorMarker;
 
     private List<WayPoint> wayPointList = new ArrayList<>();
     private ProgressDialog mProgressDialog = null;
@@ -36,8 +36,13 @@ public class BuildWayPoint implements GpxParser.GpxParserListener {
         this.map = map;
     }
 
-
     public void parseGpxFile(String gpxData) {
+
+        if(gpxData.equals("water_points.gpx"))
+            colorMarker = BitmapDescriptorFactory.HUE_AZURE;
+        else
+            colorMarker = BitmapDescriptorFactory.HUE_RED
+                    ;
 
         AssetManager am = context.getAssets();
         InputStream input = null;
@@ -82,13 +87,14 @@ public class BuildWayPoint implements GpxParser.GpxParserListener {
                         .position(latLon)
                         .title(wayPointList.get(i).getName())
                         .snippet(wayPointList.get(i).getDescription())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_water)));
+                        .icon(BitmapDescriptorFactory.defaultMarker(colorMarker)));
+//                                fromResource(R.drawable.icon_rest_place)));
 
                 builder.include(latLon);
             }
         }
         LatLngBounds bounds = builder.build();
-        int padding = 50; // offset from edges of the map in pixels
+        int padding = 100; // offset from edges of the map in pixels
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         map.animateCamera(cu);
     }
