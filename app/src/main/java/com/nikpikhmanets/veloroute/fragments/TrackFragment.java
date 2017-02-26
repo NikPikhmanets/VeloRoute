@@ -16,7 +16,7 @@ import com.nikpikhmanets.veloroute.track.TrackListAdapter;
 
 import java.util.List;
 
-public class MyRoutesFragment extends Fragment {
+public class TrackFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

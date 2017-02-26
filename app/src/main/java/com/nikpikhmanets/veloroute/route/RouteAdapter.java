@@ -1,4 +1,4 @@
-package com.nikpikhmanets.veloroute.adapters;
+package com.nikpikhmanets.veloroute.route;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,15 +10,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
-import com.nikpikhmanets.veloroute.route.Route;
+import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
 
 import java.util.List;
 
-public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.RouteListViewHolder> {
+public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListViewHolder> {
 
     private List<Route> data;
-    private OnRecyclerItemClickListener listener;
+    private OnRecyclerItemRouteClickListener listener;
 
 
     @Override
@@ -43,7 +42,7 @@ public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.Rout
         notifyDataSetChanged();
     }
 
-    public void setOnItemClickListener(OnRecyclerItemClickListener listener) {
+    public void setOnItemClickListener(OnRecyclerItemRouteClickListener listener) {
         this.listener = listener;
     }
 

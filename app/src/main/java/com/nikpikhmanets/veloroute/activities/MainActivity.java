@@ -13,10 +13,10 @@ import android.view.MenuItem;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.FilterFragment;
-import com.nikpikhmanets.veloroute.fragments.InterestingPlacesFragment;
+import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
 import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MapsFragment;
-import com.nikpikhmanets.veloroute.fragments.MyRoutesFragment;
+import com.nikpikhmanets.veloroute.fragments.TrackFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity
 
     private MainFragment mainFragment;
     private FilterFragment filterFragment;
-    private MyRoutesFragment myRoutesFragment;
+    private TrackFragment trackFragment;
     private SettingsFragment settingsFragment;
-    private InterestingPlacesFragment intrestingPlacesFragment;
+    private PlaceFragment placesFragment;
     private MapsFragment mapsFragment;
     private AboutFragment aboutFragment;
 
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity
     private void createFragment() {
         mainFragment = new MainFragment();
         filterFragment = new FilterFragment();
-        myRoutesFragment = new MyRoutesFragment();
+        trackFragment = new TrackFragment();
         settingsFragment = new SettingsFragment();
-        intrestingPlacesFragment = new InterestingPlacesFragment();
+        placesFragment = new PlaceFragment();
         mapsFragment = new MapsFragment();
         aboutFragment = new AboutFragment();
     }
@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity
                 showMapsFragment(BUNDLE_VALUE_WAY_POINTS, RECREATION_POINTS_GPX, TITLE_REST_PLACE);
                 break;
             case R.id.nav_places:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, intrestingPlacesFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, placesFragment).commit();
                 break;
             case R.id.nav_myRoute:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myRoutesFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, trackFragment).commit();
                 break;
             case R.id.nav_maps:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();

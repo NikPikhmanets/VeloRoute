@@ -23,8 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
-import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
-import com.nikpikhmanets.veloroute.adapters.RouteDataAdapter;
+import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
+import com.nikpikhmanets.veloroute.route.RouteAdapter;
 import com.nikpikhmanets.veloroute.route.Route;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class MainFragment extends Fragment {
 
     private int filterCheckedId = R.id.rb_length_all;
     private List<Route> routesList;
-    private RouteDataAdapter adapter;
+    private RouteAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,11 +60,11 @@ public class MainFragment extends Fragment {
         getActivity().setTitle(getString(R.string.app_name));
 
         routesList = new ArrayList<>();
-        adapter = new RouteDataAdapter();
+        adapter = new RouteAdapter();
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listRouteRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
-        adapter.setOnItemClickListener(new OnRecyclerItemClickListener() {
+        adapter.setOnItemClickListener(new OnRecyclerItemRouteClickListener() {
             @Override
             public void onItemClick(Route route) {
                 startRouteActivity(route);

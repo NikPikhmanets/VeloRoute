@@ -2,19 +2,17 @@ package com.nikpikhmanets.veloroute.place;
 
 import android.media.Image;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Place {
-
-    List<Place> listPlace = new ArrayList<>();
 
     private String name;
     private Image img;
     private String description;
-    private LatLng latLng;
+    private Double lat;
+    private Double lng;
+
+    public Place() {
+
+    }
 
     public String getName() {
         return name;
@@ -40,12 +38,20 @@ public class Place {
         this.description = description;
     }
 
-    public LatLng getLatLng() {
-        return latLng;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setLatLng(LatLng latLng) {
-        this.latLng = latLng;
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     private String lorpenText = "Aenean venenatis purus augue, sed interdum mi mattis vitae. Etiam ullamcorper ligula ut condimentum tristique. Praesent vehicula massa quis dui vestibulum tempus eget in arcu. Donec suscipit felis vitae purus aliquam euismod. Vestibulum eleifend sit amet metus non iaculis. Duis blandit erat nec risus molestie sodales. Cras iaculis sapien felis, ac fringilla quam pellentesque non. Vestibulum cursus, diam a convallis lacinia, libero eros consequat quam, ac feugiat odio nulla in lorem. Sed rhoncus gravida sem, eu vulputate turpis commodo quis. Nunc fermentum libero arcu, vitae aliquam est sagittis eget. Nulla non ex sed nisi mattis suscipit. Phasellus a posuere libero. Suspendisse potenti. Ut fringilla, metus posuere viverra pulvinar, mauris orci viverra diam, in imperdiet massa sem in velit.\n" +
