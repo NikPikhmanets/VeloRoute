@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemClickListener;
 import com.nikpikhmanets.veloroute.route.Route;
@@ -75,7 +76,7 @@ public class RouteDataAdapter extends RecyclerView.Adapter<RouteDataAdapter.Rout
             tvName.setText(route.getName_ru());
             tvRoad.setText("грунт/асфальт: " + route.getDirt() + "/" + route.getRoad());
             tvLength.setText(String.format("%s км", route.getLength()));
-            Glide.with(itemView.getContext()).load(route.getImageURL()).into(ivRouteImage);
+            Glide.with(itemView.getContext()).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivRouteImage);
         }
     }
 }

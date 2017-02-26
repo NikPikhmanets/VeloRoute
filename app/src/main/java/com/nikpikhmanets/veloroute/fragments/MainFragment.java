@@ -103,7 +103,7 @@ public class MainFragment extends Fragment {
         intent.putExtra(INTENT_NAME, route.getName_ru());
         intent.putExtra(INTENT_LENGTH, route.getLength());
         intent.putExtra(INTENT_ROAD, route.getRoad());
-        intent.putExtra(INTENT_IMAGE, route.getImage());
+        intent.putExtra(INTENT_IMAGE, route.getImageURL());
         intent.putExtra(INTENT_DIRT, route.getDirt());
         intent.putExtra(INTENT_DESCRIPTION, route.getDescription());
         intent.putExtra(INTENT_GPX, route.getGpx());

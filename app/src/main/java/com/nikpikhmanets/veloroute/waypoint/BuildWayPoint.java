@@ -26,7 +26,7 @@ public class BuildWayPoint implements GpxParser.GpxParserListener {
 
     private Context context;
     private GoogleMap map;
-    float colorMarker;
+    private float colorMarker;
 
     private List<WayPoint> wayPointList = new ArrayList<>();
     private ProgressDialog mProgressDialog = null;
@@ -38,11 +38,10 @@ public class BuildWayPoint implements GpxParser.GpxParserListener {
 
     public void parseGpxFile(String gpxData) {
 
-        if(gpxData.equals("water_points.gpx"))
+        if (gpxData.equals("water_points.gpx"))
             colorMarker = BitmapDescriptorFactory.HUE_AZURE;
         else
-            colorMarker = BitmapDescriptorFactory.HUE_RED
-                    ;
+            colorMarker = BitmapDescriptorFactory.HUE_RED;
 
         AssetManager am = context.getAssets();
         InputStream input = null;

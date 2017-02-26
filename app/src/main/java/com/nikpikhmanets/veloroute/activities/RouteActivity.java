@@ -12,9 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nikpikhmanets.veloroute.R;
 
 public class RouteActivity extends AppCompatActivity implements View.OnClickListener {
@@ -91,7 +89,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             int defaultValue = 0;
 
             String name = intent.getStringExtra(INTENT_NAME);
-            String image = intent.getStringExtra(INTENT_IMAGE);
+            String imageUrl = intent.getStringExtra(INTENT_IMAGE);
             String description = intent.getStringExtra(INTENT_DESCRIPTION);
             int length = intent.getIntExtra(INTENT_LENGTH, defaultValue);
             int road = intent.getIntExtra(INTENT_ROAD, defaultValue);
@@ -99,11 +97,13 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
             nameRoute.setText(name);
 
-            StorageReference imageRouteFB = FirebaseStorage.getInstance().getReference("routes_images/" + image + ".jpg");
-            Glide.with(getApplicationContext())
-                    .using(new FirebaseImageLoader())
-                    .load(imageRouteFB)
-                    .into(imageRoute);
+//            StorageReference imageRouteFB = FirebaseStorage.getInstance().getReference("routes_images/" + imageUrl + ".jpg");
+//            Glide.with(getApplicationContext())
+//                    .using(new FirebaseImageLoader())
+//                    .load(imageRouteFB)
+//                    .into(imageRoute);
+
+            Glide.with(this).load(imageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
 
             tvRouteDescription.setText(description);
 
