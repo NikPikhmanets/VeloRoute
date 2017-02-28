@@ -1,5 +1,6 @@
 package com.nikpikhmanets.veloroute.route;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,9 +74,22 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
 
         void bind(Route route) {
             tvName.setText(route.getName_ru());
-            tvRoad.setText("грунт/асфальт: " + route.getDirt() + "/" + route.getRoad());
+            tvRoad.setText(getTypeRoad(route));
             tvLength.setText(String.format("%s км", route.getLength()));
             Glide.with(itemView.getContext()).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivRouteImage);
+        }
+
+        @NonNull
+        private String getTypeRoad(Route route) {
+            String typeRoad = "";
+            if (route.getRoad() == 0) {
+                typeRoad = "грунт: " + route.getDirt();
+            } else if (route.getDirt() == 0) {
+                typeRoad = "асфальт: " + route.getRoad();
+            } else {
+                typeRoad = "грунт/асфальт: " + route.getDirt() + "/" + route.getRoad();
+            }
+            return typeRoad;
         }
     }
 }

@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:background="@drawable/textview_distance_shape"
+                android:background="@drawable/button_show_route_shape"
                 android:foregroundGravity="bottom|right"
                 android:text="@string/show_route" />
 
@@ -38,7 +38,8 @@
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:lineSpacingMultiplier="1.1"
                 tools:text="@string/XY" />
 
