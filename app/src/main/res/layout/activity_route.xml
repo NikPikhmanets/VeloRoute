@@ -19,9 +19,9 @@
 
             <ImageView
                 android:id="@+id/imageRoute"
-                android:layout_marginTop="60dp"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:layout_marginTop="60dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/example_route" />
 
@@ -29,6 +29,8 @@
                 android:id="@+id/showOnMaps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/textview_distance_shape"
                 android:foregroundGravity="bottom|right"
                 android:text="@string/show_route" />
 

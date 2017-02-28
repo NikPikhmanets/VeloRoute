@@ -17,8 +17,8 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.route.BuildRoute;
-import com.nikpikhmanets.veloroute.waypoint.BuildWayPoint;
+import com.nikpikhmanets.veloroute.route.RouteBuild;
+import com.nikpikhmanets.veloroute.waypoint.WayPointBuild;
 
 import static com.nikpikhmanets.veloroute.R.id.googleMap;
 
@@ -29,8 +29,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
     private Context context;
 
-    BuildWayPoint wayPoint;
-    BuildRoute route;
+    WayPointBuild wayPoint;
+    RouteBuild route;
 
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
@@ -82,14 +82,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
     private void createWayPoint(GoogleMap googleMap) {
         if (typeFileGpx != null && typeFileGpx.equals(BUNDLE_VALUE_WAY_POINTS) && nameFileGpx != null) {
-            wayPoint = new BuildWayPoint(context, googleMap);
+            wayPoint = new WayPointBuild(context, googleMap);
             wayPoint.parseGpxFile(nameFileGpx);
         }
     }
 
     private void createRoute(GoogleMap googleMap) {
         if (typeFileGpx != null && typeFileGpx.equals(BUNDLE_VALUE_ROUTE) && nameFileGpx != null) {
-            route = new BuildRoute(context, googleMap);
+            route = new RouteBuild(context, googleMap);
             route.parseGpxFile(nameFileGpx);
         }
     }

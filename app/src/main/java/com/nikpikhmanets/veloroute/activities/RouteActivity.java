@@ -6,8 +6,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -61,6 +63,20 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        RelativeLayout Rl = (RelativeLayout) findViewById(R.id.headLayout);
+        Rl.measure(0,0);
+        int i = Rl.getMeasuredHeight();
+
+        ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(imageRoute.getLayoutParams());
+        marginParams.setMargins(0, i, 0, 0);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(marginParams);
+        imageRoute.setLayoutParams(layoutParams);
+    }
+
     private void initView() {
         nameRoute = (TextView) findViewById(R.id.nameRouteLabel);
         roadRouteLabel = (TextView) findViewById(R.id.groundRouteLabel);
@@ -97,12 +113,6 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
             nameRoute.setText(name);
 
-//            StorageReference imageRouteFB = FirebaseStorage.getInstance().getReference("routes_images/" + imageUrl + ".jpg");
-//            Glide.with(getApplicationContext())
-//                    .using(new FirebaseImageLoader())
-//                    .load(imageRouteFB)
-//                    .into(imageRoute);
-
             Glide.with(this).load(imageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
 
             tvRouteDescription.setText(description);
@@ -119,14 +129,6 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
                 roadRoute.setText(String.format("%s / %s", dirt, road));
             }
         }
-
-        RelativeLayout Rl = (RelativeLayout) findViewById(R.id.headLayout);
-        int i = Rl.getHeight();
-//        ViewGroup.LayoutParams params = Rl.getLayoutParams();
-//
-//        ViewGroup.MarginLayoutParams mlp = new ViewGroup.MarginLayoutParams(imageRoute.getLayoutParams());
-//        mlp.setMargins(0, params.height, 0, 0);
-//        imageRoute.setLayoutParams(mlp);
     }
 
     @Override

@@ -27,7 +27,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class BuildRoute implements GpxParser.GpxParserListener {
+public class RouteBuild implements GpxParser.GpxParserListener {
 
     private Context context;
     private GoogleMap map;
@@ -36,7 +36,7 @@ public class BuildRoute implements GpxParser.GpxParserListener {
 
     private GpxParser.GpxParserListener mGpxParserListener = this;
 
-    public BuildRoute(Context context, GoogleMap map) {
+    public RouteBuild(Context context, GoogleMap map) {
         this.context = context;
         this.map = map;
     }

@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuildWayPoint implements GpxParser.GpxParserListener {
+public class WayPointBuild implements GpxParser.GpxParserListener {
 
     private Context context;
     private GoogleMap map;
@@ -31,7 +31,7 @@ public class BuildWayPoint implements GpxParser.GpxParserListener {
     private List<WayPoint> wayPointList = new ArrayList<>();
     private ProgressDialog mProgressDialog = null;
 
-    public BuildWayPoint(Context context, GoogleMap map) {
+    public WayPointBuild(Context context, GoogleMap map) {
         this.context = context;
         this.map = map;
     }

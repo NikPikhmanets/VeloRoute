@@ -15,7 +15,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.route.BuildRoute;
+import com.nikpikhmanets.veloroute.route.RouteBuild;
 
 import static com.nikpikhmanets.veloroute.R.id.no_map;
 
@@ -81,7 +81,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         if (!gpxFile.isEmpty()) {
-            BuildRoute br = new BuildRoute(this, mMap);
+            RouteBuild br = new RouteBuild(this, mMap);
             br.parseGpxFile(gpxFile);
         }
 

@@ -21,14 +21,14 @@
             android:layout_height="80dp"
             android:layout_margin="8dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/example_route" />
+            android:src="@drawable/example_route" />
 
         <TextView
             android:id="@+id/textNameItemPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:textSize="18sp"
             android:layout_toEndOf="@+id/imageItemPlace"
@@ -38,11 +38,11 @@
         <TextView
             android:id="@+id/textDescrItemPlace"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="4dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/textNameItemPlace"
             android:layout_toEndOf="@+id/imageItemPlace"
             android:ellipsize="end"
+            android:maxLines="3"
             tools:text="@string/XY" />
 
     </RelativeLayout>
