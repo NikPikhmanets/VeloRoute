@@ -43,6 +43,10 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
         notifyDataSetChanged();
     }
 
+    public List<Route> getData() {
+        return data;
+    }
+
     public void setOnItemClickListener(OnRecyclerItemRouteClickListener listener) {
         this.listener = listener;
     }

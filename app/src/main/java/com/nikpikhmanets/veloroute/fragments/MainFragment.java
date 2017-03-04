@@ -24,15 +24,21 @@ import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
+import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
 import com.nikpikhmanets.veloroute.route.RouteAdapter;
 import com.nikpikhmanets.veloroute.route.Route;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
 public class MainFragment extends Fragment {
 
+    public static final String KEY_FILTER_CHECKED_ID = "filter_checked_id";
+    public static final String KEY_SORTING_CHECKED_ID = "sort_by_checked_id";
+    public static final String ARG_CHECKED_ID = "checked_id";
     final String INTENT_NAME = "name";
     final String INTENT_LENGTH = "length";
     final String INTENT_ROAD = "road";
@@ -44,6 +50,7 @@ public class MainFragment extends Fragment {
     public static final String TAG = "tag";
 
     private int filterCheckedId = R.id.rb_length_all;
+    private int sortingCheckedId = R.id.rb_sort_by_name;
     private List<Route> routesList;
     private RouteAdapter adapter;
 
@@ -72,7 +79,8 @@ public class MainFragment extends Fragment {
         });
 
         if (savedInstanceState != null) {
-            filterCheckedId = savedInstanceState.getInt("filter_checked_id");
+            filterCheckedId = savedInstanceState.getInt(KEY_FILTER_CHECKED_ID);
+            sortingCheckedId = savedInstanceState.getInt(KEY_SORTING_CHECKED_ID);
         }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -129,6 +137,9 @@ public class MainFragment extends Fragment {
             case R.id.action_filter:
                 showFilterFragment();
                 break;
+            case R.id.action_sort:
+                showSortFragment();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,7 +147,8 @@ public class MainFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("filter_checked_id", filterCheckedId);
+        outState.putInt(KEY_FILTER_CHECKED_ID, filterCheckedId);
+        outState.putInt(KEY_SORTING_CHECKED_ID, sortingCheckedId);
     }
 
     private void showFilterFragment() {
@@ -149,9 +161,24 @@ public class MainFragment extends Fragment {
             }
         });
         Bundle arguments = new Bundle();
-        arguments.putInt("checked_id", filterCheckedId);
+        arguments.putInt(ARG_CHECKED_ID, filterCheckedId);
         filterFragment.setArguments(arguments);
         filterFragment.show(getActivity().getSupportFragmentManager(), "filter");
+    }
+
+    private void showSortFragment() {
+        SortFragment sortFragment = new SortFragment();
+        sortFragment.setOnSortingChangeListener(new OnSortingChangeListener() {
+            @Override
+            public void onSortingChanged(int sortByCheckedId) {
+                MainFragment.this.sortingCheckedId = sortByCheckedId;
+                sortRouteList();
+            }
+        });
+        Bundle agruments = new Bundle();
+        agruments.putInt(ARG_CHECKED_ID, sortingCheckedId);
+        sortFragment.setArguments(agruments);
+        sortFragment.show(getActivity().getSupportFragmentManager(), "sorting");
     }
 
     private void filterRoutesList(){
@@ -159,32 +186,67 @@ public class MainFragment extends Fragment {
         int maxLength = 1000;
         switch (filterCheckedId) {
             case R.id.rb_length_all:
+                getActivity().setTitle("все маршруты");
                 break;
             case R.id.rb_length_long:
+                getActivity().setTitle("длинные");
                 minLength = 100;
                 break;
             case R.id.rb_length_middle:
+                getActivity().setTitle("средние");
                 minLength = 50;
                 maxLength = 100;
                 break;
             case R.id.rb_length_short:
+                getActivity().setTitle("короткие");
                 maxLength = 50;
                 break;
         }
 
         List<Route> filteredList = new ArrayList<>();
-
         for (Route route : routesList) {
             if (route.getLength() >= minLength && route.getLength() < maxLength) {
                 filteredList.add(route);
             }
         }
         adapter.setData(filteredList);
+        sortRouteList();
     }
 
-    private void loadGpxFromFirebase(Route route, String gpxName) {
-
+    private void sortRouteList() {
+        switch (sortingCheckedId) {
+            case R.id.rb_sort_by_name:
+                Collections.sort(adapter.getData(), COMPARE_BY_NAME);
+                break;
+            case R.id.rb_sort_by_length:
+                Collections.sort(adapter.getData(), COMPARE_BY_LENGTH);
+                break;
+            case R.id.rb_sort_by_road:
+                Collections.sort(adapter.getData(), COMPARE_BY_ROAD);
+                break;
+        }
+        adapter.notifyDataSetChanged();
     }
 
+    private static final Comparator<Route> COMPARE_BY_NAME = new Comparator<Route>() {
+        @Override
+        public int compare(Route route1, Route route2) {
+            return route1.getName_ru().compareTo(route2.getName_ru());
+        }
+    };
+
+    private static final Comparator<Route> COMPARE_BY_LENGTH = new Comparator<Route>() {
+        @Override
+        public int compare(Route route1, Route route2) {
+            return route1.getLength() - route2.getLength();
+        }
+    };
+
+    private static final Comparator<Route> COMPARE_BY_ROAD = new Comparator<Route>() {
+        @Override
+        public int compare(Route route1, Route route2) {
+            return route1.getRoad() - route2.getRoad();
+        }
+    };
 
 }

@@ -11,14 +11,10 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.activities.MainActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 
 public class FilterFragment extends DialogFragment {
-
-    public static final int FILTER_ROUTE_LENGTH_ALL = 0;
-    public static final int FILTER_ROUTE_LENGTH_SHORT = 1;
-    public static final int FILTER_ROUTE_LENGTH_MIDDLE = 2;
-    public static final int FILTER_ROUTE_LENGTH_LONG = 3;
 
     private OnFilterChange listener;
 
@@ -37,10 +33,8 @@ public class FilterFragment extends DialogFragment {
         }
 
         final RadioGroup rgLength = (RadioGroup)view.findViewById(R.id.rg_length);
-//        RadioGroup rgRoad = (RadioGroup)view.findViewById(R.id.rg_road);
-//        rgRoad.check(R.id.rb_all);
 
-        rgLength.check(getArguments().getInt("checked_id"));
+        rgLength.check(getArguments().getInt(MainFragment.ARG_CHECKED_ID));
         rgLength.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
