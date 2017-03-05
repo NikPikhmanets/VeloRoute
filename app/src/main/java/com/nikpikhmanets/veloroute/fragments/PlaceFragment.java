@@ -21,8 +21,8 @@ import com.nikpikhmanets.veloroute.activities.PlaceActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemPlaceClickListener;
 import com.nikpikhmanets.veloroute.place.Place;
 import com.nikpikhmanets.veloroute.place.PlaceAdapter;
+import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceFragment extends Fragment {
@@ -48,7 +48,7 @@ public class PlaceFragment extends Fragment {
 
         getActivity().setTitle(getString(R.string.menu_places));
 
-        placeList = new ArrayList<>();
+        placeList = PlaceListSingle.getInstance(); //new ArrayList<>();
         placeAdapter = new PlaceAdapter();
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.placeRecyclerView);

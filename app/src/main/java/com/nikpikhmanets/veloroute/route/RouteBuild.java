@@ -13,8 +13,10 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,12 +26,16 @@ import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.gpx.data.GPXDocument;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParser;
+import com.nikpikhmanets.veloroute.place.Place;
+import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RouteBuild implements GpxParser.GpxParserListener {
 
@@ -43,12 +49,16 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 
     private GpxParser.GpxParserListener mGpxParserListener = this;
 
+    private List<Place> localListPlace = new ArrayList<>();
+
     public RouteBuild(Context context, GoogleMap map) {
         this.context = context;
         this.map = map;
     }
 
-    public void parseGpxFile(String gpxData) {
+    public void parseGpxFile(String gpxData, final String list) {
+
+        checkPlace(list);
 
         File localFile = null;
         StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + gpxData + ".gpx");
@@ -100,6 +110,33 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 //        }
     }
 
+    private void checkPlace(String list) {
+        String listP = list;
+        String place;
+
+        List<Place> listPlace = PlaceListSingle.getInstance();
+
+        while (!listP.isEmpty()) {
+
+            if (listP.contains("/")) {
+
+                place = listP.substring(0, listP.indexOf("/"));
+            } else
+                place = listP;
+
+            if (!listP.isEmpty()) {
+                for (int i = 0; i < listPlace.size(); i++) {
+                    if (listPlace.get(i).getName().equals(place)) {
+                        localListPlace.add(listPlace.get(i));
+                    }
+                }
+                listP = listP.replaceAll(place, "");
+                if (listP.length() != 0)
+                    listP = listP.replaceFirst("/", "");
+            }
+        }
+    }
+
     @Override
     public void onGpxParseStarted() {
         mProgressDialog = ProgressDialog.show(context, "Open Route", "Started");
@@ -118,11 +155,29 @@ public class RouteBuild implements GpxParser.GpxParserListener {
         parseRoute(document, builder);
 
         map.addPolyline(rectOptions);
+
+        addMarker();
+
         LatLngBounds bounds = builder.build();
         int padding = 100; // offset from edges of the map in pixels
 
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         map.animateCamera(cu);
+
+        //        mMap.moveCamera(CameraUpdateFactory.zoomIn());
+//        mMap.setOnMarkerClickListener(this);
+    }
+
+    private void addMarker() {
+        if (localListPlace.size() != 0) {
+            for (int i = 0; i < localListPlace.size(); i++) {
+                LatLng latLng = new LatLng(localListPlace.get(i).getLat(), localListPlace.get(i).getLng());
+                map.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title(localListPlace.get(i).getName())
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+            }
+        }
     }
 
     private void parseRoute(GPXDocument document, LatLngBounds.Builder builder) {

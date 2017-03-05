@@ -22,9 +22,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GoogleMap mMap;
     private String gpxFile;
-    final String INTENT_GPX = "gpx";
-
+    private String listPlace;
     private String mapStyle;
+
+    final String INTENT_GPX = "gpx";
+    final String INTENT_LIST_PLACE = "list_place";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         Intent intent = getIntent();
         gpxFile = intent.getStringExtra(INTENT_GPX);
+        listPlace = intent.getStringExtra(INTENT_LIST_PLACE);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -76,20 +79,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (!gpxFile.isEmpty()) {
             RouteBuild br = new RouteBuild(this, mMap);
-            br.parseGpxFile(gpxFile);
+            br.parseGpxFile(gpxFile, listPlace);
         }
         if (!mapStyle.isEmpty()) {
             setPrefMapStyle(mapStyle);
         } else
             setTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
-
-//        LatLngBounds bounds = builder.build();
-//        int padding = 0; // offset from edges of the map in pixels
-//        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-//        googleMap.animateCamera(cu);
-
-//        mMap.moveCamera(CameraUpdateFactory.zoomIn());
-//        mMap.setOnMarkerClickListener(this);
     }
 
     @Override

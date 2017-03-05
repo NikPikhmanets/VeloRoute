@@ -46,11 +46,13 @@ public class MainFragment extends Fragment {
     final String INTENT_DIRT = "dirt";
     final String INTENT_DESCRIPTION = "description";
     final String INTENT_GPX = "gpx";
+    final String INTENT_LIST_PLACE = "list_place";
 
     public static final String TAG = "tag";
 
     private int filterCheckedId = R.id.rb_length_all;
     private int sortingCheckedId = R.id.rb_sort_by_name;
+
     private List<Route> routesList;
     private RouteAdapter adapter;
 
@@ -116,6 +118,7 @@ public class MainFragment extends Fragment {
         intent.putExtra(INTENT_DIRT, route.getDirt());
         intent.putExtra(INTENT_DESCRIPTION, route.getDescription());
         intent.putExtra(INTENT_GPX, route.getGpx());
+        intent.putExtra(INTENT_LIST_PLACE, route.getListPlace());
         startActivity(intent);
     }
 

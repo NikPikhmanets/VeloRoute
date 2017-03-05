@@ -4,8 +4,6 @@ import android.util.Log;
 
 import com.google.firebase.database.Exclude;
 
-import java.util.List;
-
 public class Route {
 
     private static final String TAG = "tag";
@@ -19,12 +17,12 @@ public class Route {
     private String description;
     private String gpx;
     private String imageURL;
-    private List<String> listPlace;
+    private String listPlace;
 
     public Route() {
     }
 
-    public Route(int length, int road, String name_en, String name_ru, String name_ua, String image, String description, String gpx, String imageURL) {
+    public Route(int length, int road, String name_en, String name_ru, String name_ua, String image, String description, String gpx, String imageURL, String listPlace) {
         this.length = length;
         this.road = road;
         this.name_en = name_en;
@@ -33,6 +31,7 @@ public class Route {
         this.description = description;
         this.gpx = gpx;
         this.imageURL = imageURL;
+        this.listPlace = listPlace;
         Log.d(TAG, "name: " + name_ru + "; length: " + length + "; road: " + road + "; image: " + image);
     }
 
@@ -98,6 +97,14 @@ public class Route {
 
     public String getImageURL() {
         return imageURL;
+    }
+
+    public String getListPlace() {
+        return listPlace;
+    }
+
+    public void setListPlace(String listPlace) {
+        this.listPlace = listPlace;
     }
 
     @Exclude

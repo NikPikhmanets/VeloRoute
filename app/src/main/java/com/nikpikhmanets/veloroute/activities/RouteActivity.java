@@ -26,6 +26,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     final String INTENT_DIRT = "dirt";
     final String INTENT_DESCRIPTION = "description";
     final String INTENT_GPX = "gpx";
+    final String INTENT_LIST_PLACE = "list_place";
 
     final String GROUND = "Грунт:";
     final String ASPHALT = "Асфальт:";
@@ -39,6 +40,8 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     ImageView imageRoute;
 
     Button showOnMapsBtn;
+
+    String listPlace = "";
 
     String gpx;
 
@@ -107,6 +110,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             String name = intent.getStringExtra(INTENT_NAME);
             String imageUrl = intent.getStringExtra(INTENT_IMAGE);
             String description = intent.getStringExtra(INTENT_DESCRIPTION);
+            listPlace = intent.getStringExtra(INTENT_LIST_PLACE);
             int length = intent.getIntExtra(INTENT_LENGTH, defaultValue);
             int road = intent.getIntExtra(INTENT_ROAD, defaultValue);
             int dirt = intent.getIntExtra(INTENT_DIRT, defaultValue);
@@ -135,6 +139,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         intent.putExtra(INTENT_GPX, gpx);
+        intent.putExtra(INTENT_LIST_PLACE, listPlace);
         startActivity(intent);
     }
 }
