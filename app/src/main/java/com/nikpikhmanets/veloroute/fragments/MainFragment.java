@@ -39,14 +39,8 @@ public class MainFragment extends Fragment {
     public static final String KEY_FILTER_CHECKED_ID = "filter_checked_id";
     public static final String KEY_SORTING_CHECKED_ID = "sort_by_checked_id";
     public static final String ARG_CHECKED_ID = "checked_id";
-    final String INTENT_NAME = "name";
-    final String INTENT_LENGTH = "length";
-    final String INTENT_ROAD = "road";
-    final String INTENT_IMAGE = "image";
-    final String INTENT_DIRT = "dirt";
-    final String INTENT_DESCRIPTION = "description";
-    final String INTENT_GPX = "gpx";
-    final String INTENT_LIST_PLACE = "list_place";
+
+    private final String INTENT_ROUTE = "ROUTE";
 
     public static final String TAG = "tag";
 
@@ -111,14 +105,7 @@ public class MainFragment extends Fragment {
 
     private void startRouteActivity(Route route) {
         Intent intent = new Intent(getContext(), RouteActivity.class);
-        intent.putExtra(INTENT_NAME, route.getName_ru());
-        intent.putExtra(INTENT_LENGTH, route.getLength());
-        intent.putExtra(INTENT_ROAD, route.getRoad());
-        intent.putExtra(INTENT_IMAGE, route.getImageURL());
-        intent.putExtra(INTENT_DIRT, route.getDirt());
-        intent.putExtra(INTENT_DESCRIPTION, route.getDescription());
-        intent.putExtra(INTENT_GPX, route.getGpx());
-        intent.putExtra(INTENT_LIST_PLACE, route.getListPlace());
+        intent.putExtra(INTENT_ROUTE, route);
         startActivity(intent);
     }
 

@@ -56,16 +56,19 @@ public class RouteBuild implements GpxParser.GpxParserListener {
         this.map = map;
     }
 
-    public void parseGpxFile(String gpxData, final String list) {
+    public void parseGpxFile(final Route route) {
 
-        checkPlace(list);
+        if (route == null) {
+            Toast.makeText(context, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        checkPlace(route);
 
         File localFile = null;
-        StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + gpxData + ".gpx");
+        StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + route.getGpx() + ".gpx");
         try {
             localFile = File.createTempFile("other", "gpx");
             localFile.deleteOnExit();
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,29 +113,16 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 //        }
     }
 
-    private void checkPlace(String list) {
-        String listP = list;
-        String place;
+    private void checkPlace(final Route route) {
+        List<String> listPlaceRoute = route.getListPlace();
 
         List<Place> listPlace = PlaceListSingle.getListPlace();
 
-        while (!listP.isEmpty()) {
-
-            if (listP.contains("/")) {
-
-                place = listP.substring(0, listP.indexOf("/"));
-            } else
-                place = listP;
-
-            if (!listP.isEmpty()) {
-                for (int i = 0; i < listPlace.size(); i++) {
-                    if (listPlace.get(i).getName().equals(place)) {
-                        localListPlace.add(listPlace.get(i));
-                    }
+        for (int i = 0; i < listPlaceRoute.size(); i++) {
+            for (int y = 0; y < listPlace.size(); y++) {
+                if (listPlace.get(y).getName().equals(listPlaceRoute.get(i))) {
+                    localListPlace.add(listPlace.get(y));
                 }
-                listP = listP.replaceAll(place, "");
-                if (listP.length() != 0)
-                    listP = listP.replaceFirst("/", "");
             }
         }
     }
@@ -150,7 +140,7 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 
         rectOptions.color(Color.RED);
 
-        if(!widthLineMap.isEmpty())
+        if (!widthLineMap.isEmpty())
             rectOptions.width(Integer.parseInt(widthLineMap));
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();

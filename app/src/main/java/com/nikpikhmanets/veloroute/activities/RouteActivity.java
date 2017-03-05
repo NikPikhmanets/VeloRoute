@@ -12,25 +12,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.route.Route;
 
 public class RouteActivity extends AppCompatActivity implements View.OnClickListener {
-
-    final String INTENT_NAME = "name";
-    final String INTENT_LENGTH = "length";
-    final String INTENT_ROAD = "road";
-    final String INTENT_IMAGE = "image";
-    final String INTENT_DIRT = "dirt";
-    final String INTENT_DESCRIPTION = "description";
-    final String INTENT_GPX = "gpx";
-    final String INTENT_LIST_PLACE = "list_place";
 
     final String GROUND = "Грунт:";
     final String ASPHALT = "Асфальт:";
     final String GROUND_ASPHALT = "Грунт/асфальт:";
+
+    private final String INTENT_ROUTE = "ROUTE";
 
     TextView nameRoute;
     TextView lengthRoute;
@@ -41,9 +36,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
     Button showOnMapsBtn;
 
-    String listPlace = "";
-
-    String gpx;
+    private Route route;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +49,8 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-        initView();
-
-        Intent intent = getIntent();
-        if (intent != null) {
-            gpx = intent.getStringExtra(INTENT_GPX);
-            setViewDescriptionRoute(intent);
-        }
+        route = getIntent().getParcelableExtra(INTENT_ROUTE);
+        setViewDescriptionRoute();
     }
 
     @Override
@@ -103,43 +90,36 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void setViewDescriptionRoute(Intent intent) {
-        if (intent != null) {
-            int defaultValue = 0;
+    private void setViewDescriptionRoute() {
+        initView();
 
-            String name = intent.getStringExtra(INTENT_NAME);
-            String imageUrl = intent.getStringExtra(INTENT_IMAGE);
-            String description = intent.getStringExtra(INTENT_DESCRIPTION);
-            listPlace = intent.getStringExtra(INTENT_LIST_PLACE);
-            int length = intent.getIntExtra(INTENT_LENGTH, defaultValue);
-            int road = intent.getIntExtra(INTENT_ROAD, defaultValue);
-            int dirt = intent.getIntExtra(INTENT_DIRT, defaultValue);
+        if (route != null) {
+            nameRoute.setText(route.getName_ru());
 
-            nameRoute.setText(name);
+            Glide.with(this).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
 
-            Glide.with(this).load(imageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
+            tvRouteDescription.setText(route.getDescription());
 
-            tvRouteDescription.setText(description);
-
-            lengthRoute.setText(String.format("%s км", length));
-            if (road == 0) {
+            lengthRoute.setText(String.format("%s км", route.getLength()));
+            if (route.getRoad() == 0) {
                 roadRouteLabel.setText(GROUND);
-                roadRoute.setText(String.format("%s", dirt));
-            } else if (dirt == 0) {
+                roadRoute.setText(String.format("%s", route.getDirt()));
+            } else if (route.getDirt() == 0) {
                 roadRouteLabel.setText(ASPHALT);
-                roadRoute.setText(String.format("%s", road));
+                roadRoute.setText(String.format("%s", route.getRoad()));
             } else {
                 roadRouteLabel.setText(GROUND_ASPHALT);
-                roadRoute.setText(String.format("%s / %s", dirt, road));
+                roadRoute.setText(String.format("%s / %s", route.getDirt(), route.getRoad()));
             }
+        } else {
+            Toast.makeText(this, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
-        intent.putExtra(INTENT_GPX, gpx);
-        intent.putExtra(INTENT_LIST_PLACE, listPlace);
+        intent.putExtra(INTENT_ROUTE, route);
         startActivity(intent);
     }
 }
