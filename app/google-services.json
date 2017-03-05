@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "882374016018-n0jjkvisb1hr406bfflcn6iloirha5io.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikpikhmanets.veloroute",
+            "certificate_hash": "1d605ae029e1794e0852e7246c66a2c59c564caa"
+          }
+        },
+        {
+          "client_id": "882374016018-1hkq8ofpshtmtr76s8asmteu0h3v0rch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikpikhmanets.veloroute",
+            "certificate_hash": "464915618491a894af5bbd061f58280d1eabbbbc"
+          }
+        },
+        {
+          "client_id": "882374016018-pt3iea43p1p73chcu0tgjphej9i89ldo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikpikhmanets.veloroute",
+            "certificate_hash": "0821ac40479b964d97ef20701d7eaca6da4af07c"
+          }
+        },
+        {
           "client_id": "882374016018-hh700qin2g9luioh3vc772augn2dbc8t.apps.googleusercontent.com",
           "client_type": 3
         }

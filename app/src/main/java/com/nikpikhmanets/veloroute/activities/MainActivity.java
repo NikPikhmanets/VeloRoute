@@ -1,5 +1,7 @@
 package com.nikpikhmanets.veloroute.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,7 +11,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.FilterFragment;
@@ -19,8 +30,10 @@ import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.TrackFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
     final String RECREATION_POINTS_GPX = "recreation_points.gpx";
     final String WATER_POINTS_GPX = "water_points.gpx";
@@ -41,6 +54,7 @@ public class MainActivity extends AppCompatActivity
     private PlaceFragment placesFragment;
     private MapsFragment mapsFragment;
     private AboutFragment aboutFragment;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +78,25 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        createFragment();
+        View headerView = navigationView.getHeaderView(0);
+        ImageView ivAvatar = (CircleImageView) headerView.findViewById(R.id.iv_avatar);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
+        ((TextView) headerView.findViewById(R.id.tv_user_name)).setText(firebaseUser.getDisplayName());
+        createFragments();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
         }
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API)
+                .build();
+
     }
 
-    private void createFragment() {
+    private void createFragments() {
         mainFragment = new MainFragment();
         filterFragment = new FilterFragment();
         trackFragment = new TrackFragment();
@@ -121,6 +145,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
                 break;
+            case R.id.nav_log_out:
+                signOut();
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -138,5 +165,18 @@ public class MainActivity extends AppCompatActivity
         bundle.putString(BUNDLE_KEY_TITLE, keyTitle);
         mapsFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();
+    }
+
+    private void signOut(){
+        FirebaseAuth.getInstance().signOut();
+
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+        startActivity(new Intent(this, AuthActivity.class));
+        finish();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
