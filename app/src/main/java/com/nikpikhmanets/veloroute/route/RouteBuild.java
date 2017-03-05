@@ -114,7 +114,7 @@ public class RouteBuild implements GpxParser.GpxParserListener {
         String listP = list;
         String place;
 
-        List<Place> listPlace = PlaceListSingle.getInstance();
+        List<Place> listPlace = PlaceListSingle.getListPlace();
 
         while (!listP.isEmpty()) {
 
@@ -149,7 +149,9 @@ public class RouteBuild implements GpxParser.GpxParserListener {
         getSettings();
 
         rectOptions.color(Color.RED);
-        rectOptions.width(Integer.parseInt(widthLineMap));
+
+        if(!widthLineMap.isEmpty())
+            rectOptions.width(Integer.parseInt(widthLineMap));
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         parseRoute(document, builder);

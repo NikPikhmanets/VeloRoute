@@ -9,13 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.PlaceActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemPlaceClickListener;
@@ -35,7 +29,6 @@ public class PlaceFragment extends Fragment {
     List<Place> placeList;
     PlaceAdapter placeAdapter;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,40 +41,19 @@ public class PlaceFragment extends Fragment {
 
         getActivity().setTitle(getString(R.string.menu_places));
 
-        placeList = PlaceListSingle.getInstance(); //new ArrayList<>();
+        placeList = PlaceListSingle.getListPlace(); //new ArrayList<>();
         placeAdapter = new PlaceAdapter();
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.placeRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setHasFixedSize(true);
         rv.setAdapter(placeAdapter);
+        placeAdapter.setData(PlaceListSingle.getListPlace());
+
         placeAdapter.setOnItemPlaceClickListener(new OnRecyclerItemPlaceClickListener() {
             @Override
             public void onItemClick(Place place) {
                 startPlaceActivity(place);
-            }
-        });
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
-        DatabaseReference routesReference = ref.child("place");
-        routesReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                placeList.clear();
-                try {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        placeList.add(snapshot.getValue(Place.class));
-                    }
-                } catch (Exception i) {
-                    Toast.makeText(getContext(), "Ошибка загрузки данных #1", Toast.LENGTH_SHORT).show();
-                }
-                placeAdapter.setData(placeList);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Ошибка загрузки данных #2", Toast.LENGTH_SHORT).show();
             }
         });
     }

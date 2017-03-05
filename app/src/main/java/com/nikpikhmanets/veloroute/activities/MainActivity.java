@@ -24,6 +24,7 @@ import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.TrackFragment;
+import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
@@ -74,11 +75,12 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
 
 //        ImageView ivAvatar = (CircleImageView) headerView.findViewById(R.id.iv_avatar);
-//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//        FirebaseUser firebaseUser = FirebaseAuth.getListPlace().getCurrentUser();
 //        Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
 //        ((TextView) headerView.findViewById(R.id.tv_user_name)).setText(firebaseUser.getDisplayName());
 
         createFragments();
+        PlaceListSingle.getListPlace();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
