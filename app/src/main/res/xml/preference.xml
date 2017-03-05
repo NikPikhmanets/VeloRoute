@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory android:title="Основные настройки">
 
-    <android.support.v7.preference.PreferenceCategory android:title="Основные настройки">
-
-        <android.support.v7.preference.ListPreference
+        <ListPreference
             android:entries="@array/entries"
 
             android:key="list1"
             android:summary="list1_summary"
             android:title="Language" />
 
-        <android.support.v7.preference.CheckBoxPreference
+        <CheckBoxPreference
             android:key="chb1"
             android:summary="summary"
             android:title="checkbox1_title" />
 
-    </android.support.v7.preference.PreferenceCategory>
+    </PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory android:title="Настройки карты">
+    <PreferenceCategory android:title="Настройки карты">
 
-        <android.support.v7.preference.ListPreference
+        <ListPreference
             android:defaultValue="2"
             android:entries="@array/entry_map_style"
             android:entryValues="@array/entry_map_style_value"
@@ -28,7 +27,7 @@
             android:summary="Установите тип карты по умолчанию"
             android:title="Тип карты по умолчанию" />
 
-        <android.support.v7.preference.ListPreference
+        <ListPreference
             android:defaultValue="3"
             android:entries="@array/entry_width_line"
             android:entryValues="@array/entry_width_line"
@@ -36,7 +35,6 @@
             android:summary="Установите толщину линии маршрута"
             android:title="Толщина линини маршрута" />
 
+    </PreferenceCategory>
 
-    </android.support.v7.preference.PreferenceCategory>
-
-</android.support.v7.preference.PreferenceScreen>
+</PreferenceScreen>

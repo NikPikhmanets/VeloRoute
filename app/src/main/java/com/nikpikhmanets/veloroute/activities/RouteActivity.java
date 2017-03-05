@@ -68,7 +68,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         super.onResume();
 
         RelativeLayout Rl = (RelativeLayout) findViewById(R.id.headLayout);
-        Rl.measure(0,0);
+        Rl.measure(0, 0);
         int i = Rl.getMeasuredHeight();
 
         ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(imageRoute.getLayoutParams());

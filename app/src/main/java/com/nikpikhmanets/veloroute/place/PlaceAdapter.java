@@ -14,10 +14,6 @@ import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
 
-    private ImageView imagePlace;
-    private TextView textNamePlace;
-    private TextView textDescrPlace;
-
     private List<Place> place;
     private OnRecyclerItemPlaceClickListener placeListener;
 
@@ -48,12 +44,17 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
     class PlaceViewHolder extends RecyclerView.ViewHolder {
 
+        private ImageView imagePlace;
+        private TextView textNamePlace;
+        private TextView textDescrPlace;
+
         private PlaceViewHolder(View itemView) {
             super(itemView);
 
             imagePlace = (ImageView) itemView.findViewById(R.id.imageItemPlace);
             textNamePlace = (TextView) itemView.findViewById(R.id.textNameItemPlace);
             textDescrPlace = (TextView) itemView.findViewById(R.id.textDescrItemPlace);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

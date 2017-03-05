@@ -25,7 +25,7 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
-        setTitle(getString(R.string.description_place));
+//        setTitle(getString(R.string.description_place));
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -50,7 +50,8 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                startActivity(new Intent(this, MainActivity.class));
+//                startActivity(new Intent(this, MainActivity.class));
+               finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -62,15 +63,13 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
             int defaultValue = 0;
 
             String name = intent.getStringExtra(INTENT_NAME);
+            setTitle(name);
             Double lat = intent.getDoubleExtra(INTENT_LAT, 0);
             Double lng = intent.getDoubleExtra(INTENT_LNG, 0);
-
-            textDescription.setText(name);
-
+            String descr = intent.getStringExtra(INTENT_DESCRIPTION);
+            textDescription.setText(descr);
 
 //            Glide.with(this).load(imageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
-
-
         }
     }
 

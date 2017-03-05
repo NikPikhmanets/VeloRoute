@@ -4,10 +4,7 @@ import android.util.Log;
 
 import com.google.firebase.database.Exclude;
 
-
-/**
- * Created by Ivan on 06.02.2017.
- */
+import java.util.List;
 
 public class Route {
 
@@ -22,6 +19,7 @@ public class Route {
     private String description;
     private String gpx;
     private String imageURL;
+    private List<String> listPlace;
 
     public Route() {
     }

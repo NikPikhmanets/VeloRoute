@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.gpx.data.GPXDocument;
 import com.nikpikhmanets.veloroute.gpx.xml.GpxParser;
 
@@ -30,7 +34,10 @@ import java.io.InputStream;
 public class RouteBuild implements GpxParser.GpxParserListener {
 
     private Context context;
+
     private GoogleMap map;
+    private String widthLineMap;
+
     private ProgressDialog mProgressDialog = null;
     private PolylineOptions rectOptions = new PolylineOptions();
 
@@ -102,7 +109,23 @@ public class RouteBuild implements GpxParser.GpxParserListener {
     public void onGpxParseCompleted(GPXDocument document) {
         mProgressDialog.dismiss();
 
+        getSettings();
+
+        rectOptions.color(Color.RED);
+        rectOptions.width(Integer.parseInt(widthLineMap));
+
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        parseRoute(document, builder);
+
+        map.addPolyline(rectOptions);
+        LatLngBounds bounds = builder.build();
+        int padding = 100; // offset from edges of the map in pixels
+
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        map.animateCamera(cu);
+    }
+
+    private void parseRoute(GPXDocument document, LatLngBounds.Builder builder) {
         for (int x = 0; x < document.getTracks().size(); x++) {
             for (int y = 0; y < document.getTracks().get(x).getSegments().size(); y++) {
                 for (int z = 0; z < document.getTracks().get(x).getSegments().get(y).getTrackPoints().size(); z++) {
@@ -113,12 +136,11 @@ public class RouteBuild implements GpxParser.GpxParserListener {
                 }
             }
         }
-        map.addPolyline(rectOptions);
-        LatLngBounds bounds = builder.build();
-        int padding = 100; // offset from edges of the map in pixels
+    }
 
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        map.animateCamera(cu);
+    private void getSettings() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        widthLineMap = prefs.getString(context.getString(R.string.width_line), "");
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.nikpikhmanets.veloroute.place;
 
-import android.media.Image;
-
 public class Place {
 
     private String name;
-    private Image img;
+    private String img;
     private String description;
     private Double lat;
     private Double lng;
@@ -22,11 +20,11 @@ public class Place {
         this.name = name;
     }
 
-    public Image getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(Image img) {
+    public void setImg(String img) {
         this.img = img;
     }
 

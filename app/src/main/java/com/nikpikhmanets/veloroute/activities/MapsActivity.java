@@ -3,9 +3,9 @@ package com.nikpikhmanets.veloroute.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,7 +13,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.route.RouteBuild;
 
@@ -25,11 +24,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private String gpxFile;
     final String INTENT_GPX = "gpx";
 
-    public PolylineOptions rectOptions = new PolylineOptions();
-    public static PolylineOptions polylineOptions = null;
-
     private String mapStyle;
-    private String widthLineMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +50,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         mapStyle = prefs.getString(getString(R.string.default_map_style), "");
-        widthLineMap = prefs.getString(getString(R.string.width_line), "");
     }
 
     private void setPrefMapStyle(String mapStyle) {
@@ -84,21 +78,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             RouteBuild br = new RouteBuild(this, mMap);
             br.parseGpxFile(gpxFile);
         }
-
-//        rectOptions = polylineOptions;
-
         if (!mapStyle.isEmpty()) {
             setPrefMapStyle(mapStyle);
         } else
             setTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
-//
-//        if (!widthLineMap.isEmpty()) {
-//            setWidthLineOnMap(Integer.parseInt(widthLineMap));
-//        } else
-//            rectOptions.width(5);
-//
-//        if (rectOptions != null)
-//            mMap.addPolyline(rectOptions);
 
 //        LatLngBounds bounds = builder.build();
 //        int padding = 0; // offset from edges of the map in pixels
@@ -142,14 +125,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void setTypeGoogleMap(int type) {
         mMap.setMapType(type);
-    }
-
-    private void setWidthLineOnMap(int widthLineOnMap) {
-        rectOptions.width(widthLineOnMap);
-    }
-
-    private void setColorLineOnMap(int colorLineOnMap) {
-        rectOptions.color(colorLineOnMap);
     }
 
     @Override

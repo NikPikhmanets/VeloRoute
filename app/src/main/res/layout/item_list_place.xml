@@ -3,12 +3,12 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/card_view"
+    android:id="@+id/card_view2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardBackgroundColor="@android:color/white"
     card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp"
+    card_view:cardPreventCornerOverlap="false"
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -29,9 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:textSize="18sp"
             android:layout_toEndOf="@+id/imageItemPlace"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:text="Замкова гора" />
 

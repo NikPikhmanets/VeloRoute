@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,11 +47,13 @@ public class PlaceFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         getActivity().setTitle(getString(R.string.menu_places));
-        placeAdapter = new PlaceAdapter();
+
         placeList = new ArrayList<>();
+        placeAdapter = new PlaceAdapter();
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.placeRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setHasFixedSize(true);
         rv.setAdapter(placeAdapter);
         placeAdapter.setOnItemPlaceClickListener(new OnRecyclerItemPlaceClickListener() {
             @Override
@@ -66,25 +69,29 @@ public class PlaceFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 placeList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    placeList.add(snapshot.getValue(Place.class));
+                try {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        placeList.add(snapshot.getValue(Place.class));
+                    }
+                } catch (Exception i) {
+                    Toast.makeText(getContext(), "Ошибка загрузки данных #1", Toast.LENGTH_SHORT).show();
                 }
                 placeAdapter.setData(placeList);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Toast.makeText(getContext(), "Ошибка загрузки данных #2", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void startPlaceActivity(Place place) {
         Intent intent = new Intent(getContext(), PlaceActivity.class);
-//        intent.putExtra(INTENT_NAME, place.getName());
-//        intent.putExtra(INTENT_DESCRIPTION, place.getDescription());
-//        intent.putExtra(INTENT_LAT, place.getLat());
-//        intent.putExtra(INTENT_LNG, place.getLng());
+        intent.putExtra(INTENT_NAME, place.getName());
+        intent.putExtra(INTENT_DESCRIPTION, place.getDescription());
+        intent.putExtra(INTENT_LAT, place.getLat());
+        intent.putExtra(INTENT_LNG, place.getLng());
         startActivity(intent);
     }
 }

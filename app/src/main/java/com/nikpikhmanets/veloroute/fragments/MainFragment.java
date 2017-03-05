@@ -66,6 +66,7 @@ public class MainFragment extends Fragment {
 
         getActivity().setTitle(getString(R.string.app_name));
 
+
         routesList = new ArrayList<>();
         adapter = new RouteAdapter();
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listRouteRecyclerView);
