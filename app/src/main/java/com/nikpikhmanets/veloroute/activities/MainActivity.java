@@ -11,11 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.FilterFragment;
@@ -25,6 +29,9 @@ import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.TrackFragment;
 import com.nikpikhmanets.veloroute.place.PlaceListSingle;
+import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
@@ -74,10 +81,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
 
-//        ImageView ivAvatar = (CircleImageView) headerView.findViewById(R.id.iv_avatar);
-//        FirebaseUser firebaseUser = FirebaseAuth.getListPlace().getCurrentUser();
-//        Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
-//        ((TextView) headerView.findViewById(R.id.tv_user_name)).setText(firebaseUser.getDisplayName());
+        ImageView ivAvatar = (CircleImageView) headerView.findViewById(R.id.iv_avatar);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
+            ((TextView) headerView.findViewById(R.id.tv_user_name)).setText(firebaseUser.getDisplayName());
+        }
+
 
         createFragments();
         PlaceListSingle.getListPlace();
@@ -86,10 +96,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
         }
 
-//        mGoogleApiClient = new GoogleApiClient.Builder(this)
-//                .enableAutoManage(this, this)
-//                .addApi(Auth.GOOGLE_SIGN_IN_API)
-//                .build();
+        mGoogleApiClient = GoogleApiUtils.getGoogleApiClient(this, this);
 
     }
 

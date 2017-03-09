@@ -9,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -25,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.MainActivity;
+import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
 
 public class SignInFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -32,6 +35,8 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
 
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+    private EditText etEmail;
+    private EditText etPass;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,14 +48,8 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GoogleSignInOptions gsio = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleApiClient = new GoogleApiClient.Builder(getContext())
-                .enableAutoManage(getActivity(), this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gsio)
-                .build();
+        etEmail = (EditText) view.findViewById(R.id.et_login);
+        etPass = (EditText) view.findViewById(R.id.et_pass);
 
         view.findViewById(R.id.btn_google_sign_in).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +58,51 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                 getActivity().startActivityForResult(signInIntent, REQUEST_GOOGLE_SIGN_IN);
             }
         });
+
+        view.findViewById(R.id.btn_sign_in).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String eMail = etEmail.getText().toString().trim();
+                String pass = etPass.getText().toString().trim();
+                mFirebaseAuth.signInWithEmailAndPassword(eMail, pass)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+                                    getActivity().finish();
+                                } else {
+                                    Toast.makeText(getContext(), "authorization error", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+
+        view.findViewById(R.id.btn_register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fl_auth, new SignUpFragment())
+                        .addToBackStack("1")
+                        .commit();
+            }
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().setTitle("SignIn");
+        mGoogleApiClient = GoogleApiUtils.getGoogleApiClient(getActivity(), this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mGoogleApiClient.stopAutoManage(getActivity());
+        mGoogleApiClient.disconnect();
     }
 
     public void onGoogleSignInResult(Intent data) {

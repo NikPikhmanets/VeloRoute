@@ -18,11 +18,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        if (!isLoggedIn()) {
-//            startActivity(new Intent(this, AuthActivity.class));
-//        } else {
+        if (!isLoggedIn()) {
+            startActivity(new Intent(this, AuthActivity.class));
+        } else {
             startActivity(new Intent(this, MainActivity.class));
-//        }
+        }
         finish();
     }
 

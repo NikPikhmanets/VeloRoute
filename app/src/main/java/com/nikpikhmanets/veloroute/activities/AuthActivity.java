@@ -19,7 +19,10 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
         if (savedInstanceState == null) {
             signInFragment = new SignInFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.fl_auth, signInFragment, SIGN_IN_FRAGMENT_TAG).commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.fl_auth, signInFragment, SIGN_IN_FRAGMENT_TAG)
+                    .commit();
         } else {
             signInFragment = (SignInFragment) getSupportFragmentManager().findFragmentByTag(SIGN_IN_FRAGMENT_TAG);
         }
@@ -28,7 +31,7 @@ public class AuthActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SignInFragment.REQUEST_GOOGLE_SIGN_IN) {
+        if (requestCode == SignInFragment.REQUEST_GOOGLE_SIGN_IN && resultCode == RESULT_OK) {
             signInFragment.onGoogleSignInResult(data);
         }
     }
