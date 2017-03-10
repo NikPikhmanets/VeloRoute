@@ -6,16 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -27,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.MainActivity;
+import com.nikpikhmanets.veloroute.utils.DialogUtils;
 import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
 
 public class SignInFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
@@ -64,18 +64,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
             public void onClick(View v) {
                 String eMail = etEmail.getText().toString().trim();
                 String pass = etPass.getText().toString().trim();
-                mFirebaseAuth.signInWithEmailAndPassword(eMail, pass)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
-                                    getActivity().finish();
-                                } else {
-                                    Toast.makeText(getContext(), "authorization error", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                signInWithEmail(eMail, pass);
             }
         });
 
@@ -108,23 +97,45 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
     public void onGoogleSignInResult(Intent data) {
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
         if (result.isSuccess()) {
-            authWithGoogle(result.getSignInAccount());
+            signInWithGoogle(result.getSignInAccount());
         } else {
             Toast.makeText(getContext(), "Google Sign In failed", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void authWithGoogle(GoogleSignInAccount account) {
+    private void signInWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "Sign in with G+");
+        waitingDialog.show();
+
         mFirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        waitingDialog.dismiss();
                         if (task.isSuccessful()) {
                             startActivity(new Intent(getActivity(), MainActivity.class));
                             getActivity().finish();
                         } else {
                             Toast.makeText(getContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void signInWithEmail(String email, String pass) {
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "sign in with email");
+        waitingDialog.show();
+        mFirebaseAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        waitingDialog.dismiss();
+                        if (task.isSuccessful()) {
+                            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+                            getActivity().finish();
+                        } else {
+                            Toast.makeText(getContext(), "authorization error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

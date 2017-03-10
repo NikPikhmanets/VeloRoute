@@ -41,7 +41,8 @@
             android:name="io.fabric.ApiKey"
             android:value="6151dc554ac719a59396c04813a7e8f21b008fc2" />
 
-        <activity android:name=".activities.AuthActivity" />
+        <activity android:name=".activities.AuthActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
