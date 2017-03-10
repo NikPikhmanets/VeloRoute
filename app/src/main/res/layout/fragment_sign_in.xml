@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="25dp"
+            android:layout_marginTop="16dp"
             android:text="or sign in with G+"/>
 
         <com.google.android.gms.common.SignInButton
@@ -52,6 +52,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="or sign in anonymously"/>
+
+        <ImageButton
+            android:id="@+id/btn_anonymous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_anonymous"/>
 
     </LinearLayout>
 

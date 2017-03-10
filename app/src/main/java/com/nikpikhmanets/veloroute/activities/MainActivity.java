@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -82,10 +83,28 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
 
         ImageView ivAvatar = (CircleImageView) headerView.findViewById(R.id.iv_avatar);
+        TextView tvName = (TextView) headerView.findViewById(R.id.tv_user_name);
+        Button btnSignIn = (Button) headerView.findViewById(R.id.btn_anon_sign_in);
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+        });
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         if (firebaseUser != null) {
-            Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
-            ((TextView) headerView.findViewById(R.id.tv_user_name)).setText(firebaseUser.getDisplayName());
+            navigationView.getMenu().findItem(R.id.nav_log_out).setVisible(!firebaseUser.isAnonymous());
+            if (!firebaseUser.isAnonymous()) {
+                Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
+                tvName.setText(firebaseUser.getDisplayName());
+                btnSignIn.setVisibility(View.INVISIBLE);
+            } else {
+                tvName.setText("anonymous");
+                ivAvatar.setImageResource(R.drawable.ic_anonymous);
+                btnSignIn.setVisibility(View.VISIBLE);
+            }
         }
 
 
@@ -120,10 +139,11 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();

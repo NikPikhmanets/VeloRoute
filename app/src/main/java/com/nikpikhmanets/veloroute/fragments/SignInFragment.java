@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +79,14 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                         .commit();
             }
         });
+
+        view.findViewById(R.id.btn_anonymous).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signInAnonymously();
+            }
+        });
+
     }
 
     @Override
@@ -114,8 +123,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         waitingDialog.dismiss();
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(getActivity(), MainActivity.class));
-                            getActivity().finish();
+                            startMainActivity();
                         } else {
                             Toast.makeText(getContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
@@ -132,13 +140,33 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         waitingDialog.dismiss();
                         if (task.isSuccessful()) {
-                            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
-                            getActivity().finish();
+                            startMainActivity();
                         } else {
                             Toast.makeText(getContext(), "authorization error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void signInAnonymously() {
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "sign in anonymously");
+        waitingDialog.show();
+        mFirebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                waitingDialog.dismiss();
+                if (task.isSuccessful()) {
+                    startMainActivity();
+                } else {
+                    Toast.makeText(getContext(), "anon auth failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void startMainActivity() {
+        getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+        getActivity().finish();
     }
 
     @Override
