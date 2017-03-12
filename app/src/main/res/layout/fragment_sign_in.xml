@@ -18,34 +18,34 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:inputType="textEmailAddress"
-            android:hint="e-mail"/>
+            android:hint="@string/hint_email"/>
         <EditText
             android:id="@+id/et_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:inputType="textPassword"
-            android:hint="password"/>
+            android:hint="@string/hint_pass"/>
         <Button
             android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:textSize="10sp"
-            android:text="sign in"/>
+            android:text="@string/btn_sign_in"/>
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:textSize="10sp"
-            android:text="register"/>
+            android:text="@string/btn_sign_up"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="or sign in with G+"/>
+            android:text="@string/text_sign_in_g"/>
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_google_sign_in"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="or sign in anonymously"/>
+            android:text="@string/text_sign_in_anon"/>
 
         <ImageButton
             android:id="@+id/btn_anonymous"

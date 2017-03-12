@@ -14,29 +14,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="сортировать по: "
+            android:text="@string/title_sort_by"
             android:textColor="#ff000000"/>
         <RadioButton
             android:id="@+id/rb_sort_by_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="имени"/>
+            android:text="@string/btn_name"/>
         <RadioButton
             android:id="@+id/rb_sort_by_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="дистанции"/>
+            android:text="@string/btn_distance"/>
         <RadioButton
             android:id="@+id/rb_sort_by_road"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="асфальту"/>
+            android:text="@string/btn_road"/>
     </RadioGroup>
 
     <Button
         android:id="@+id/btn_sorting_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ok"/>
+        android:text="@string/btn_ok"/>
 
 </LinearLayout>

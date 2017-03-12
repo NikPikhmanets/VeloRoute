@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ public class SortFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getDialog().setTitle("Sorting");
+        getDialog().setTitle(R.string.title_sort);
         RadioGroup rgSortBy = (RadioGroup) view.findViewById(R.id.rg_sort);
         rgSortBy.check(getArguments().getInt(MainFragment.ARG_CHECKED_ID));
         rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

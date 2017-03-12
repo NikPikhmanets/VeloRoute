@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.activities.MainActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 
 public class FilterFragment extends DialogFragment {

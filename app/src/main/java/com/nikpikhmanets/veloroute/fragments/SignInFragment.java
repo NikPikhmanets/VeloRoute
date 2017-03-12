@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,7 +113,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
 
     private void signInWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "Sign in with G+");
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_g));
         waitingDialog.show();
 
         mFirebaseAuth.signInWithCredential(credential)
@@ -125,14 +124,14 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                         if (task.isSuccessful()) {
                             startMainActivity();
                         } else {
-                            Toast.makeText(getContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.msg_err_auth_failed, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
     private void signInWithEmail(String email, String pass) {
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "sign in with email");
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_email));
         waitingDialog.show();
         mFirebaseAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -142,14 +141,14 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                         if (task.isSuccessful()) {
                             startMainActivity();
                         } else {
-                            Toast.makeText(getContext(), "authorization error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.msg_err_auth_failed, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
     private void signInAnonymously() {
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "sign in anonymously");
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_anon));
         waitingDialog.show();
         mFirebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -158,7 +157,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                 if (task.isSuccessful()) {
                     startMainActivity();
                 } else {
-                    Toast.makeText(getContext(), "anon auth failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.msg_err_auth_failed, Toast.LENGTH_SHORT).show();
                 }
             }
         });

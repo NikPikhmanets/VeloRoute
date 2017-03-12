@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.text.TextUtilsCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +33,7 @@ public class SignUpFragment extends Fragment {
     private EditText etPass;
     private EditText etConfirmPass;
     private EditText etName;
+    private ActionBar actionBar;
 
     @Nullable
     @Override
@@ -59,15 +59,18 @@ public class SignUpFragment extends Fragment {
 
     @Override
     public void onStart() {
-        setHasOptionsMenu(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getActivity().setTitle("Sign Up");
+        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            setHasOptionsMenu(true);
+        }
+        getActivity().setTitle(getString(R.string.title_sign_up));
         super.onStart();
     }
 
     @Override
     public void onStop() {
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         super.onStop();
     }
 
@@ -91,15 +94,15 @@ public class SignUpFragment extends Fragment {
             if (pass.equals(etConfirmPass.getText().toString())) {
                 signUpWithEmail(eMail, pass, name);
             } else {
-                Toast.makeText(getContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.msg_pass_mismatch, Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(getContext(), "one ore more fields are empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.msg_empty_fields, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void signUpWithEmail(String eMail, String pass, final String name) {
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), "Sign up");
+        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.title_sign_up));
         waitingDialog.show();
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(eMail, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -107,11 +110,9 @@ public class SignUpFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         waitingDialog.dismiss();
                         if (task.isSuccessful()) {
-                            Log.d("tag", "onComplete: success");
                             setUserName(name, task.getResult().getUser());
                         } else {
-                            Toast.makeText(getContext(), "sign up error", Toast.LENGTH_SHORT).show();
-                            Log.d("tag", "onComplete: " + task.getException().toString());
+                            Toast.makeText(getContext(), R.string.msg_err_sign_up_failed, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -129,7 +130,7 @@ public class SignUpFragment extends Fragment {
                             getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
                             getActivity().finish();
                         } else {
-                            Toast.makeText(getContext(), "setting name error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.msg_err_sign_up_failed, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

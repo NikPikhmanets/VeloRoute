@@ -23,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.fragments.AboutFragment;
-import com.nikpikhmanets.veloroute.fragments.FilterFragment;
 import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity
 
 
     private MainFragment mainFragment;
-    private FilterFragment filterFragment;
     private TrackFragment trackFragment;
     private SettingsFragment settingsFragment;
     private PlaceFragment placesFragment;
@@ -101,7 +99,7 @@ public class MainActivity extends AppCompatActivity
                 tvName.setText(firebaseUser.getDisplayName());
                 btnSignIn.setVisibility(View.INVISIBLE);
             } else {
-                tvName.setText("anonymous");
+                tvName.setText(R.string.title_anon);
                 ivAvatar.setImageResource(R.drawable.ic_anonymous);
                 btnSignIn.setVisibility(View.VISIBLE);
             }
@@ -121,7 +119,6 @@ public class MainActivity extends AppCompatActivity
 
     private void createFragments() {
         mainFragment = new MainFragment();
-        filterFragment = new FilterFragment();
         trackFragment = new TrackFragment();
         settingsFragment = new SettingsFragment();
         placesFragment = new PlaceFragment();

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
-        android:hint="enter your email"/>
+        android:hint="@string/hint_enter_email"/>
 
     <EditText
         android:id="@+id/et_sign_up_pass"
@@ -21,7 +21,7 @@
         android:layout_marginTop="16dp"
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:hint="enter pass"/>
+        android:hint="@string/hint_enter_pass"/>
 
     <EditText
         android:id="@+id/et_sign_up_confirm_pass"
@@ -30,7 +30,7 @@
         android:layout_marginTop="16dp"
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:hint="confirm pass"/>
+        android:hint="@string/hint_confirm_pass"/>
 
     <EditText
         android:id="@+id/et_sign_up_name"
@@ -40,13 +40,13 @@
         android:inputType="text"
         android:maxLength="20"
         android:textAlignment="center"
-        android:hint="enter name or nickname"/>
+        android:hint="@string/hint_enter_name"/>
 
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="register"/>
+        android:text="@string/btn_sign_up"/>
 
 </LinearLayout>
