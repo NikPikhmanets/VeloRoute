@@ -48,4 +48,7 @@
     <string name="title_sign_up">регистрация</string>
     <string name="title_sort">сортировать</string>
     <string name="title_sort_by">сортировать по:</string>
+
+    <string name="coordinaty">Координаты</string>
+    <string name="on_maps">На карте</string>
 </resources>

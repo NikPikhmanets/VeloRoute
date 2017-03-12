@@ -20,13 +20,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nikpikhmanets.veloroute.DownloadData;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
 import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
-import com.nikpikhmanets.veloroute.route.RouteAdapter;
 import com.nikpikhmanets.veloroute.route.Route;
+import com.nikpikhmanets.veloroute.route.RouteAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +50,8 @@ public class MainFragment extends Fragment {
 
     private List<Route> routesList;
     private RouteAdapter adapter;
+
+    private DownloadData downloadData = DownloadData.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,7 +85,7 @@ public class MainFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
-        DatabaseReference routesReference = ref.child("routes");
+        final DatabaseReference routesReference = ref.child("routes");
         routesReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -91,6 +94,10 @@ public class MainFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     routesList.add(snapshot.getValue(Route.class));
                 }
+                downloadData.setContext(getContext());
+                downloadData.setRoutesList(routesList);
+                downloadData.download();
+
                 filterRoutesList();
                 view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
             }
@@ -111,9 +118,14 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onStart() {
+        super.onStart();
         Log.d(TAG, "onStart: ");
         setHasOptionsMenu(true);
-        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -172,7 +184,7 @@ public class MainFragment extends Fragment {
         sortFragment.show(getActivity().getSupportFragmentManager(), "sorting");
     }
 
-    private void filterRoutesList(){
+    private void filterRoutesList() {
         int minLength = 0;
         int maxLength = 1000;
         switch (filterCheckedId) {
@@ -239,5 +251,4 @@ public class MainFragment extends Fragment {
             return route1.getRoad() - route2.getRoad();
         }
     };
-
 }

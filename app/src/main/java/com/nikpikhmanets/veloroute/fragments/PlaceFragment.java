@@ -21,10 +21,7 @@ import java.util.List;
 
 public class PlaceFragment extends Fragment {
 
-    final String INTENT_NAME = "name";
-    final String INTENT_DESCRIPTION = "description";
-    final String INTENT_LAT = "lat";
-    final String INTENT_LNG = "lng";
+    final String INTENT_PLACE = "place";
 
     List<Place> placeList;
     PlaceAdapter placeAdapter;
@@ -60,10 +57,7 @@ public class PlaceFragment extends Fragment {
 
     private void startPlaceActivity(Place place) {
         Intent intent = new Intent(getContext(), PlaceActivity.class);
-        intent.putExtra(INTENT_NAME, place.getName());
-        intent.putExtra(INTENT_DESCRIPTION, place.getDescription());
-        intent.putExtra(INTENT_LAT, place.getLat());
-        intent.putExtra(INTENT_LNG, place.getLng());
+        intent.putExtra(INTENT_PLACE, place);
         startActivity(intent);
     }
 }

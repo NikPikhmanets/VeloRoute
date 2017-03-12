@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_place"
     android:layout_width="match_parent"
@@ -21,11 +20,49 @@
             android:scaleType="centerCrop"
             android:src="@drawable/example_route" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/layoyt_place_activity">
+
+            <TextView
+                android:id="@+id/labelCoord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/coordinaty"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/coordinatyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelCoord"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="14dp"
+                android:textStyle="italic"
+                tools:text="265512138432135" />
+
+            <ImageButton
+                android:id="@+id/btnShowOnMaps"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_show_route_shape"
+                android:src="@drawable/ic_menu_place"
+                android:text="@string/on_maps" />
+
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/textPlaceDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:lineSpacingMultiplier="1.1"
             tools:text="@string/XY" />
 

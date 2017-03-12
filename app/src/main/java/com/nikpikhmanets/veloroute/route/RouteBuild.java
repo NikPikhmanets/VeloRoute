@@ -115,16 +115,19 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 
     private void checkPlace(final Route route) {
         List<String> listPlaceRoute = route.getListPlace();
-
         List<Place> listPlace = PlaceListSingle.getListPlace();
+        if(listPlaceRoute != null && listPlace != null) {
 
-        for (int i = 0; i < listPlaceRoute.size(); i++) {
-            for (int y = 0; y < listPlace.size(); y++) {
-                if (listPlace.get(y).getName().equals(listPlaceRoute.get(i))) {
-                    localListPlace.add(listPlace.get(y));
+            for (int i = 0; i < listPlaceRoute.size(); i++) {
+                for (int y = 0; y < listPlace.size(); y++) {
+                    if (listPlace.get(y).getName().equals(listPlaceRoute.get(i))) {
+                        localListPlace.add(listPlace.get(y));
+                    }
                 }
             }
         }
+        else
+            Toast.makeText(context, "Ошибка разбора данных маркеров", Toast.LENGTH_SHORT).show();
     }
 
     @Override

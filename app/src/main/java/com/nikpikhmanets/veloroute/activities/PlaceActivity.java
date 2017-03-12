@@ -6,43 +6,42 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.place.Place;
 
 public class PlaceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    final String INTENT_NAME = "name";
-    final String INTENT_DESCRIPTION = "description";
-    final String INTENT_LAT = "lat";
-    final String INTENT_LNG = "lng";
+    final String INTENT_PLACE = "place";
 
-    TextView textDescription;
-    ImageView imagePlace;
+    private TextView textDescription;
+    private TextView coordinaty;
+    private ImageView imagePlace;
+    private ImageButton btnShowOnMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
-//        setTitle(getString(R.string.description_place));
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        setViewDescriptionPlace((Place) getIntent().getParcelableExtra(INTENT_PLACE));
 
-        initView();
-
-        Intent intent = getIntent();
-        if (intent != null) {
-            setViewDescriptionPlace(intent);
-        }
+        btnShowOnMaps = (ImageButton) findViewById(R.id.btnShowOnMaps);
+        btnShowOnMaps.setOnClickListener(this);
     }
 
     private void initView() {
+
         textDescription = (TextView) findViewById(R.id.textPlaceDescription);
+        coordinaty = (TextView) findViewById(R.id.coordinatyText);
         imagePlace = (ImageView) findViewById(R.id.imagePlace);
     }
 
@@ -50,7 +49,6 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-//                startActivity(new Intent(this, MainActivity.class));
                finish();
                 return true;
             default:
@@ -58,25 +56,29 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void setViewDescriptionPlace(Intent intent) {
-        if (intent != null) {
-            int defaultValue = 0;
+    private void setViewDescriptionPlace(Place place) {
+        initView();
+        if (place != null) {
 
-            String name = intent.getStringExtra(INTENT_NAME);
-            setTitle(name);
-            Double lat = intent.getDoubleExtra(INTENT_LAT, 0);
-            Double lng = intent.getDoubleExtra(INTENT_LNG, 0);
-            String descr = intent.getStringExtra(INTENT_DESCRIPTION);
-            textDescription.setText(descr);
+            setTitle(place.getName());
+            String coord = String.format("%s °", place.getLat()) + String.format("%s °", place.getLng());
+            coordinaty.setText(coord);
+            textDescription.setText(place.getDescription());
+
+//            Double lat = intent.getDoubleExtra(INTENT_LAT, 0);
+//            Double lng = intent.getDoubleExtra(INTENT_LNG, 0);
+//            String descr = intent.getStringExtra(INTENT_DESCRIPTION);
+
 
 //            Glide.with(this).load(imageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
         }
     }
 
+
     @Override
     public void onClick(View view) {
-//        Intent intent = new Intent(this, MapsActivity.class);
-//        intent.putExtra(INTENT_GPX, gpx);
-//        startActivity(intent);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

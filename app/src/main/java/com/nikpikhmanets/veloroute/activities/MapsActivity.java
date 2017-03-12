@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteBuild;
+import com.nikpikhmanets.veloroute.utils.GoogleMapsUtils;
 
 import static com.nikpikhmanets.veloroute.R.id.no_map;
 
@@ -24,7 +25,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private String mapStyle;
 
-    private final String INTENT_ROUTE = "ROUTE";
+    final String INTENT_ROUTE = "ROUTE";
     private Route route;
 
 
@@ -41,7 +42,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         route = getIntent().getParcelableExtra(INTENT_ROUTE);
 
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -55,24 +55,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapStyle = prefs.getString(getString(R.string.default_map_style), "");
     }
 
-    private void setPrefMapStyle(String mapStyle) {
-        if (mapStyle.equals("no_map")) {
-            setTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
-        }
-        if (mapStyle.equals("normal")) {
-            setTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
-        }
-        if (mapStyle.equals("terrain")) {
-            setTypeGoogleMap(GoogleMap.MAP_TYPE_TERRAIN);
-        }
-        if (mapStyle.equals("satellite")) {
-            setTypeGoogleMap(GoogleMap.MAP_TYPE_SATELLITE);
-        }
-        if (mapStyle.equals("hybrid")) {
-            setTypeGoogleMap(GoogleMap.MAP_TYPE_HYBRID);
-        }
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -81,10 +63,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         RouteBuild br = new RouteBuild(this, mMap);
         br.parseGpxFile(route);
 
-        if (!mapStyle.isEmpty()) {
-            setPrefMapStyle(mapStyle);
-        } else
-            setTypeGoogleMap(GoogleMap.MAP_TYPE_NORMAL);
+        GoogleMapsUtils.setTypeMaps(mapStyle, googleMap);
     }
 
     @Override

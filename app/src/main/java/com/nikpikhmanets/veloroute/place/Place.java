@@ -1,6 +1,9 @@
 package com.nikpikhmanets.veloroute.place;
 
-public class Place {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Place implements Parcelable{
 
     private String name;
     private String img;
@@ -10,6 +13,40 @@ public class Place {
 
     public Place() {
 
+    }
+
+    protected Place(Parcel in) {
+        name = in.readString();
+        img = in.readString();
+        lat = in.readDouble();
+        lng = in.readDouble();
+        description = in.readString();
+    }
+
+    public static final Creator<Place> CREATOR = new Creator<Place>() {
+        @Override
+        public Place createFromParcel(Parcel in) {
+            return new Place(in);
+        }
+
+        @Override
+        public Place[] newArray(int size) {
+            return new Place[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(img);
+        dest.writeDouble(lat);
+        dest.writeDouble(lng);
+        dest.writeString(description);
     }
 
     public String getName() {
