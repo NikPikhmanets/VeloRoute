@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="Основные настройки">
 
         <ListPreference
             android:entries="@array/entries"
-
             android:key="list1"
             android:summary="list1_summary"
             android:title="Language" />
 
-        <CheckBoxPreference
-            android:key="chb1"
-            android:summary="summary"
-            android:title="checkbox1_title" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="update"
+            android:summary="Проверка новіх маршрутов при старте"
+            android:title="Обновление данных" />
 
     </PreferenceCategory>
 
@@ -27,6 +27,12 @@
             android:summary="Установите тип карты по умолчанию"
             android:title="Тип карты по умолчанию" />
 
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="animation_map"
+            android:summary="Включить анимацию карты"
+            android:title="Анимацию карты" />
+
         <ListPreference
             android:defaultValue="3"
             android:entries="@array/entry_width_line"
@@ -35,6 +41,14 @@
             android:summary="Установите толщину линии маршрута"
             android:title="Толщина линини маршрута" />
 
+        <ListPreference
+            android:defaultValue="3"
+            android:entries="@array/entry_width_line"
+            android:entryValues="@array/entry_width_line"
+            android:key="width_line"
+            android:summary="Установите толщину линии маршрута"
+            android:title="Толщина линини трека" />
+
     </PreferenceCategory>
 
-</PreferenceScreen>
+</android.support.v7.preference.PreferenceScreen>

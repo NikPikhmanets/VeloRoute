@@ -1,8 +1,8 @@
 package com.nikpikhmanets.veloroute.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.fragments.SignInFragment;

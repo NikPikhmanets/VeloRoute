@@ -59,13 +59,59 @@ public class RouteBuild implements GpxParser.GpxParserListener {
     public void parseGpxFile(final Route route) {
 
         if (route == null) {
-            Toast.makeText(context, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Неизвестный маршрут", Toast.LENGTH_SHORT).show();
             return;
         }
-        checkPlace(route);
 
+        final String filePath = "/gpx_file/" + route.getGpx() + ".gpx";
+
+        checkPlace(route);   // получаем данные маркеров для мест
+
+        String path = context.getApplicationInfo().dataDir + filePath;
+        File file = new File(path);
+        if (file.exists()) {
+            openGpxFile(file);
+        } else {
+            loadGpxFile(filePath);
+        }
+    }
+
+    private void openGpxFile(File file) {
+        InputStream input = null;
+        try {
+            input = new FileInputStream(file);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Неудалось открыть файл маршрута", Toast.LENGTH_SHORT).show();
+        }
+        if(input != null)
+            new GpxParser(input, mGpxParserListener, null).parse();
+    }
+
+    private void loadGpxFile(final String filePath) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Упс!")
+                .setMessage("Отсутствует файл маршрута. Загрузить?")
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        downloadGpxFile(filePath);
+                    }
+                })
+                .setNegativeButton("Нет",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void downloadGpxFile(String filePath) {
         File localFile = null;
-        StorageReference gpxReference = FirebaseStorage.getInstance().getReference("gpx_file/" + route.getGpx() + ".gpx");
+        StorageReference gpxReference = FirebaseStorage.getInstance().getReference(filePath);
         try {
             localFile = File.createTempFile("other", "gpx");
             localFile.deleteOnExit();
@@ -88,35 +134,15 @@ public class RouteBuild implements GpxParser.GpxParserListener {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, "Err open route", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Неудалось загрузить маршрут", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-//        AssetManager am = context.getAssets();
-//        InputStream input = null;
-//        try {
-//            input = am.open(gpxData);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if (input != null)
-//            new GpxParser(input, this, null).parse();
-//        else {
-//
-//            input = new ByteArrayInputStream(gpxData.getBytes());
-//            if (input. != null) {
-//                new GpxParser(input, this, null).parse();
-//            } else
-//                Toast.makeText(context, "Err open route", Toast.LENGTH_SHORT).show();
-//        }
     }
 
     private void checkPlace(final Route route) {
         List<String> listPlaceRoute = route.getListPlace();
         List<Place> listPlace = PlaceListSingle.getListPlace();
-        if(listPlaceRoute != null && listPlace != null) {
+        if (listPlaceRoute != null && listPlace != null) {
 
             for (int i = 0; i < listPlaceRoute.size(); i++) {
                 for (int y = 0; y < listPlace.size(); y++) {
@@ -126,8 +152,6 @@ public class RouteBuild implements GpxParser.GpxParserListener {
                 }
             }
         }
-        else
-            Toast.makeText(context, "Ошибка разбора данных маркеров", Toast.LENGTH_SHORT).show();
     }
 
     @Override

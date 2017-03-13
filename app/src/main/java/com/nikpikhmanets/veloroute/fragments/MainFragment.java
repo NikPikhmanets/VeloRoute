@@ -40,18 +40,16 @@ public class MainFragment extends Fragment {
     public static final String KEY_FILTER_CHECKED_ID = "filter_checked_id";
     public static final String KEY_SORTING_CHECKED_ID = "sort_by_checked_id";
     public static final String ARG_CHECKED_ID = "checked_id";
-
-    private final String INTENT_ROUTE = "ROUTE";
-
     public static final String TAG = "tag";
 
+    private final String INTENT_ROUTE = "ROUTE";
     private int filterCheckedId = R.id.rb_length_all;
     private int sortingCheckedId = R.id.rb_sort_by_name;
-
     private List<Route> routesList;
     private RouteAdapter adapter;
-
     private DownloadData downloadData = DownloadData.getInstance();
+
+    boolean ONE_UPDATE = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,9 +92,14 @@ public class MainFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     routesList.add(snapshot.getValue(Route.class));
                 }
-                downloadData.setContext(getContext());
-                downloadData.setRoutesList(routesList);
-                downloadData.download();
+
+                if(ONE_UPDATE) {
+                    ONE_UPDATE = false;
+
+                    downloadData.setContext(getContext());
+                    downloadData.setRoutesList(routesList);
+                    downloadData.download();
+                }
 
                 filterRoutesList();
                 view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
@@ -230,21 +233,18 @@ public class MainFragment extends Fragment {
         }
         adapter.notifyDataSetChanged();
     }
-
     private static final Comparator<Route> COMPARE_BY_NAME = new Comparator<Route>() {
         @Override
         public int compare(Route route1, Route route2) {
             return route1.getName_ru().compareTo(route2.getName_ru());
         }
     };
-
     private static final Comparator<Route> COMPARE_BY_LENGTH = new Comparator<Route>() {
         @Override
         public int compare(Route route1, Route route2) {
             return route1.getLength() - route2.getLength();
         }
     };
-
     private static final Comparator<Route> COMPARE_BY_ROAD = new Comparator<Route>() {
         @Override
         public int compare(Route route1, Route route2) {

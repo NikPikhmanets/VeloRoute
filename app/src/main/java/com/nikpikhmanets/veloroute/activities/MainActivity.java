@@ -28,7 +28,6 @@ import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.TrackFragment;
-import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -105,9 +104,7 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-
         createFragments();
-        PlaceListSingle.getListPlace();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.content_main, mainFragment).commit();
@@ -135,7 +132,6 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -188,7 +184,7 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();
     }
 
-    private void signOut(){
+    private void signOut() {
         FirebaseAuth.getInstance().signOut();
 
         Auth.GoogleSignInApi.signOut(mGoogleApiClient);

@@ -48,114 +48,9 @@ public class GpxParser implements GpxParserHandler.GpxParserProgressListener {
     private ArrayList<GPXTrack> mTracks = new ArrayList<GPXTrack>();
     private ArrayList<GPXRoute> mRoutes = new ArrayList<GPXRoute>();
     private ArrayList<GPXWayPoint> mWayPoints = new ArrayList<GPXWayPoint>();
-
-    public static interface GpxParserListener {
-
-        public void onGpxParseStarted();
-
-        public void onGpxParseCompleted(GPXDocument document);
-
-        public void onGpxParseError(String type, String message, int lineNumber, int columnNumber);
-
-    }
-
     private GpxParserListener mGpxParserListener = null;
     private GpxParserHandler.GpxParserProgressListener mGpxParserProgressListener = null;
-
     private Handler mMainHandler = null;
-
-    private class ParserTask extends AsyncTask<Void, Void, Boolean> {
-
-        @Override
-        protected void onPreExecute() {
-            mGpxParserListener.onGpxParseStarted();
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... arg0) {
-
-            mMainHandler = new Handler(Looper.getMainLooper());
-
-            GpxParserHandler gpxHandler = null;
-
-            try {
-
-                /**
-                 * Create a new instance of the SAX parser
-                 **/
-                SAXParserFactory saxPF = SAXParserFactory.newInstance();
-                SAXParser saxP = saxPF.newSAXParser();
-                XMLReader xmlR = saxP.getXMLReader();
-
-                /**
-                 * Create the Handler to handle each of the XML tags.
-                 **/
-                gpxHandler = new GpxParserHandler(GpxParser.this);
-                xmlR.setContentHandler(gpxHandler);
-
-                xmlR.parse(new InputSource(mGpxIs));
-
-                mGpxIs.close();
-
-                return true;
-
-            } catch (IOException e) {
-                Log.e(TAG, "IOException " + e.getMessage());
-
-                final String message = e.getMessage();
-
-                mMainHandler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        mGpxParserListener.onGpxParseError("IOException", message, -1, -1);
-
-                    }
-                });
-
-            } catch (SAXException e) {
-                Log.e(TAG, "SAXException " + e.getMessage());
-
-                final String message = e.getMessage();
-                final int row = gpxHandler != null ? gpxHandler.getErrorLine() : -1;
-                final int col = gpxHandler != null ? gpxHandler.getErrorColumn() : -1;
-
-                mMainHandler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        mGpxParserListener.onGpxParseError("SAXException", message, row, col);
-
-                    }
-                });
-
-            } catch (ParserConfigurationException e) {
-                Log.e(TAG, "ParserConfigurationException " + e.getMessage());
-                final String message = e.getMessage();
-                mMainHandler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        mGpxParserListener.onGpxParseError("ParserConfigurationException", message, -1, -1);
-                    }
-                });
-
-            }
-
-            return false;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean result) {
-            if (result) {
-                GPXDocument document = new GPXDocument(mWayPoints, mTracks, mRoutes);
-                mGpxParserListener.onGpxParseCompleted(document);
-            }
-        }
-
-    }
 
     public GpxParser(InputStream gpxIs, GpxParserListener listener, GpxParserHandler.GpxParserProgressListener progressListener) {
 
@@ -270,6 +165,109 @@ public class GpxParser implements GpxParserHandler.GpxParserProgressListener {
                     mGpxParserProgressListener.onGpxNewWayPointParsed(count, wayPoint);
                 }
             });
+        }
+
+    }
+
+    public static interface GpxParserListener {
+
+        public void onGpxParseStarted();
+
+        public void onGpxParseCompleted(GPXDocument document);
+
+        public void onGpxParseError(String type, String message, int lineNumber, int columnNumber);
+
+    }
+
+    private class ParserTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected void onPreExecute() {
+            mGpxParserListener.onGpxParseStarted();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... arg0) {
+
+            mMainHandler = new Handler(Looper.getMainLooper());
+
+            GpxParserHandler gpxHandler = null;
+
+            try {
+
+                /**
+                 * Create a new instance of the SAX parser
+                 **/
+                SAXParserFactory saxPF = SAXParserFactory.newInstance();
+                SAXParser saxP = saxPF.newSAXParser();
+                XMLReader xmlR = saxP.getXMLReader();
+
+                /**
+                 * Create the Handler to handle each of the XML tags.
+                 **/
+                gpxHandler = new GpxParserHandler(GpxParser.this);
+                xmlR.setContentHandler(gpxHandler);
+
+                xmlR.parse(new InputSource(mGpxIs));
+
+                mGpxIs.close();
+
+                return true;
+
+            } catch (IOException e) {
+                Log.e(TAG, "IOException " + e.getMessage());
+
+                final String message = e.getMessage();
+
+                mMainHandler.post(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        mGpxParserListener.onGpxParseError("IOException", message, -1, -1);
+
+                    }
+                });
+
+            } catch (SAXException e) {
+                Log.e(TAG, "SAXException " + e.getMessage());
+
+                final String message = e.getMessage();
+                final int row = gpxHandler != null ? gpxHandler.getErrorLine() : -1;
+                final int col = gpxHandler != null ? gpxHandler.getErrorColumn() : -1;
+
+                mMainHandler.post(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        mGpxParserListener.onGpxParseError("SAXException", message, row, col);
+
+                    }
+                });
+
+            } catch (ParserConfigurationException e) {
+                Log.e(TAG, "ParserConfigurationException " + e.getMessage());
+                final String message = e.getMessage();
+                mMainHandler.post(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        mGpxParserListener.onGpxParseError("ParserConfigurationException", message, -1, -1);
+                    }
+                });
+
+            }
+
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                GPXDocument document = new GPXDocument(mWayPoints, mTracks, mRoutes);
+                mGpxParserListener.onGpxParseCompleted(document);
+            }
         }
 
     }

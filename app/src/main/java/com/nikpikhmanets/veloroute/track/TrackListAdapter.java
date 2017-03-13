@@ -11,7 +11,7 @@ import com.nikpikhmanets.veloroute.R;
 
 import java.util.List;
 
-public class TrackListAdapter extends RecyclerView.Adapter <TrackListAdapter.TrackListViewHolder>{
+public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.TrackListViewHolder> {
 
     private List<TrackList> trackLists;
     private LayoutInflater inflater;
@@ -23,7 +23,7 @@ public class TrackListAdapter extends RecyclerView.Adapter <TrackListAdapter.Tra
 
     @Override
     public TrackListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(inflater == null) {
+        if (inflater == null) {
             inflater = LayoutInflater.from(parent.getContext());
         }
         return TrackListViewHolder.create(inflater, parent);
@@ -61,6 +61,7 @@ public class TrackListAdapter extends RecyclerView.Adapter <TrackListAdapter.Tra
         static TrackListViewHolder create(LayoutInflater inflater, ViewGroup parent) {
             return new TrackListViewHolder(inflater.inflate(R.layout.item_list_myroute, parent, false));
         }
+
         void bind(TrackList trackList) {
             nameRouteTextView.setText(trackList.getName());
         }

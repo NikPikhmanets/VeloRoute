@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DownloadData {
-    private Context context;
     private static DownloadData instance = null;
-
+    private Context context;
     private List<Route> routesList;
 
     private List<String> listMissingFile = new ArrayList<>();
@@ -165,11 +164,10 @@ public class DownloadData {
             progressDialog.setProgress(0);
             progressDialog.setProgressPercentFormat(null);
             progressDialog.show();
-        }
-        else {
+        } else {
             progressDialog.setProgress(count);
         }
-        if(max == count)
+        if (max == count)
             progressDialog.dismiss();
     }
 }

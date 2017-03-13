@@ -49,7 +49,7 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               finish();
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

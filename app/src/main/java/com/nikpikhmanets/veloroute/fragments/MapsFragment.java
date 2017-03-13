@@ -17,28 +17,22 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.route.RouteBuild;
 import com.nikpikhmanets.veloroute.waypoint.WayPointBuild;
 
 import static com.nikpikhmanets.veloroute.R.id.googleMap;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    private GoogleMap mMap;
-    private MapView mapView;
-
-    private Context context;
-
-    WayPointBuild wayPoint;
-    RouteBuild route;
-
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
     final String BUNDLE_KEY_TITLE = "title";
-
     final String BUNDLE_VALUE_WAY_POINTS = "way_points";
     final String BUNDLE_VALUE_ROUTE = "route";
+    WayPointBuild wayPoint;
 
+    private GoogleMap mMap;
+    private MapView mapView;
+    private Context context;
     private String typeFileGpx;
     private String nameFileGpx;
 

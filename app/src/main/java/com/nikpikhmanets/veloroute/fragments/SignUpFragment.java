@@ -59,7 +59,7 @@ public class SignUpFragment extends Fragment {
 
     @Override
     public void onStart() {
-        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             setHasOptionsMenu(true);

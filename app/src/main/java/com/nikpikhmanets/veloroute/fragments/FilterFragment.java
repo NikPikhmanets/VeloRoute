@@ -31,7 +31,7 @@ public class FilterFragment extends DialogFragment {
             dialog.setTitle("фильтр маршрутов");
         }
 
-        final RadioGroup rgLength = (RadioGroup)view.findViewById(R.id.rg_length);
+        final RadioGroup rgLength = (RadioGroup) view.findViewById(R.id.rg_length);
 
         rgLength.check(getArguments().getInt(MainFragment.ARG_CHECKED_ID));
         rgLength.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

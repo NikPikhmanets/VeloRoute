@@ -8,10 +8,20 @@ import com.google.firebase.database.Exclude;
 
 import java.util.List;
 
-public class Route implements Parcelable{
+public class Route implements Parcelable {
 
+    public static final Creator<Route> CREATOR = new Creator<Route>() {
+        @Override
+        public Route createFromParcel(Parcel in) {
+            return new Route(in);
+        }
+
+        @Override
+        public Route[] newArray(int size) {
+            return new Route[size];
+        }
+    };
     private static final String TAG = "tag";
-
     private int length;
     private int road;
     private String name_en;
@@ -52,18 +62,6 @@ public class Route implements Parcelable{
         listPlace = in.createStringArrayList();
     }
 
-    public static final Creator<Route> CREATOR = new Creator<Route>() {
-        @Override
-        public Route createFromParcel(Parcel in) {
-            return new Route(in);
-        }
-
-        @Override
-        public Route[] newArray(int size) {
-            return new Route[size];
-        }
-    };
-
     @Override
     public int describeContents() {
         return 0;
@@ -87,64 +85,64 @@ public class Route implements Parcelable{
         this.name_en = name_en;
     }
 
-    public void setName_ru(String name_ru) {
-        this.name_ru = name_ru;
-    }
-
     public void setName_ua(String name_ua) {
         this.name_ua = name_ua;
-    }
-
-    public void setRoad(int road) {
-        this.road = road;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setGpx(String gpx) {
-        this.gpx = gpx;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     public int getLength() {
         return length;
     }
 
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     public String getName_ru() {
         return name_ru;
+    }
+
+    public void setName_ru(String name_ru) {
+        this.name_ru = name_ru;
     }
 
     public int getRoad() {
         return road;
     }
 
+    public void setRoad(int road) {
+        this.road = road;
+    }
+
     public String getImage() {
         return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getGpx() {
         return gpx;
     }
 
+    public void setGpx(String gpx) {
+        this.gpx = gpx;
+    }
+
     public String getImageURL() {
         return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public List<String> getListPlace() {

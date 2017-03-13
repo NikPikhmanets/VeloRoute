@@ -38,20 +38,20 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
         return data == null ? 0 : data.size();
     }
 
+    public List<Route> getData() {
+        return data;
+    }
+
     public void setData(List<Route> data) {
         this.data = data;
         notifyDataSetChanged();
-    }
-
-    public List<Route> getData() {
-        return data;
     }
 
     public void setOnItemClickListener(OnRecyclerItemRouteClickListener listener) {
         this.listener = listener;
     }
 
-    class RouteListViewHolder extends RecyclerView.ViewHolder{
+    class RouteListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvName;
         private ImageView ivRouteImage;

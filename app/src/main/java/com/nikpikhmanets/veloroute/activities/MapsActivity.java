@@ -22,10 +22,9 @@ import static com.nikpikhmanets.veloroute.R.id.no_map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
+    final String INTENT_ROUTE = "ROUTE";
     private GoogleMap mMap;
     private String mapStyle;
-
-    final String INTENT_ROUTE = "ROUTE";
     private Route route;
 
 
