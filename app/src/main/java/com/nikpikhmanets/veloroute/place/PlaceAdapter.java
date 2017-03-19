@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemPlaceClickListener;
 
@@ -66,7 +68,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         }
 
         void bind(Place place) {
-//            Glide.with(itemView.getContext()).load(place.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
+            Glide.with(itemView.getContext()).load(place.getImageList().get(0)).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
             textNamePlace.setText(place.getName());
             textDescrPlace.setText(place.getDescription());
         }

@@ -49,6 +49,6 @@
     <string name="title_sort">сортировать</string>
     <string name="title_sort_by">сортировать по:</string>
 
-    <string name="coordinaty">Координаты</string>
+    <string name="coordinate">Координаты</string>
     <string name="on_maps">На карте</string>
 </resources>

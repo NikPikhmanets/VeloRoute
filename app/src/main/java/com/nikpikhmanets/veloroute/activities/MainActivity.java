@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
     final String BUNDLE_KEY_TITLE = "title";
-
     final String BUNDLE_VALUE_WAY_POINTS = "way_points";
-
 
     private MainFragment mainFragment;
     private TrackFragment trackFragment;
@@ -111,7 +109,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         mGoogleApiClient = GoogleApiUtils.getGoogleApiClient(this, this);
-
     }
 
     private void createFragments() {
@@ -132,7 +129,6 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

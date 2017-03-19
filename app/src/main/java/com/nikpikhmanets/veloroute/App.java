@@ -12,7 +12,6 @@ public class App extends Application {
         super.onCreate();
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        PlaceListSingle.getListPlace();
-        DownloadData.getInstance();
+        PlaceListSingle.downloadPlaceList();
     }
 }

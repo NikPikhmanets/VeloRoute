@@ -2,9 +2,11 @@ package com.nikpikhmanets.veloroute.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,12 +22,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.nikpikhmanets.veloroute.DownloadData;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
+import com.nikpikhmanets.veloroute.download.CheckData;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
 import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
+import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteAdapter;
 
@@ -45,11 +48,16 @@ public class MainFragment extends Fragment {
     private final String INTENT_ROUTE = "ROUTE";
     private int filterCheckedId = R.id.rb_length_all;
     private int sortingCheckedId = R.id.rb_sort_by_name;
+
     private List<Route> routesList;
     private RouteAdapter adapter;
-    private DownloadData downloadData = DownloadData.getInstance();
 
-    boolean ONE_UPDATE = true;
+    CheckData checkData;
+
+    final String PREFERENCE_CHECK_DATA = "updateDate";
+
+    private boolean boolCheckUpdate;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,9 +68,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         getActivity().setTitle(getString(R.string.app_name));
-
 
         routesList = new ArrayList<>();
         adapter = new RouteAdapter();
@@ -92,17 +98,9 @@ public class MainFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     routesList.add(snapshot.getValue(Route.class));
                 }
-
-                if(ONE_UPDATE) {
-                    ONE_UPDATE = false;
-
-                    downloadData.setContext(getContext());
-                    downloadData.setRoutesList(routesList);
-                    downloadData.download();
-                }
-
+                checkUpdate();
                 filterRoutesList();
-                view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
+//                view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -110,8 +108,17 @@ public class MainFragment extends Fragment {
                 Log.d(TAG, "onCancelled: ");
             }
         });
-
     }
+
+    private void checkUpdate() {
+        if (boolCheckUpdate) {
+            checkData = new CheckData(getContext());
+            checkData.showProgressDialog(getString(R.string.check_data));
+            checkData.setRouteList(routesList, PlaceListSingle.getListPlace());
+            checkData.startCheckData();
+        }
+    }
+
 
     private void startRouteActivity(Route route) {
         Intent intent = new Intent(getContext(), RouteActivity.class);
@@ -124,6 +131,9 @@ public class MainFragment extends Fragment {
         super.onStart();
         Log.d(TAG, "onStart: ");
         setHasOptionsMenu(true);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        boolCheckUpdate = prefs.getBoolean(PREFERENCE_CHECK_DATA, true);
     }
 
     @Override
@@ -233,6 +243,7 @@ public class MainFragment extends Fragment {
         }
         adapter.notifyDataSetChanged();
     }
+
     private static final Comparator<Route> COMPARE_BY_NAME = new Comparator<Route>() {
         @Override
         public int compare(Route route1, Route route2) {

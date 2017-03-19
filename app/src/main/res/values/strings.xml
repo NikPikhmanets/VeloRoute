@@ -23,6 +23,11 @@
         <item>Українська</item>
     </string-array>
 
+    <string-array name="Directory">
+        <item>Внутренняя память</item>
+        <item>SDCard</item>
+    </string-array>
+
     <string-array name="entry_map_style">
         <item>Не отображать карту</item>
         <item>Обычная карта</item>
@@ -126,5 +131,6 @@
     <string name="title_anon">anonymous</string>
     <string name="title_sort_by">sort_by:</string>
     <string name="msg_wait">wait...</string>
+    <string name="check_data">Проверка данных...</string>
 
 </resources>

@@ -2,7 +2,6 @@ package com.nikpikhmanets.veloroute.route;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.google.firebase.database.Exclude;
 
@@ -21,7 +20,6 @@ public class Route implements Parcelable {
             return new Route[size];
         }
     };
-    private static final String TAG = "tag";
     private int length;
     private int road;
     private String name_en;
@@ -46,7 +44,6 @@ public class Route implements Parcelable {
         this.gpx = gpx;
         this.imageURL = imageURL;
         this.listPlace = listPlace;
-        Log.d(TAG, "name: " + name_ru + "; length: " + length + "; road: " + road + "; image: " + image);
     }
 
     protected Route(Parcel in) {

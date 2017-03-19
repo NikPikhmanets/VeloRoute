@@ -16,6 +16,13 @@ public class PlaceListSingle {
     public static List<Place> getListPlace() {
         if (placeList == null) {
             placeList = new ArrayList<>();
+        }
+        return placeList;
+    }
+
+    public static List<Place> downloadPlaceList() {
+        if (placeList == null) {
+            placeList = new ArrayList<>();
             downloadData();
         }
         return placeList;
