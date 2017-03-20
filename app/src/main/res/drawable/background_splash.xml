@@ -5,8 +5,8 @@
 
     <item>
         <bitmap
-            android:gravity="center"
-            android:src="@drawable/splash_mountain_biking"
+            android:dither="false"
+            android:src="@drawable/splash"
             />
     </item>
 </layer-list>

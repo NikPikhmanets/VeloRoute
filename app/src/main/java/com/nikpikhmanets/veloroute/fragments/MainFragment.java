@@ -98,7 +98,7 @@ public class MainFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     routesList.add(snapshot.getValue(Route.class));
                 }
-//                checkUpdate();
+                checkUpdate();
                 filterRoutesList();
 //                view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
             }
