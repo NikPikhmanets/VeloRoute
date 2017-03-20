@@ -12,8 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.place.PlaceViewPagerAdapter;
+import com.nikpikhmanets.veloroute.place.DialogMapFragment;
 import com.nikpikhmanets.veloroute.place.Place;
+import com.nikpikhmanets.veloroute.place.PlaceViewPagerAdapter;
 
 public class PlaceActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -23,6 +24,8 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     private TextView coordinate;
     private ImageView imagePlace;
     private ImageButton btnShowOnMaps;
+
+    private Place localPlace;
 
     private ViewPager viewPager;
     private LinearLayout pager_indicator;
@@ -92,26 +95,26 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     private void setViewDescriptionPlace(Place place) {
         initView();
         if (place != null) {
+            localPlace = place;
 
             setTitle(place.getName());
-            String coord = String.format("%s ° ", place.getLat()) + String.format("%s °", place.getLng());
-            coordinate.setText(coord);
+            String coordinate = String.format("%s ° ", place.getLat()) + String.format("%s °", place.getLng());
+            this.coordinate.setText(coordinate);
             textDescription.setText(place.getDescription());
-
-//            Double lat = intent.getDoubleExtra(INTENT_LAT, 0);
-//            Double lng = intent.getDoubleExtra(INTENT_LNG, 0);
-//            String descr = intent.getStringExtra(INTENT_DESCRIPTION);
-
-
-//            Glide.with(this).load(place.getImageList().get(0)).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
         }
     }
 
 
     @Override
     public void onClick(View view) {
+        final DialogMapFragment dialog = new DialogMapFragment();
 
-
+        Bundle args = new Bundle();
+        args.putString(getString(R.string.bundle_name_place), localPlace.getName());
+        args.putDouble(getString(R.string.bundle_lat), localPlace.getLat());
+        args.putDouble(getString(R.string.bundle_lng), localPlace.getLng());
+        dialog.setArguments(args);
+        dialog.show(getSupportFragmentManager(), localPlace.getName());
     }
 
     public void setReference() {
