@@ -10,18 +10,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.Marker;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.waypoint.WayPointBuild;
 
 import static com.nikpikhmanets.veloroute.R.id.googleMap;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapsFragment extends  Fragment implements OnMapReadyCallback {
 
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
@@ -71,20 +69,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         mMap = googleMap;
 
         createWayPoint(googleMap);
-        createRoute(googleMap);
     }
 
     private void createWayPoint(GoogleMap googleMap) {
         if (typeFileGpx != null && typeFileGpx.equals(BUNDLE_VALUE_WAY_POINTS) && nameFileGpx != null) {
             wayPoint = new WayPointBuild(context, googleMap);
             wayPoint.parseGpxFile(nameFileGpx);
-        }
-    }
-
-    private void createRoute(GoogleMap googleMap) {
-        if (typeFileGpx != null && typeFileGpx.equals(BUNDLE_VALUE_ROUTE) && nameFileGpx != null) {
-//            route = new RouteBuild(context, googleMap);
-//            route.parseGpxFile(nameFileGpx, null);
         }
     }
 
@@ -143,16 +133,4 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     public void setTypeGoogleMap(int type) {
         mMap.setMapType(type);
     }
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        if (marker.getTitle().equals("Козацький склик")) // if marker source is clicked
-        {
-            Toast.makeText(getContext(), "!!", Toast.LENGTH_SHORT).show();
-        }
-
-        return true;
-    }
-
-
 }

@@ -133,4 +133,10 @@
     <string name="msg_wait">wait...</string>
     <string name="check_data">Проверка данных...</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bundle_lat">lat</string>
+    <string name="bundle_lng">lng</string>
+    <string name="bundle_name_place">name</string>
+
 </resources>
