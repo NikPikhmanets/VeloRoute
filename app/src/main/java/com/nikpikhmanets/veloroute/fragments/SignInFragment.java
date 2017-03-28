@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,11 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
             public void onClick(View v) {
                 String eMail = etEmail.getText().toString().trim();
                 String pass = etPass.getText().toString().trim();
-                signInWithEmail(eMail, pass);
+                if (!TextUtils.isEmpty(eMail) && !TextUtils.isEmpty(pass)) {
+                    signInWithEmail(eMail, pass);
+                } else {
+                    Toast.makeText(getContext(), "one of fields is empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
