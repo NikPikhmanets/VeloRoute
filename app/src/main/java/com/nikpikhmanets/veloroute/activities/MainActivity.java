@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
     private SettingsFragment settingsFragment;
     private PlaceFragment placesFragment;
     private MapsFragment mapsFragment;
-//    private AboutDialogFragment aboutFragment;
+//    private PlaceDialogFragment aboutFragment;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         settingsFragment = new SettingsFragment();
         placesFragment = new PlaceFragment();
         mapsFragment = new MapsFragment();
-//        aboutFragment = new AboutDialogFragment();
+//        aboutFragment = new PlaceDialogFragment();
     }
 
     @Override
@@ -156,8 +156,6 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_about:
                 startActivity(new Intent(this, AboutActivity.class));
-//                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
-
                 break;
             case R.id.nav_log_out:
                 signOut();

@@ -28,11 +28,11 @@
                 android:orderInCategory="1"
                 android:title="@string/enable_record"
                 app:showAsAction="never" />
-            <item
-                android:id="@+id/delete_route"
-                android:orderInCategory="1"
-                android:title="@string/enable_record"
-                app:showAsAction="never" />
+            <!--<item-->
+                <!--android:id="@+id/delete_route"-->
+                <!--android:orderInCategory="1"-->
+                <!--android:title="@string/enable_record"-->
+                <!--app:showAsAction="never" />-->
         </menu>
     </item>
     <item
