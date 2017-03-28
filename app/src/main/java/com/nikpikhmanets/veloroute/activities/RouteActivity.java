@@ -195,13 +195,11 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-
-            case R.id.btnShowOnMaps:
+            case R.id.showOnMaps:
                 Intent intent = new Intent(this, MapsActivity.class);
                 intent.putExtra(INTENT_ROUTE, route);
                 startActivity(intent);
                 break;
-
         }
 
     }
