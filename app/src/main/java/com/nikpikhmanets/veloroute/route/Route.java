@@ -20,6 +20,7 @@ public class Route implements Parcelable {
             return new Route[size];
         }
     };
+
     private int length;
     private int road;
     private String name_en;
@@ -30,11 +31,13 @@ public class Route implements Parcelable {
     private String gpx;
     private String imageURL;
     private List<String> listPlace;
+    private float rating;
+    private String key;
 
     public Route() {
     }
 
-    public Route(int length, int road, String name_en, String name_ru, String name_ua, String image, String description, String gpx, String imageURL, List<String> listPlace) {
+    public Route(int length, int road, String name_en, String name_ru, String name_ua, String image, String description, String gpx, String imageURL, List<String> listPlace, float rating) {
         this.length = length;
         this.road = road;
         this.name_en = name_en;
@@ -44,6 +47,7 @@ public class Route implements Parcelable {
         this.gpx = gpx;
         this.imageURL = imageURL;
         this.listPlace = listPlace;
+        this.rating = rating;
     }
 
     protected Route(Parcel in) {
@@ -57,6 +61,8 @@ public class Route implements Parcelable {
         gpx = in.readString();
         imageURL = in.readString();
         listPlace = in.createStringArrayList();
+        rating = in.readFloat();
+        key = in.readString();
     }
 
     @Override
@@ -76,6 +82,8 @@ public class Route implements Parcelable {
         dest.writeString(gpx);
         dest.writeString(imageURL);
         dest.writeStringList(listPlace);
+        dest.writeFloat(rating);
+        dest.writeString(key);
     }
 
     public void setName_en(String name_en) {
@@ -148,6 +156,22 @@ public class Route implements Parcelable {
 
     public void setListPlace(List<String> listPlace) {
         this.listPlace = listPlace;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
     }
 
     @Exclude

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_route"
     android:layout_width="match_parent"
@@ -81,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameRouteLabel"
             android:layout_margin="5dp"
-            android:layout_toEndOf="@+id/distanceRouteLabel"
+            android:layout_toEndOf="@id/distanceRouteLabel"
             android:textColor="@android:color/holo_green_light"
             android:textStyle="bold"
             tools:text="120 km" />
@@ -112,6 +113,27 @@
             android:layout_toStartOf="@+id/roadRoute"
             android:text="@string/ground_asphalt"
             android:textColor="@color/white" />
+
+        <RatingBar
+            android:id="@+id/rb_label_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            style="?android:attr/ratingBarStyleSmall"
+            android:isIndicator="true"
+            android:layout_below="@id/distanceRouteLabel"
+            android:clickable="true"
+            android:stepSize="0.01"
+            android:rating="2.3"/>
+
+        <TextView
+            android:id="@+id/tv_label_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_below="@id/distanceRouteLabel"
+            android:layout_toEndOf="@id/rb_label_rating"
+            tools:text="2.5"/>
 
     </RelativeLayout>
 

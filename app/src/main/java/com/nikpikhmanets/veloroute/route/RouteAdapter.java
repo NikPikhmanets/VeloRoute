@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -57,6 +58,8 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
         private ImageView ivRouteImage;
         private TextView tvRoad;
         private TextView tvLength;
+        private RatingBar rbRating;
+        private TextView tvRating;
 
         private RouteListViewHolder(View itemView) {
             super(itemView);
@@ -65,6 +68,8 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
             tvName = (TextView) itemView.findViewById(R.id.tv_route_name);
             tvRoad = (TextView) itemView.findViewById(R.id.tv_route_road);
             tvLength = (TextView) itemView.findViewById(R.id.tv_route_length);
+            rbRating = (RatingBar) itemView.findViewById(R.id.rb_rating);
+            tvRating = (TextView) itemView.findViewById(R.id.tv_rating);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,6 +86,8 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
             tvRoad.setText(getTypeRoad(route));
             tvLength.setText(String.format("%s км", route.getLength()));
             Glide.with(itemView.getContext()).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivRouteImage);
+            rbRating.setRating(route.getRating());
+            tvRating.setText(String.valueOf(route.getRating()));
         }
 
         @NonNull

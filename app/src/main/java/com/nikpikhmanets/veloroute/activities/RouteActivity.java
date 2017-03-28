@@ -5,38 +5,67 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.interfaces.OnVoteListener;
 import com.nikpikhmanets.veloroute.route.Route;
+import com.nikpikhmanets.veloroute.utils.DialogUtils;
 
-public class RouteActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.Locale;
+
+public class RouteActivity extends AppCompatActivity implements View.OnClickListener, OnVoteListener, View.OnTouchListener {
 
     final String GROUND = "Грунт:";
     final String ASPHALT = "Асфальт:";
     final String GROUND_ASPHALT = "Грунт/асфальт:";
+    private static final String VALUE_MARKED = "marked";
+
+//    private static final String TAG = "tag";
 
     private final String INTENT_ROUTE = "ROUTE";
 
-    TextView nameRoute;
-    TextView lengthRoute;
-    TextView roadRoute;
-    TextView roadRouteLabel;
-    TextView tvRouteDescription;
-    ImageView imageRoute;
+    private TextView nameRoute;
+    private TextView lengthRoute;
+    private TextView roadRoute;
+    private TextView roadRouteLabel;
+    private TextView tvRouteDescription;
+    private ImageView imageRoute;
+    private RatingBar rbRating;
+    private TextView tvRating;
+    private Button showOnMapsBtn;
 
-    Button showOnMapsBtn;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference ratingReference;
+    private DatabaseReference votesReference;
+    private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference userReference = databaseReference.child("users").child(currentUser.getUid());
+    private DatabaseReference currentRouteMarkedByUserRef;
+
+
 
     private Route route;
+    private float rating;
+    private int votes;
+    private boolean isMarked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +79,51 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         route = getIntent().getParcelableExtra(INTENT_ROUTE);
+
+        DatabaseReference routeReference = databaseReference.child("routes").child(route.getKey());
+        currentRouteMarkedByUserRef = userReference.child("markedRoutes").child(route.getKey());
+        ratingReference = routeReference.child("rating");
+        votesReference = routeReference.child("votes");
+        ratingReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rating = Float.parseFloat(dataSnapshot.getValue().toString());
+                rbRating.setRating(rating);
+                tvRating.setText(String.format(Locale.US, "%.1f", rating));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        votesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                votes = Integer.parseInt(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        currentRouteMarkedByUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Object value = dataSnapshot.getValue();
+                isMarked = value != null && VALUE_MARKED.equals(value.toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         setViewDescriptionRoute();
+
     }
 
     @Override
@@ -74,9 +147,12 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         roadRoute = (TextView) findViewById(R.id.roadRoute);
         imageRoute = (ImageView) findViewById(R.id.imageRoute);
         tvRouteDescription = (TextView) findViewById(R.id.tv_description);
+        rbRating = (RatingBar) findViewById(R.id.rb_label_rating);
+        tvRating = (TextView) findViewById(R.id.tv_label_rating);
 
         showOnMapsBtn = (Button) findViewById(R.id.showOnMaps);
         showOnMapsBtn.setOnClickListener(this);
+        rbRating.setOnTouchListener(this);
     }
 
     @Override
@@ -118,8 +194,44 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        intent.putExtra(INTENT_ROUTE, route);
-        startActivity(intent);
+        switch (view.getId()) {
+
+            case R.id.btnShowOnMaps:
+                Intent intent = new Intent(this, MapsActivity.class);
+                intent.putExtra(INTENT_ROUTE, route);
+                startActivity(intent);
+                break;
+
+        }
+
+    }
+
+    @Override
+    public void onVoted(int rate) {
+        votes++;
+        votesReference.setValue(votes);
+        float delta = rate - rating;
+        rating += delta / votes;
+        ratingReference.setValue(rating);
+        currentRouteMarkedByUserRef.setValue(VALUE_MARKED);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+            if (currentUser != null && !currentUser.isAnonymous()) {
+
+                if (!isMarked) {
+                    DialogUtils.getRatingDialog(this, this).show();
+                    return true;
+                } else {
+                    Toast.makeText(this, "вы уже оценили этот маршрут", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, "нужно авторизироваться чтобы оценить", Toast.LENGTH_LONG).show();
+            }
+        }
+        return false;
     }
 }

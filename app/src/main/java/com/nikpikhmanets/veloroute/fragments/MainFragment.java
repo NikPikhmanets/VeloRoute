@@ -95,13 +95,13 @@ public class MainFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 routesList.clear();
-                Log.d(TAG, "onDataChange: ");
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    routesList.add(snapshot.getValue(Route.class));
+                    Route route = snapshot.getValue(Route.class);
+                    routesList.add(route);
+                    route.setKey(snapshot.getKey());
                 }
                 checkUpdate();
                 filterRoutesList();
-//                view.findViewById(R.id.pb_loading).setVisibility(View.INVISIBLE);
             }
 
             @Override
