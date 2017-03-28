@@ -70,13 +70,19 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textPlaceDescription"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:scrollbars="vertical"
-        android:lineSpacingMultiplier="1.1"
-        tools:text="qwerty" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textPlaceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:lineSpacingMultiplier="1.1"
+            android:scrollbars="vertical"
+            tools:text="qwerty" />
+    </ScrollView>
+
 </LinearLayout>
 

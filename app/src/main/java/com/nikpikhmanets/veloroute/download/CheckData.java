@@ -168,7 +168,7 @@ public class CheckData {
 
     private void getTypeFlashSetting() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        typeFLASH = prefs.getString("directory", "");
+        typeFLASH = prefs.getString("directory", context.getResources().getStringArray(Directory)[0]);
     }
 
     public void showProgressDialog(String caption) {

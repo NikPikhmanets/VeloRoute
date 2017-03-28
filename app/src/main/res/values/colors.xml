@@ -6,4 +6,5 @@
 
     <color name="gray">#ece8e8</color>
     <color name="white">#ffffff</color>
+    <color name="windowBackground">#38300a</color>
 </resources>

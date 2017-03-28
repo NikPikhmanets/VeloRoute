@@ -31,6 +31,7 @@ import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
 import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteAdapter;
+import com.nikpikhmanets.veloroute.utils.CheckUpdate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -111,7 +112,10 @@ public class MainFragment extends Fragment {
     }
 
     private void checkUpdate() {
-        if (boolCheckUpdate) {
+        if (boolCheckUpdate && CheckUpdate.CHECK_DATA_BASE) {
+
+            CheckUpdate.CHECK_DATA_BASE = false;
+
             checkData = new CheckData(getContext());
             checkData.showProgressDialog(getString(R.string.check_data));
             checkData.setRouteList(routesList, PlaceListSingle.getListPlace());

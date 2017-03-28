@@ -1,5 +1,4 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,56 +15,58 @@
             android:id="@+id/et_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
-            android:hint="@string/hint_email"/>
+            android:textAlignment="center" />
+
         <EditText
             android:id="@+id/et_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:hint="@string/hint_pass"
             android:inputType="textPassword"
-            android:hint="@string/hint_pass"/>
+            android:textAlignment="center" />
+
         <Button
             android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:textSize="10sp"
-            android:text="@string/btn_sign_in"/>
+            android:text="@string/btn_sign_in"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:textSize="10sp"
-            android:text="@string/btn_sign_up"/>
+            android:text="@string/btn_sign_up"
+            android:textSize="10sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="@string/text_sign_in_g"/>
+            android:text="@string/text_sign_in_g" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_google_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="@string/text_sign_in_anon"/>
+            android:text="@string/text_sign_in_anon" />
 
         <ImageButton
             android:id="@+id/btn_anonymous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_anonymous"/>
+            android:background="@drawable/ic_anonymous" />
 
     </LinearLayout>
 

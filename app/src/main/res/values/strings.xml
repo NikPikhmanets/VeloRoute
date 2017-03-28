@@ -136,6 +136,11 @@
     <string name="bundle_lat">lat</string>
     <string name="bundle_lng">lng</string>
     <string name="bundle_name_place">name</string>
+    <string name="title_activity_place_info_avtivite">PlaceInfoAvtivite</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="version">Version x.x.x build xxx</string>
+    <string name="text_about">Приложение, как путеводитель в поиске интересных веломаршрутов и интересных мест</string>
 
 
 </resources>

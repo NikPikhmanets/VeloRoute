@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_remove"
-        android:title=""
-        android:icon="@drawable/ic_menu_place"
         android:actionLayout="@layout/activity_main"
+        android:icon="@drawable/ic_menu_place"
+        android:title=""
         app:showAsAction="always" />
 
     <item
@@ -58,5 +58,4 @@
                 app:showAsAction="never" />
         </menu>
     </item>
-
 </menu>

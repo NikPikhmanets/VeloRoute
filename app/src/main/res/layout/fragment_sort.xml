@@ -1,42 +1,45 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.nikpikhmanets.veloroute.fragments.SortFragment">
 
     <RadioGroup
         android:id="@+id/rg_sort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_sort_by"
-            android:textColor="#ff000000"/>
+            android:textColor="#ff000000" />
+
         <RadioButton
             android:id="@+id/rb_sort_by_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_name"/>
+            android:text="@string/btn_name" />
+
         <RadioButton
             android:id="@+id/rb_sort_by_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_distance"/>
+            android:text="@string/btn_distance" />
+
         <RadioButton
             android:id="@+id/rb_sort_by_road"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_road"/>
+            android:text="@string/btn_road" />
     </RadioGroup>
 
     <Button
         android:id="@+id/btn_sorting_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_ok"/>
+        android:text="@string/btn_ok" />
 
 </LinearLayout>

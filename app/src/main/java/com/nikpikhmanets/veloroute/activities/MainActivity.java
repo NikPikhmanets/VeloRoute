@@ -22,7 +22,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity
     private SettingsFragment settingsFragment;
     private PlaceFragment placesFragment;
     private MapsFragment mapsFragment;
-    private AboutFragment aboutFragment;
+//    private AboutDialogFragment aboutFragment;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         settingsFragment = new SettingsFragment();
         placesFragment = new PlaceFragment();
         mapsFragment = new MapsFragment();
-        aboutFragment = new AboutFragment();
+//        aboutFragment = new AboutDialogFragment();
     }
 
     @Override
@@ -156,7 +155,9 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, settingsFragment).commit();
                 break;
             case R.id.nav_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
+                startActivity(new Intent(this, AboutActivity.class));
+//                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, aboutFragment).addToBackStack(null).commit();
+
                 break;
             case R.id.nav_log_out:
                 signOut();
@@ -192,4 +193,6 @@ public class MainActivity extends AppCompatActivity
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+
 }

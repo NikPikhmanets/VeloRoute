@@ -68,7 +68,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         }
 
         void bind(Place place) {
-            Glide.with(itemView.getContext()).load(place.getImageList().get(0)).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
+            Glide.with(itemView.getContext()).load(R.drawable.bastion_getman_01).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
             textNamePlace.setText(place.getName());
             textDescrPlace.setText(place.getDescription());
         }

@@ -19,7 +19,7 @@
             android:defaultValue="Внутренняя память"
             android:entries="@array/Directory"
             android:entryValues="@array/Directory"
-            android:key="FLASH"
+            android:key="directory"
             android:summary="Установите место хранения данных"
             android:title="Тип памяти" />
 
@@ -48,14 +48,6 @@
             android:key="width_line"
             android:summary="Установите толщину линии маршрута"
             android:title="Толщина линини маршрута" />
-
-        <ListPreference
-            android:defaultValue="3"
-            android:entries="@array/entry_width_line"
-            android:entryValues="@array/entry_width_line"
-            android:key="width_line"
-            android:summary="Установите толщину линии маршрута"
-            android:title="Толщина линини трека" />
 
     </PreferenceCategory>
 

@@ -4,16 +4,15 @@
 
     <item
         android:id="@+id/action_sort"
-        android:title="sort by.."
         android:icon="@drawable/ic_action_sort"
-        app:showAsAction="ifRoom"/>
+        android:title="sort by.."
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_filter"
-        android:title="filter"
         android:icon="@drawable/ic_action_filter"
+        android:title="filter"
         app:showAsAction="ifRoom" />
-
 
 
 </menu>
