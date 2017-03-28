@@ -1,6 +1,7 @@
 package com.nikpikhmanets.veloroute.fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -118,7 +119,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
 
     private void signInWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_g));
+        final ProgressDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_g));
         waitingDialog.show();
 
         mFirebaseAuth.signInWithCredential(credential)
@@ -136,7 +137,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
     }
 
     private void signInWithEmail(String email, String pass) {
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_email));
+        final ProgressDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_email));
         waitingDialog.show();
         mFirebaseAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -153,7 +154,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
     }
 
     private void signInAnonymously() {
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_anon));
+        final ProgressDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.msg_sign_in_anon));
         waitingDialog.show();
         mFirebaseAuth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

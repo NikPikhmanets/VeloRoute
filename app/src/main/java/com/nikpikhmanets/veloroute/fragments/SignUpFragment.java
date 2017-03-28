@@ -1,5 +1,6 @@
 package com.nikpikhmanets.veloroute.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -102,7 +103,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void signUpWithEmail(String eMail, String pass, final String name) {
-        final AlertDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.title_sign_up));
+        final ProgressDialog waitingDialog = DialogUtils.getWaitingDialog(getContext(), getString(R.string.title_sign_up));
         waitingDialog.show();
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(eMail, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

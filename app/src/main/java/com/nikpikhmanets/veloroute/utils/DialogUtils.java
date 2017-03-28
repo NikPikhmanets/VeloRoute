@@ -1,29 +1,35 @@
 package com.nikpikhmanets.veloroute.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatRatingBar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnVoteListener;
 
 public abstract class DialogUtils {
 
-    public static AlertDialog getWaitingDialog(Context context, String title) {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-        dialogBuilder.setTitle(title);
-        dialogBuilder.setMessage(R.string.msg_wait);
-        dialogBuilder.setView(new ProgressBar(context));
-        AlertDialog alertDialog = dialogBuilder.create();
-        alertDialog.setCanceledOnTouchOutside(false);
-        return alertDialog;
+//    public static AlertDialog getWaitingDialog(Context context, String title) {
+//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+//        dialogBuilder.setTitle(title);
+//        dialogBuilder.setMessage(R.string.msg_wait);
+//        dialogBuilder.setView(new ProgressBar(context));
+//        AlertDialog alertDialog = dialogBuilder.create();
+//        alertDialog.setCanceledOnTouchOutside(false);
+//        return alertDialog;
+//    }
+
+    public static ProgressDialog getWaitingDialog(Context context, String title) {
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle(title);
+        return progressDialog;
     }
 
     public static AlertDialog getRatingDialog(Context context, final OnVoteListener listener) {
