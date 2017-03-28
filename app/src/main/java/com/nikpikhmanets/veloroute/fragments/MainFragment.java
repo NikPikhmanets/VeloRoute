@@ -59,6 +59,9 @@ public class MainFragment extends Fragment {
 
     private boolean boolCheckUpdate;
 
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference ref = database.getReference();
+    private DatabaseReference routesReference = ref.child("routes");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,27 +91,7 @@ public class MainFragment extends Fragment {
             sortingCheckedId = savedInstanceState.getInt(KEY_SORTING_CHECKED_ID);
         }
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
-        final DatabaseReference routesReference = ref.child("routes");
-        routesReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                routesList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Route route = snapshot.getValue(Route.class);
-                    routesList.add(route);
-                    route.setKey(snapshot.getKey());
-                }
-                checkUpdate();
-                filterRoutesList();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG, "onCancelled: ");
-            }
-        });
     }
 
     private void checkUpdate() {
@@ -138,11 +121,13 @@ public class MainFragment extends Fragment {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         boolCheckUpdate = prefs.getBoolean(PREFERENCE_CHECK_DATA, true);
+        routesReference.addValueEventListener(eventListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        routesReference.removeEventListener(eventListener);
     }
 
     @Override
@@ -266,4 +251,24 @@ public class MainFragment extends Fragment {
             return route1.getRoad() - route2.getRoad();
         }
     };
+
+    private ValueEventListener eventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            routesList.clear();
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Route route = snapshot.getValue(Route.class);
+                routesList.add(route);
+                route.setKey(snapshot.getKey());
+            }
+            checkUpdate();
+            filterRoutesList();
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
 }

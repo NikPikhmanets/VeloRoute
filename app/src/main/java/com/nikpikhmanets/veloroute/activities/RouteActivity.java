@@ -84,43 +84,10 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         currentRouteMarkedByUserRef = userReference.child("markedRoutes").child(route.getKey());
         ratingReference = routeReference.child("rating");
         votesReference = routeReference.child("votes");
-        ratingReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                rating = Float.parseFloat(dataSnapshot.getValue().toString());
-                rbRating.setRating(rating);
-                tvRating.setText(String.format(Locale.US, "%.1f", rating));
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        votesReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                votes = Integer.parseInt(dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        currentRouteMarkedByUserRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Object value = dataSnapshot.getValue();
-                isMarked = value != null && VALUE_MARKED.equals(value.toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        ratingReference.addValueEventListener(ratingValueEventListener);
+        votesReference.addValueEventListener(votesValueEventListener);
+        currentRouteMarkedByUserRef.addValueEventListener(routeMarkedEventListener);
 
         setViewDescriptionRoute();
 
@@ -138,6 +105,15 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         marginParams.setMargins(0, i, 0, 0);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(marginParams);
         imageRoute.setLayoutParams(layoutParams);
+    }
+
+    @Override
+    protected void onDestroy() {
+        ratingReference.removeEventListener(ratingValueEventListener);
+        votesReference.removeEventListener(votesValueEventListener);
+        currentRouteMarkedByUserRef.removeEventListener(routeMarkedEventListener);
+        super.onDestroy();
+
     }
 
     private void initView() {
@@ -232,4 +208,42 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         }
         return false;
     }
+
+    private ValueEventListener ratingValueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            rating = Float.parseFloat(dataSnapshot.getValue().toString());
+            rbRating.setRating(rating);
+            tvRating.setText(String.format(Locale.US, "%.1f", rating));
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+    private ValueEventListener votesValueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            votes = Integer.parseInt(dataSnapshot.getValue().toString());
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+    private ValueEventListener routeMarkedEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            Object value = dataSnapshot.getValue();
+            isMarked = value != null && VALUE_MARKED.equals(value.toString());
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
 }
