@@ -148,9 +148,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_myRoute:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, trackFragment).commit();
                 break;
-            case R.id.nav_maps:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();
-                break;
+//            case R.id.nav_maps:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mapsFragment).commit();
+//                break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, settingsFragment).commit();
                 break;

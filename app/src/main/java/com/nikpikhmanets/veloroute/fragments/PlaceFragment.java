@@ -14,7 +14,7 @@ import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.PlaceActivity;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemPlaceClickListener;
 import com.nikpikhmanets.veloroute.place.Place;
-import com.nikpikhmanets.veloroute.place.PlaceAdapter;
+import com.nikpikhmanets.veloroute.place.PlaceListAdapter;
 import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 
 import java.util.List;
@@ -24,12 +24,12 @@ public class PlaceFragment extends Fragment {
     final String INTENT_PLACE = "place";
 
     List<Place> placeList;
-    PlaceAdapter placeAdapter;
+    PlaceListAdapter placeAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_interesting_places, container, false);
+        return inflater.inflate(R.layout.fragment_places, container, false);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class PlaceFragment extends Fragment {
         getActivity().setTitle(getString(R.string.menu_places));
 
         placeList = PlaceListSingle.getListPlace(); //new ArrayList<>();
-        placeAdapter = new PlaceAdapter();
+        placeAdapter = new PlaceListAdapter();
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.placeRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));

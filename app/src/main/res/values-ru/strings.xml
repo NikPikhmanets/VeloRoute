@@ -24,10 +24,10 @@
     <string name="hint_pass">пароль</string>
     <string name="hybrid_mode_map">спутник+инфа</string>
     <string name="menu_about">О программе</string>
-    <string name="menu_home">Главная</string>
+    <string name="menu_home">Маршруты</string>
     <string name="menu_maps">Карта</string>
     <string name="menu_my_track">Мои треки</string>
-    <string name="menu_places">Достопримечательности</string>
+    <string name="menu_places">Места</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_source_water">Источники воды</string>
     <string name="menu_weekend_place">Места отдыха</string>
@@ -38,7 +38,7 @@
     <string name="msg_sign_in_anon">войти аноноимно</string>
     <string name="msg_sign_in_email">авторизация через мыло</string>
     <string name="msg_sign_in_g">авторизация через G+</string>
-    <string name="msg_wait">жди...</string>
+    <string name="msg_wait">жди…</string>
     <string name="text_sign_in_anon">или войдите анонимно</string>
     <string name="text_sign_in_g">или войдите через G+</string>
     <string name="title_activity_maps">Карта</string>
@@ -51,4 +51,5 @@
 
     <string name="coordinate">Координаты</string>
     <string name="on_maps">На карте</string>
+    <string name="delete_marker">Очистить карту</string>
 </resources>

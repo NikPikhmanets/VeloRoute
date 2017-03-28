@@ -11,15 +11,18 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.nikpikhmanets.veloroute.R;
 
+import java.io.File;
+import java.util.List;
+
 public class PlaceViewPagerAdapter extends PagerAdapter {
 
     private Context mContext;
-    private int[] mResources;
+    private List<String> imageList;
 
 
-    public PlaceViewPagerAdapter(Context mContext, int[] mResources) {
+    public PlaceViewPagerAdapter(Context mContext, List<String> imageList) {
         this.mContext = mContext;
-        this.mResources = mResources;
+        this.imageList = imageList;
     }
 
     @Override
@@ -29,21 +32,21 @@ public class PlaceViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mResources.length;
+        return imageList.size();
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view.equals(object);
     }
+
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_viewpager_photo_place, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.img_pager_item);
-        Glide.with(mContext).load( mResources[position]).into(imageView);
-//        imageView.setImageResource(mResources[position]);
-
+        File file = new File(mContext.getApplicationInfo().dataDir + "/image_place/", imageList.get(position));
+        Glide.with(mContext).load(file).into(imageView);
         container.addView(itemView, 0);
 
         return itemView;

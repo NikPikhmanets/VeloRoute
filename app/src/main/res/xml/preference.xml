@@ -15,13 +15,13 @@
             android:summary="Проверка новых маршрутов при старте"
             android:title="Обновление данных" />
 
-        <ListPreference
-            android:defaultValue="Внутренняя память"
-            android:entries="@array/Directory"
-            android:entryValues="@array/Directory"
-            android:key="directory"
-            android:summary="Установите место хранения данных"
-            android:title="Тип памяти" />
+        <!--<ListPreference-->
+            <!--android:defaultValue="Внутренняя память"-->
+            <!--android:entries="@array/Directory"-->
+            <!--android:entryValues="@array/Directory"-->
+            <!--android:key="directory"-->
+            <!--android:summary="Установите место хранения данных"-->
+            <!--android:title="Тип памяти" />-->
 
     </PreferenceCategory>
 

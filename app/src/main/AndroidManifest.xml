@@ -44,11 +44,6 @@
         <activity
             android:name=".activities.AuthActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".place.PlaceInfoAvtivite"
-            android:label="@string/title_activity_place_info_avtivite"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
 
         <activity android:name=".activities.AboutActivity"
             android:theme="@style/Theme.App.Translucent.NoTitleBar"/>

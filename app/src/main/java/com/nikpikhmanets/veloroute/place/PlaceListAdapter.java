@@ -12,9 +12,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemPlaceClickListener;
 
+import java.io.File;
 import java.util.List;
 
-public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
+public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.PlaceViewHolder> {
 
     private List<Place> place;
     private OnRecyclerItemPlaceClickListener placeListener;
@@ -68,7 +69,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         }
 
         void bind(Place place) {
-            Glide.with(itemView.getContext()).load(R.drawable.bastion_getman_01).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
+            File file = new File(itemView.getContext().getApplicationInfo().dataDir + "/image_place/", place.getImageList().get(0));
+             Glide.with(itemView.getContext()).load(file).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
             textNamePlace.setText(place.getName());
             textDescrPlace.setText(place.getDescription());
         }

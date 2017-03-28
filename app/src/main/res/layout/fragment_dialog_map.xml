@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="Theme.App.Translucent.NoTitleBar"
-    tools:context="com.nikpikhmanets.veloroute.place.DialogMapFragment">
+    tools:context="com.nikpikhmanets.veloroute.place.PlaceViewOnMapFragment">
 
     <FrameLayout
         android:id="@+id/mapView"

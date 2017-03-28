@@ -19,14 +19,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nikpikhmanets.veloroute.R;
 
-public class DialogMapFragment extends DialogFragment implements View.OnClickListener, OnMapReadyCallback {
+public class PlaceViewOnMapFragment extends DialogFragment implements View.OnClickListener, OnMapReadyCallback {
     private SupportMapFragment fragment;
 
     private double lat;
     private double lng;
     private String namePlace;
 
-    public DialogMapFragment() {
+    public PlaceViewOnMapFragment() {
         fragment = new SupportMapFragment();
     }
 

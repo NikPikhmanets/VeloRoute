@@ -63,9 +63,9 @@
     <!--SETTINGS-->
 
 
-    <string name="menu_home">Main</string>
+    <string name="menu_home">Route</string>
     <string name="menu_source_water">Water sources</string>
-    <string name="menu_places">Intresting places</string>
+    <string name="menu_places">Places</string>
     <string name="menu_my_track">My tracks</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_maps">Map</string>
@@ -130,17 +130,15 @@
     <string name="title_sign_up">Sign Up</string>
     <string name="title_anon">anonymous</string>
     <string name="title_sort_by">sort_by:</string>
-    <string name="msg_wait">wait...</string>
-    <string name="check_data">Проверка данных...</string>
+    <string name="msg_wait">wait…</string>
+    <string name="check_data">Проверка данных…</string>
 
     <string name="bundle_lat">lat</string>
     <string name="bundle_lng">lng</string>
     <string name="bundle_name_place">name</string>
-    <string name="title_activity_place_info_avtivite">PlaceInfoAvtivite</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
     <string name="version">Version x.x.x build xxx</string>
     <string name="text_about">Приложение, как путеводитель в поиске интересных веломаршрутов и интересных мест</string>
+    <string name="delete_marker">Clear maps</string>
 
 
 </resources>

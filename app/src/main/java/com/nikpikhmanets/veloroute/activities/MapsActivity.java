@@ -18,6 +18,7 @@ import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteBuild;
 import com.nikpikhmanets.veloroute.utils.GoogleMapsUtils;
 
+import static com.nikpikhmanets.veloroute.R.id.map;
 import static com.nikpikhmanets.veloroute.R.id.no_map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -42,7 +43,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         route = getIntent().getParcelableExtra(INTENT_ROUTE);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(map);
         mapFragment.getMapAsync(this);
     }
 
@@ -74,6 +75,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.delete_marker:
+                mMap.clear();
+                break;
             case no_map:
                 setTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
                 break;
