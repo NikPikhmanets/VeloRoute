@@ -14,12 +14,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Marker;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.place.Place;
+import com.nikpikhmanets.veloroute.place.PlaceListSingle;
+import com.nikpikhmanets.veloroute.place.PlaceViewDialog;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteBuild;
 import com.nikpikhmanets.veloroute.utils.GoogleMapsUtils;
 
+import java.util.List;
+
 import static com.nikpikhmanets.veloroute.R.id.map;
 import static com.nikpikhmanets.veloroute.R.id.no_map;
+import static com.nikpikhmanets.veloroute.R.id.record_track;
+import static com.nikpikhmanets.veloroute.R.id.show_my_location;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
@@ -78,6 +85,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             case R.id.delete_marker:
                 mMap.clear();
                 break;
+            case show_my_location:
+                myLocation();
+                break;
+            case record_track:
+                recordTrack();
+                break;
             case no_map:
                 setTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
                 break;
@@ -100,12 +113,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onOptionsItemSelected(item);
     }
 
+    private void recordTrack() {
+
+    }
+
+    private void myLocation() {
+
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            mMap.setMyLocationEnabled(true);
+//        }
+    }
+
     private void setTypeGoogleMap(int type) {
         mMap.setMapType(type);
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        return false;
+
+        List<Place> list = PlaceListSingle.getListPlace();
+        for(int i = 0; i < list.size(); i++) {
+            if (marker.getTitle().equals(list.get(i).getName())){
+                Intent intent = new Intent(this, PlaceViewDialog.class);
+                intent.putExtra("img", list.get(i).getImageList().get(0));
+                intent.putExtra("txt", list.get(i).getDescription());
+                startActivity(intent);
+            }
+        }
+        return true;
     }
 }
