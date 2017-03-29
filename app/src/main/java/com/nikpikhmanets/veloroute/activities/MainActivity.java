@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.fragments.MainFragment;
@@ -27,6 +26,7 @@ import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.TrackFragment;
+import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser firebaseUser = FirebaseUtils.getCurrentFirebaseUser();
 
         if (firebaseUser != null) {
             navigationView.getMenu().findItem(R.id.nav_log_out).setVisible(!firebaseUser.isAnonymous());
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void signOut() {
-        FirebaseAuth.getInstance().signOut();
+        FirebaseUtils.signOut();
 
         Auth.GoogleSignInApi.signOut(mGoogleApiClient);
         startActivity(new Intent(this, AuthActivity.class));

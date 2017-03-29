@@ -2,9 +2,8 @@ package com.nikpikhmanets.veloroute.place;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +28,7 @@ public class PlaceListSingle {
     }
 
     private static void downloadData() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
-        DatabaseReference routesReference = ref.child("place");
-        routesReference.addValueEventListener(new ValueEventListener() {
+        FirebaseUtils.getPlacesReference().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 placeList.clear();

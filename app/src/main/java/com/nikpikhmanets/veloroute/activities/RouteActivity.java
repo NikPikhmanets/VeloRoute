@@ -18,17 +18,16 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnVoteListener;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.utils.DialogUtils;
+import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 
 import java.util.Locale;
 
@@ -53,11 +52,9 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     private TextView tvRating;
     private Button showOnMapsBtn;
 
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference ratingReference;
     private DatabaseReference votesReference;
-    private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    private DatabaseReference userReference = databaseReference.child("users").child(currentUser.getUid());
+    private FirebaseUser currentUser = FirebaseUtils.getCurrentFirebaseUser();
     private DatabaseReference currentRouteMarkedByUserRef;
 
 
@@ -80,10 +77,9 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         }
         route = getIntent().getParcelableExtra(INTENT_ROUTE);
 
-        DatabaseReference routeReference = databaseReference.child("routes").child(route.getKey());
-        currentRouteMarkedByUserRef = userReference.child("markedRoutes").child(route.getKey());
-        ratingReference = routeReference.child("rating");
-        votesReference = routeReference.child("votes");
+        ratingReference = FirebaseUtils.getRatingReference(route.getKey());
+        votesReference = FirebaseUtils.getVotesReference(route.getKey());
+        currentRouteMarkedByUserRef = FirebaseUtils.getMarkedRouteReference(route.getKey());
 
         ratingReference.addValueEventListener(ratingValueEventListener);
         votesReference.addValueEventListener(votesValueEventListener);

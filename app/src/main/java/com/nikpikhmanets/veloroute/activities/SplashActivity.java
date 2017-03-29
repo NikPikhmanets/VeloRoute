@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -16,16 +16,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!isLoggedIn()) {
+        if (!FirebaseUtils.isLoggedIn()) {
             startActivity(new Intent(this, AuthActivity.class));
         } else {
             startActivity(new Intent(this, MainActivity.class));
         }
         finish();
-    }
-
-    private boolean isLoggedIn() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        return mAuth.getCurrentUser() != null;
     }
 }

@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
@@ -32,6 +31,7 @@ import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteAdapter;
 import com.nikpikhmanets.veloroute.utils.CheckUpdate;
+import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,9 +59,7 @@ public class MainFragment extends Fragment {
 
     private boolean boolCheckUpdate;
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference ref = database.getReference();
-    private DatabaseReference routesReference = ref.child("routes");
+    private DatabaseReference routesReference = FirebaseUtils.getRoutesReference();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
