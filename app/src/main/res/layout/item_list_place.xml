@@ -43,8 +43,7 @@
             android:layout_below="@+id/textNameItemPlace"
             android:layout_toEndOf="@+id/imageItemPlace"
             android:ellipsize="end"
-            android:maxLines="3"
-            tools:text="@string/XY" />
+            android:maxLines="3" />
 
     </RelativeLayout>
 

@@ -11,12 +11,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public abstract class FirebaseUtils {
 
-    private static final String ROUTES_KEY = "routes";
-    private static final String USERS_KEY = "users";
-    private static final String MARKED_ROUTES_KEY = "markedRoutes";
-    private static final String RATING_KEY = "rating";
-    private static final String VOTES_KEY = "votes";
-    private static final String PLACES_KEY = "place";
+    private static final String KEY_ROUTES = "routes";
+    private static final String KEY_USERS = "users";
+    private static final String KEY_MARKED_ROUTES = "markedRoutes";
+    private static final String KEY_RATING = "rating";
+    private static final String KEY_VOTES = "votes";
+    private static final String KEY_PLACES = "place";
 
 
     public static FirebaseUser getCurrentFirebaseUser() {
@@ -28,28 +28,28 @@ public abstract class FirebaseUtils {
     }
 
     public static DatabaseReference getRoutesReference() {
-        return FirebaseDatabase.getInstance().getReference().child(ROUTES_KEY);
+        return FirebaseDatabase.getInstance().getReference().child(KEY_ROUTES);
     }
 
     public static DatabaseReference getMarkedRouteReference(String routeKey) {
         return FirebaseDatabase.getInstance()
                 .getReference()
-                .child(USERS_KEY)
+                .child(KEY_USERS)
                 .child(getCurrentFirebaseUser().getUid())
-                .child(MARKED_ROUTES_KEY)
+                .child(KEY_MARKED_ROUTES)
                 .child(routeKey);
     }
 
     public static DatabaseReference getRatingReference(String routeKey) {
-        return getRoutesReference().child(routeKey).child(RATING_KEY);
+        return getRoutesReference().child(routeKey).child(KEY_RATING);
     }
 
     public static DatabaseReference getVotesReference(String routKey) {
-        return getRoutesReference().child(routKey).child(VOTES_KEY);
+        return getRoutesReference().child(routKey).child(KEY_VOTES);
     }
 
     public static DatabaseReference getPlacesReference () {
-        return FirebaseDatabase.getInstance().getReference().child(PLACES_KEY);
+        return FirebaseDatabase.getInstance().getReference().child(KEY_PLACES);
     }
 
     public static boolean isLoggedIn() {

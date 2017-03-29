@@ -15,6 +15,7 @@ import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
 
 import java.util.List;
+import java.util.Locale;
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListViewHolder> {
 
@@ -87,7 +88,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
             tvLength.setText(String.format("%s км", route.getLength()));
             Glide.with(itemView.getContext()).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivRouteImage);
             rbRating.setRating(route.getRating());
-            tvRating.setText(String.valueOf(route.getRating()));
+            tvRating.setText(String.format(Locale.US, "%.1f", route.getRating()));
         }
 
         @NonNull

@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,18 +43,15 @@ public class MainFragment extends Fragment {
     public static final String KEY_FILTER_CHECKED_ID = "filter_checked_id";
     public static final String KEY_SORTING_CHECKED_ID = "sort_by_checked_id";
     public static final String ARG_CHECKED_ID = "checked_id";
-    public static final String TAG = "tag";
+//    public static final String TAG = "tag";
+    private static final String PREFERENCE_CHECK_DATA = "updateDate";
+    public static final String EXTRA_ROUTE = "ROUTE";
 
-    private final String INTENT_ROUTE = "ROUTE";
     private int filterCheckedId = R.id.rb_length_all;
     private int sortingCheckedId = R.id.rb_sort_by_name;
-
     private List<Route> routesList;
     private RouteAdapter adapter;
 
-    CheckData checkData;
-
-    final String PREFERENCE_CHECK_DATA = "updateDate";
 
     private boolean boolCheckUpdate;
 
@@ -97,7 +93,7 @@ public class MainFragment extends Fragment {
 
             CheckUpdate.CHECK_DATA_BASE = false;
 
-            checkData = new CheckData(getContext());
+            CheckData checkData = new CheckData(getContext());
             checkData.showProgressDialog(getString(R.string.check_data));
             checkData.setRouteList(routesList, PlaceListSingle.getListPlace());
             checkData.startCheckData();
@@ -107,14 +103,13 @@ public class MainFragment extends Fragment {
 
     private void startRouteActivity(Route route) {
         Intent intent = new Intent(getContext(), RouteActivity.class);
-        intent.putExtra(INTENT_ROUTE, route);
+        intent.putExtra(EXTRA_ROUTE, route);
         startActivity(intent);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart: ");
         setHasOptionsMenu(true);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());

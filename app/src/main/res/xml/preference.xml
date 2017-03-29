@@ -3,12 +3,6 @@
 
     <PreferenceCategory android:title="Основные настройки">
 
-        <ListPreference
-            android:entries="@array/entries"
-            android:key="list1"
-            android:summary="list1_summary"
-            android:title="Language" />
-
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="updateDate"

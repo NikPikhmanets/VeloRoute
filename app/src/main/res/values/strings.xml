@@ -139,6 +139,7 @@
     <string name="version">Version x.x.x build xxx</string>
     <string name="text_about">Приложение, как путеводитель в поиске интересных веломаршрутов и интересных мест</string>
     <string name="delete_marker">Clear maps</string>
+    <string name="menu_sign_out">выйти</string>
 
 
 </resources>

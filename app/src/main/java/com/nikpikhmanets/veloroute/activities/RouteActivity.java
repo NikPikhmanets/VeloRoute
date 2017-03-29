@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -24,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.interfaces.OnVoteListener;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.utils.DialogUtils;
@@ -33,14 +33,12 @@ import java.util.Locale;
 
 public class RouteActivity extends AppCompatActivity implements View.OnClickListener, OnVoteListener, View.OnTouchListener {
 
-    final String GROUND = "Грунт:";
-    final String ASPHALT = "Асфальт:";
-    final String GROUND_ASPHALT = "Грунт/асфальт:";
+    private static final String GROUND = "Грунт:";
+    private static final String ASPHALT = "Асфальт:";
+    private static final String GROUND_ASPHALT = "Грунт/асфальт:";
     private static final String VALUE_MARKED = "marked";
 
 //    private static final String TAG = "tag";
-
-    private final String INTENT_ROUTE = "ROUTE";
 
     private TextView nameRoute;
     private TextView lengthRoute;
@@ -50,7 +48,6 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     private ImageView imageRoute;
     private RatingBar rbRating;
     private TextView tvRating;
-    private Button showOnMapsBtn;
 
     private DatabaseReference ratingReference;
     private DatabaseReference votesReference;
@@ -75,7 +72,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        route = getIntent().getParcelableExtra(INTENT_ROUTE);
+        route = getIntent().getParcelableExtra(MainFragment.EXTRA_ROUTE);
 
         ratingReference = FirebaseUtils.getRatingReference(route.getKey());
         votesReference = FirebaseUtils.getVotesReference(route.getKey());
@@ -122,8 +119,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         rbRating = (RatingBar) findViewById(R.id.rb_label_rating);
         tvRating = (TextView) findViewById(R.id.tv_label_rating);
 
-        showOnMapsBtn = (Button) findViewById(R.id.showOnMaps);
-        showOnMapsBtn.setOnClickListener(this);
+        findViewById(R.id.showOnMaps).setOnClickListener(this);
         rbRating.setOnTouchListener(this);
     }
 
@@ -169,7 +165,7 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
             case R.id.showOnMaps:
                 Intent intent = new Intent(this, MapsActivity.class);
-                intent.putExtra(INTENT_ROUTE, route);
+                intent.putExtra(MainFragment.EXTRA_ROUTE, route);
                 startActivity(intent);
                 break;
         }
