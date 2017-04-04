@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.nikpikhmanets.veloroute.App;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.download.CheckData;
@@ -29,7 +30,6 @@ import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
 import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteAdapter;
-import com.nikpikhmanets.veloroute.utils.CheckUpdate;
 import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 
 import java.util.ArrayList;
@@ -89,9 +89,9 @@ public class MainFragment extends Fragment {
     }
 
     private void checkUpdate() {
-        if (boolCheckUpdate && CheckUpdate.CHECK_DATA_BASE) {
+        if (boolCheckUpdate && App.CHECK_DATA_BASE) {
 
-            CheckUpdate.CHECK_DATA_BASE = false;
+            App.CHECK_DATA_BASE = false;
 
             CheckData checkData = new CheckData(getContext());
             checkData.showProgressDialog(getString(R.string.check_data));

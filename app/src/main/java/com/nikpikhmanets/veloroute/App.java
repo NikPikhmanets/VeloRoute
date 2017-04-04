@@ -7,6 +7,8 @@ import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 
 public class App extends Application {
 
+    public static boolean CHECK_DATA_BASE = true;
+
     @Override
     public void onCreate() {
         super.onCreate();
