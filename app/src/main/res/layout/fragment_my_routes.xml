@@ -8,6 +8,6 @@
         android:id="@+id/listMyRoute"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_list_myroute" />
+        tools:listitem="@layout/item_list_track" />
 
 </FrameLayout>

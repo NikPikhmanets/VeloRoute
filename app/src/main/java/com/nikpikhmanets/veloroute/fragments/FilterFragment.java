@@ -28,7 +28,7 @@ public class FilterFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         Dialog dialog = getDialog();
         if (dialog != null) {
-            dialog.setTitle("фильтр маршрутов");
+            dialog.setTitle(R.string.filter_route);
         }
 
         final RadioGroup rgLength = (RadioGroup) view.findViewById(R.id.rg_length);

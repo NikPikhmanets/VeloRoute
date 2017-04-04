@@ -10,7 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -146,10 +145,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        if (marker.getTitle().equals("Козацький склик")) // if marker source is clicked
-        {
-            Toast.makeText(getContext(), "!!", Toast.LENGTH_SHORT).show();
-        }
+//        if (marker.getTitle().equals("Козацький склик")) // if marker source is clicked
+//        {
+//            Toast.makeText(getContext(), "!!", Toast.LENGTH_SHORT).show();
+//        }
 
         return true;
     }

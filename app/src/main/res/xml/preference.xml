@@ -44,5 +44,4 @@
             android:title="Толщина линини маршрута" />
 
     </PreferenceCategory>
-
 </android.support.v7.preference.PreferenceScreen>

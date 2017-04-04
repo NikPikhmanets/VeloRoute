@@ -69,7 +69,7 @@ public class MainFragment extends Fragment {
         getActivity().setTitle(getString(R.string.app_name));
 
         routesList = new ArrayList<>();
-        adapter = new RouteAdapter();
+        adapter = new RouteAdapter(getContext());
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listRouteRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
@@ -184,19 +184,19 @@ public class MainFragment extends Fragment {
         int maxLength = 1000;
         switch (filterCheckedId) {
             case R.id.rb_length_all:
-                getActivity().setTitle("все маршруты");
+                getActivity().setTitle(getString(R.string.all_route));
                 break;
             case R.id.rb_length_long:
-                getActivity().setTitle("длинные");
+                getActivity().setTitle(getString(R.string.long_route));
                 minLength = 100;
                 break;
             case R.id.rb_length_middle:
-                getActivity().setTitle("средние");
+                getActivity().setTitle(getString(R.string.middle_route));
                 minLength = 50;
                 maxLength = 100;
                 break;
             case R.id.rb_length_short:
-                getActivity().setTitle("короткие");
+                getActivity().setTitle(getString(R.string.short_route));
                 maxLength = 50;
                 break;
         }

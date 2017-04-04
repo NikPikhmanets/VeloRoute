@@ -42,17 +42,10 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
         }
         setViewDescriptionPlace((Place) getIntent().getParcelableExtra(INTENT_PLACE));
 
-//        LinearLayoutManager layoutManager
-//                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-//
-//        RecyclerView myList = (RecyclerView) findViewById(R.id.place_RecyclerView);
-//        myList.setLayoutManager(layoutManager);
-
-
         ImageButton btnShowOnMaps = (ImageButton) findViewById(R.id.btnShowOnMaps);
         btnShowOnMaps.setOnClickListener(this);
 
-        setReference();
+         setReference();
     }
 
     private void initView() {

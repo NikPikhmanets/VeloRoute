@@ -1,5 +1,6 @@
 package com.nikpikhmanets.veloroute.route;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,8 +20,13 @@ import java.util.Locale;
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListViewHolder> {
 
+    private Context context;
     private List<Route> data;
     private OnRecyclerItemRouteClickListener listener;
+
+    public RouteAdapter(Context context) {
+        this.context = context;
+    }
 
 
     @Override
@@ -95,11 +101,11 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
         private String getTypeRoad(Route route) {
             String typeRoad = "";
             if (route.getRoad() == 0) {
-                typeRoad = "грунт: " + route.getDirt();
+                typeRoad = context.getString(R.string.ground) + " " + route.getDirt();
             } else if (route.getDirt() == 0) {
-                typeRoad = "асфальт: " + route.getRoad();
+                typeRoad = context.getString(R.string.asphalt) + " "  + route.getRoad();
             } else {
-                typeRoad = "грунт/асфальт: " + route.getDirt() + "/" + route.getRoad();
+                typeRoad = context.getString(R.string.ground_and_asphalt) + " " + route.getDirt() + "/" + route.getRoad();
             }
             return typeRoad;
         }

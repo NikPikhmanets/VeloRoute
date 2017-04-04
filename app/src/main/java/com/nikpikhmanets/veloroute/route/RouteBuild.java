@@ -59,7 +59,7 @@ public class RouteBuild implements GpxParser.GpxParserListener {
     public void parseGpxFile(final Route route) {
 
         if (route == null) {
-            Toast.makeText(context, "Неизвестный маршрут", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.unknown_route, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -83,7 +83,7 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(context, "Неудалось открыть файл маршрута", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.no_open_file, Toast.LENGTH_SHORT).show();
         }
         if(input != null)
             new GpxParser(input, mGpxParserListener, null).parse();
@@ -91,15 +91,15 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 
     private void loadGpxFile(final String filePath) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Упс!")
-                .setMessage("Отсутствует файл маршрута. Загрузить?")
-                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.oops)
+                .setMessage(R.string.no_file_rote)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         downloadGpxFile(filePath);
                     }
                 })
-                .setNegativeButton("Нет",
+                .setNegativeButton(R.string.no,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
@@ -134,7 +134,7 @@ public class RouteBuild implements GpxParser.GpxParserListener {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context, "Неудалось загрузить маршрут", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.failed_to_load_route, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -156,7 +156,7 @@ public class RouteBuild implements GpxParser.GpxParserListener {
 
     @Override
     public void onGpxParseStarted() {
-        mProgressDialog = ProgressDialog.show(context, "Open Route", "Started");
+        mProgressDialog = ProgressDialog.show(context, context.getString(R.string.open_route), context.getString(R.string.started));
     }
 
     @Override

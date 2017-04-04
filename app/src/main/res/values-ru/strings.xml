@@ -4,7 +4,7 @@
     <string name="btn_all">все</string>
     <string name="btn_distance">дистанции</string>
     <string name="btn_long">длинные(более 100 км)</string>
-    <string name="btn_middle">средние (50-100 км)</string>
+    <string name="btn_middle">средние (50–100 км)</string>
     <string name="btn_name">имени</string>
     <string name="btn_ok">окей</string>
     <string name="btn_road">дороге</string>
@@ -52,4 +52,44 @@
     <string name="coordinate">Координаты</string>
     <string name="on_maps">На карте</string>
     <string name="delete_marker">Очистить карту</string>
+
+    <string name="check_data">Проверка данных…</string>
+    <string name="text_about">Приложение, как путеводитель в поиске интересных веломаршрутов и интересных мест</string>
+    <string name="no_view_map">не отображать</string>
+    <string name="normal_mode_map">обычный режим</string>
+    <string name="satellite_mode_map">снимки со спутника</string>
+    <string name="terrain_mode_map">рельеф местности</string>
+    <string name="show_route">Показать маршрут на карте</string>
+
+    <string-array name="entry_map_style">
+        <item>Не отображать карту</item>
+        <item>Обычная карта</item>
+        <item>Рельеф</item>
+        <item>Спутник</item>
+        <item>Гибридная</item>
+    </string-array>
+
+    <string name="all_route">Все маршруты</string>
+    <string name="long_route">Длинные</string>
+    <string name="middle_route">Средние</string>
+    <string name="short_route">Короткие</string>
+    <string name="filter_route">фильтр маршрутов</string>
+    <string name="no_file_rote">Отсутствует файл маршрута. Загрузить?</string>
+    <string name="no_open_file">Неудалось открыть файл маршрута</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="oops">Упс!</string>
+    <string name="unknown_route">Неизвестный маршрут</string>
+    <string name="failed_to_load_route">Неудалось загрузить маршрут</string>
+    <string name="open_route">Открываю маршрут</string>
+    <string name="started">Стартую</string>
+    <string name="source_water">Источники воды</string>
+    <string name="place_rest">Места отдыха</string>
+    <string name="err_load_data">Ошибка загрузки данных</string>
+    <string name="already_rate_this_route">вы уже оценили этот маршрут</string>
+    <string name="must_sign">нужно авторизоваться чтобы оценить</string>
+    <string name="ground">Грунт:</string>
+    <string name="asphalt">Асфальт:</string>
+    <string name="ground_and_asphalt">Грунт/асфальт:</string>
+    <string name="download_wait">Загружаю. Подождите…</string>
 </resources>

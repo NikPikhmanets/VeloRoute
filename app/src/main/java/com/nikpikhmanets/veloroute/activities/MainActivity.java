@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,14 +31,13 @@ import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
 
     final String RECREATION_POINTS_GPX = "recreation_points.gpx";
     final String WATER_POINTS_GPX = "water_points.gpx";
-    final String TITLE_SOURCE_WATER = "Источники воды";
-    final String TITLE_REST_PLACE = "Места отдыха";
 
     final String BUNDLE_KEY_FILE_NAME_GPX = "name_file_gpx";
     final String BUNDLE_KEY_TYPE_GPX = "type_file_gpx";
@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        final Fabric fabric = new Fabric.Builder(this)
-//                .kits(new Crashlytics())
-//                .debuggable(true)
-//                .build();
-//        Fabric.with(fabric);
+        final Fabric fabric = new Fabric.Builder(this)
+                .kits(new Crashlytics())
+                .debuggable(true)
+                .build();
+        Fabric.with(fabric);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -137,10 +137,10 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, mainFragment).commit();
                 break;
             case R.id.nav_sourceWater:
-                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, WATER_POINTS_GPX, TITLE_SOURCE_WATER);
+                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, WATER_POINTS_GPX, getString(R.string.source_water));
                 break;
             case R.id.nav_weekendPlace:
-                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, RECREATION_POINTS_GPX, TITLE_REST_PLACE);
+                showMapsFragment(BUNDLE_VALUE_WAY_POINTS, RECREATION_POINTS_GPX, getString(R.string.place_rest));
                 break;
             case R.id.nav_places:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, placesFragment).commit();

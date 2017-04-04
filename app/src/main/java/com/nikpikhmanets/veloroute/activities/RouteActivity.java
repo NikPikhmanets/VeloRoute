@@ -33,10 +33,7 @@ import java.util.Locale;
 
 public class RouteActivity extends AppCompatActivity implements View.OnClickListener, OnVoteListener, View.OnTouchListener {
 
-    private static final String GROUND = "Грунт:";
-    private static final String ASPHALT = "Асфальт:";
-    private static final String GROUND_ASPHALT = "Грунт/асфальт:";
-    private static final String VALUE_MARKED = "marked";
+    private final String VALUE_MARKED = "marked";
 
 //    private static final String TAG = "tag";
 
@@ -146,17 +143,17 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
 
             lengthRoute.setText(String.format("%s км", route.getLength()));
             if (route.getRoad() == 0) {
-                roadRouteLabel.setText(GROUND);
+                roadRouteLabel.setText(getString(R.string.ground));
                 roadRoute.setText(String.format("%s", route.getDirt()));
             } else if (route.getDirt() == 0) {
-                roadRouteLabel.setText(ASPHALT);
+                roadRouteLabel.setText(getString(R.string.asphalt));
                 roadRoute.setText(String.format("%s", route.getRoad()));
             } else {
-                roadRouteLabel.setText(GROUND_ASPHALT);
+                roadRouteLabel.setText(getString(R.string.ground_and_asphalt));
                 roadRoute.setText(String.format("%s / %s", route.getDirt(), route.getRoad()));
             }
         } else {
-            Toast.makeText(this, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.err_load_data, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -192,10 +189,10 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
                     DialogUtils.getRatingDialog(this, this).show();
                     return true;
                 } else {
-                    Toast.makeText(this, "вы уже оценили этот маршрут", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.already_rate_this_route, Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(this, "нужно авторизироваться чтобы оценить", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.must_sign, Toast.LENGTH_LONG).show();
             }
         }
         return false;

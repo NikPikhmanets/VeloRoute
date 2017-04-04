@@ -76,7 +76,7 @@ public class CheckData {
                 hideProgressDialog();
         } else {
             hideProgressDialog();
-            showMessageDialog("Упс!", "Ошибка проверки данных");
+            showMessageDialog(context.getString(R.string.oops), context.getString(R.string.err_check_data));
         }
     }
 
@@ -186,7 +186,7 @@ public class CheckData {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); // устанавливаем стиль
-            mProgressDialog.setMessage("Загружаю. Подождите...");  // задаем текст
+            mProgressDialog.setMessage(context.getString(R.string.download_wait));  // задаем текст
             mProgressDialog.setMax(max);
             mProgressDialog.setProgress(0);
             mProgressDialog.setProgressPercentFormat(null);
