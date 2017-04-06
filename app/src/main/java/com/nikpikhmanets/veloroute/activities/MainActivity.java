@@ -37,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, OnSignOutConfirmListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, OnSignOutConfirmListener, View.OnClickListener {
 
     final String RECREATION_POINTS_GPX = "recreation_points.gpx";
     final String WATER_POINTS_GPX = "water_points.gpx";
@@ -82,12 +82,7 @@ public class MainActivity extends AppCompatActivity
         ImageView ivAvatar = (CircleImageView) headerView.findViewById(R.id.iv_avatar);
         TextView tvName = (TextView) headerView.findViewById(R.id.tv_user_name);
         Button btnSignIn = (Button) headerView.findViewById(R.id.btn_anon_sign_in);
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-            }
-        });
+        btnSignIn.setOnClickListener(this);
 
         FirebaseUser firebaseUser = FirebaseUtils.getCurrentFirebaseUser();
 
@@ -95,6 +90,7 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().findItem(R.id.nav_log_out).setVisible(!firebaseUser.isAnonymous());
             if (!firebaseUser.isAnonymous()) {
                 Glide.with(this).load(firebaseUser.getPhotoUrl()).into(ivAvatar);
+                ivAvatar.setOnClickListener(this);
                 tvName.setText(firebaseUser.getDisplayName());
                 btnSignIn.setVisibility(View.INVISIBLE);
             } else {
@@ -162,7 +158,6 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_log_out:
                 DialogUtils.getLogOutConfirmDialog(this, this).show();
-//                signOut();
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -200,5 +195,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onSignOutConfirmed() {
         signOut();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_anon_sign_in:
+                signOut();
+                break;
+            case R.id.iv_avatar:
+                startActivity(new Intent(this, UserInfoActivity.class));
+                break;
+        }
     }
 }

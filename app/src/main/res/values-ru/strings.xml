@@ -94,4 +94,6 @@
     <string name="download_wait">Загружаю. Подождите…</string>
     <string name="menu_sign_out">выйти</string>
     <string name="msg_confirm_sign_out">Вы уверены что хотите выйти?</string>
+    <string name="text_name">"Имя: "</string>
+    <string name="text_email">"Э-мейл: "</string>
 </resources>

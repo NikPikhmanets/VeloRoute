@@ -171,4 +171,7 @@
     <string name="download_wait">Download. Wait…</string>
     <string name="msg_confirm_sign_out">Are you sure you want to sign out ?</string>
 
+    <string name="text_name">Name: </string>
+    <string name="text_email">E-mail: </string>
+
 </resources>
