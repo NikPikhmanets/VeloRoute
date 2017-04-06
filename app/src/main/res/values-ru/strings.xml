@@ -92,4 +92,5 @@
     <string name="asphalt">Асфальт:</string>
     <string name="ground_and_asphalt">Грунт/асфальт:</string>
     <string name="download_wait">Загружаю. Подождите…</string>
+    <string name="menu_sign_out">выйти</string>
 </resources>

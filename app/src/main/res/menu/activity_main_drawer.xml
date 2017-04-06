@@ -35,12 +35,12 @@
             <!--android:id="@+id/nav_maps"-->
             <!--android:icon="@drawable/ic_menu_map"-->
             <!--android:title="@string/menu_maps" />-->
-
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_info"
-            android:title="@string/menu_about" />
     </group>
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_menu_info"
+        android:title="@string/menu_about" />
 
     <item
         android:id="@+id/nav_log_out"

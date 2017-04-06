@@ -22,6 +22,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseUser;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.fragments.AboutFragment;
 import com.nikpikhmanets.veloroute.fragments.MainFragment;
 import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_main, settingsFragment).commit();
                 break;
             case R.id.nav_about:
-                startActivity(new Intent(this, AboutActivity.class));
+                (new AboutFragment()).show(getSupportFragmentManager(), "about");
                 break;
             case R.id.nav_log_out:
                 signOut();

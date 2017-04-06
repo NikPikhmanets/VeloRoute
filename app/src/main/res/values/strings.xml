@@ -136,10 +136,10 @@
     <string name="bundle_lat">lat</string>
     <string name="bundle_lng">lng</string>
     <string name="bundle_name_place">name</string>
-    <string name="version">Version x.x.x build xxx</string>
-    <string name="text_about">Application, as a guide in the search for interesting bike routes and interesting places</string>
+    <string name="version">Version </string>
+    <string name="text_about">Application is a guide in the search for interesting bike routes and interesting places</string>
     <string name="delete_marker">Clear maps</string>
-    <string name="menu_sign_out">Out</string>
+    <string name="menu_sign_out">sign out</string>
 
     <string name="all_route">All route</string>
     <string name="long_route">Long route</string>
