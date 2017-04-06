@@ -28,6 +28,8 @@ import com.nikpikhmanets.veloroute.fragments.MapsFragment;
 import com.nikpikhmanets.veloroute.fragments.PlaceFragment;
 import com.nikpikhmanets.veloroute.fragments.SettingsFragment;
 import com.nikpikhmanets.veloroute.fragments.TrackFragment;
+import com.nikpikhmanets.veloroute.interfaces.OnSignOutConfirmListener;
+import com.nikpikhmanets.veloroute.utils.DialogUtils;
 import com.nikpikhmanets.veloroute.utils.FirebaseUtils;
 import com.nikpikhmanets.veloroute.utils.GoogleApiUtils;
 
@@ -35,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, OnSignOutConfirmListener {
 
     final String RECREATION_POINTS_GPX = "recreation_points.gpx";
     final String WATER_POINTS_GPX = "water_points.gpx";
@@ -159,7 +161,8 @@ public class MainActivity extends AppCompatActivity
                 (new AboutFragment()).show(getSupportFragmentManager(), "about");
                 break;
             case R.id.nav_log_out:
-                signOut();
+                DialogUtils.getLogOutConfirmDialog(this, this).show();
+//                signOut();
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -194,4 +197,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onSignOutConfirmed() {
+        signOut();
+    }
 }
