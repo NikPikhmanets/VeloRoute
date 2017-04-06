@@ -6,28 +6,34 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-   <android.support.v4.view.ViewPager
-       android:id="@+id/viewPagerPhotoPlace"
-       android:layout_width="match_parent"
-       android:layout_height="300dp"
-       android:background="@android:color/darker_gray"
-       android:fitsSystemWindows="true"
-       tools:listitem="@layout/item_viewpager_photo_place" />
-
    <RelativeLayout
-       android:id="@+id/viewPagerIndicator"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:background="@android:color/darker_gray"
-       android:gravity="center">
+       android:layout_height="300dp">
 
-      <LinearLayout
-          android:id="@+id/viewPagerCountDots"
+      <android.support.v4.view.ViewPager
+          android:id="@+id/viewPagerPhotoPlace"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@android:color/darker_gray"
+          android:fitsSystemWindows="true"
+          tools:listitem="@layout/item_viewpager_photo_place" />
+
+      <RelativeLayout
+          android:id="@+id/viewPagerIndicator"
+          android:layout_alignParentBottom="true"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_margin="6dp"
-          android:gravity="center"
-          android:orientation="horizontal" />
+          android:gravity="center">
+
+         <LinearLayout
+             android:id="@+id/viewPagerCountDots"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="6dp"
+             android:gravity="center"
+             android:orientation="horizontal" />
+
+      </RelativeLayout>
 
    </RelativeLayout>
 
@@ -84,6 +90,3 @@
    </ScrollView>
 
 </LinearLayout>
-
-
-
