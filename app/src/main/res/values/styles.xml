@@ -38,4 +38,33 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="ValueTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:text">---</item>
+    </style>
+
+    <style name="QuantityTextStyle" parent="@style/ValueTextStyle">
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:layout_weight">0.25</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="InfoLinearLayout">
+        <item name="android:layout_marginEnd">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:background">@color/layoutBackground</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
 </resources>

@@ -30,6 +30,7 @@ public class TrackContract {
 
         public final static String _ID = BaseColumns._ID;
         public final static String COLUMN_NAME = "name";
+        public final static String COLUMN_DATE = "date";
         public final static String COLUMN_LAT = "latitude";
         public final static String COLUMN_LON = "longitude";
         public final static String COLUMN_SPEED = "speed";

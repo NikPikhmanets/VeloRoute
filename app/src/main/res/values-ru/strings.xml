@@ -13,7 +13,8 @@
     <string name="btn_sign_up">зарегистрироваться</string>
     <string name="description_route">описание маршрута</string>
     <string name="distance">Дистанция:</string>
-    <string name="enable_gps">включить GPS</string>
+    <string name="enable_gps">Включить GPS</string>
+    <string name="disable_gps">Выключить GPS</string>
     <string name="enable_record">включить запись</string>
     <string name="ground_asphalt">Грунт/Асфальт, %</string>
     <string name="hint_confirm_pass">подтвердите пароль</string>
@@ -61,14 +62,6 @@
     <string name="terrain_mode_map">рельеф местности</string>
     <string name="show_route">Показать маршрут на карте</string>
 
-    <string-array name="entry_map_style">
-        <item>Не отображать карту</item>
-        <item>Обычная карта</item>
-        <item>Рельеф</item>
-        <item>Спутник</item>
-        <item>Гибридная</item>
-    </string-array>
-
     <string name="all_route">Все маршруты</string>
     <string name="long_route">Длинные</string>
     <string name="middle_route">Средние</string>
@@ -96,4 +89,7 @@
     <string name="msg_confirm_sign_out">Вы уверены что хотите выйти?</string>
     <string name="text_name">"Имя: "</string>
     <string name="text_email">"Э-мейл: "</string>
+
+    <string name="general_settings">Основные настройки</string>
+    <string name="search_gps_signal">Поиск GPS сигнала…</string>
 </resources>

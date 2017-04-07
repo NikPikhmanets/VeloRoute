@@ -100,7 +100,6 @@ public class MainFragment extends Fragment {
         }
     }
 
-
     private void startRouteActivity(Route route) {
         Intent intent = new Intent(getContext(), RouteActivity.class);
         intent.putExtra(EXTRA_ROUTE, route);

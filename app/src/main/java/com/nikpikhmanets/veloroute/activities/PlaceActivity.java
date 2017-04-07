@@ -45,7 +45,7 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
         ImageButton btnShowOnMaps = (ImageButton) findViewById(R.id.btnShowOnMaps);
         btnShowOnMaps.setOnClickListener(this);
 
-         setReference();
+        setReference();
     }
 
     private void initView() {

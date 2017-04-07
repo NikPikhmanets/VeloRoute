@@ -2,18 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:icon="@drawable/ic_menu_place"
-        android:title=""
-        app:showAsAction="always">
-        <menu>
-            <item
-                android:id="@+id/delete_marker"
-                android:orderInCategory="1"
-                android:title="@string/delete_marker"
-                app:showAsAction="never" />
-        </menu>
-    </item>
-    <item
         android:icon="@drawable/ic_menu_navigation"
         android:title=""
         app:showAsAction="always">
@@ -29,18 +17,23 @@
                 android:title="@string/enable_record"
                 app:showAsAction="never" />
             <!--<item-->
-                <!--android:id="@+id/delete_route"-->
-                <!--android:orderInCategory="1"-->
-                <!--android:title="@string/enable_record"-->
-                <!--app:showAsAction="never" />-->
+            <!--android:id="@+id/delete_route"-->
+            <!--android:orderInCategory="1"-->
+            <!--android:title="@string/enable_record"-->
+            <!--app:showAsAction="never" />-->
         </menu>
     </item>
     <item
-        android:icon="@android:drawable/ic_dialog_map"
+        android:icon="@drawable/icon_bar_maps"
         android:title=""
         app:showAsAction="always">
 
         <menu>
+            <item
+                android:id="@+id/delete_marker"
+                android:orderInCategory="1"
+                android:title="@string/delete_marker"
+                app:showAsAction="never" />
             <item
                 android:id="@+id/no_map"
                 android:orderInCategory="2"

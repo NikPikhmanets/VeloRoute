@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Основные настройки">
+    <PreferenceCategory android:title="@string/general_settings">
 
         <SwitchPreferenceCompat
             android:defaultValue="true"
@@ -44,4 +44,6 @@
             android:title="Толщина линини маршрута" />
 
     </PreferenceCategory>
+
+
 </android.support.v7.preference.PreferenceScreen>

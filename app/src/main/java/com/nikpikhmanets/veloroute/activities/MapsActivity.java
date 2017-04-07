@@ -11,8 +11,6 @@ import android.support.v7.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -23,7 +21,7 @@ import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import com.nikpikhmanets.veloroute.place.PlaceViewDialog;
 import com.nikpikhmanets.veloroute.route.Route;
 import com.nikpikhmanets.veloroute.route.RouteBuild;
-import com.nikpikhmanets.veloroute.track.LocationService;
+import com.nikpikhmanets.veloroute.track.location.TrackLocationManager;
 import com.nikpikhmanets.veloroute.utils.GoogleMapsUtils;
 import com.nikpikhmanets.veloroute.utils.PermissionUtils;
 
@@ -37,14 +35,18 @@ import static com.nikpikhmanets.veloroute.R.id.show_my_location;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     final String INTENT_ROUTE = "ROUTE";
+
     private GoogleMap mMap;
     private String mapStyle;
     private Route route;
 
+    MenuItem menuEnableGpsItem;
+
+    TrackLocationManager trackLocationManager;
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
 
-    private static final int GPS_REQUEST_CODE = 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,45 +57,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        trackLocationManager = new TrackLocationManager(this);
 
         route = getIntent().getParcelableExtra(INTENT_ROUTE);
-
-        GoogleApiAvailability api = GoogleApiAvailability.getInstance();
-        int errorCheck = api.isGooglePlayServicesAvailable(this);
-        if(errorCheck == ConnectionResult.SUCCESS) {
-            //google play services available, hooray
-        } else if(api.isUserResolvableError(errorCheck)) {
-            //GPS_REQUEST_CODE = 1000, and is used in onActivityResult
-            api.showErrorDialogFragment(this, errorCheck, GPS_REQUEST_CODE);
-            //stop our activity initialization code
-            return;
-        } else {
-            //GPS not available, user cannot resolve this error
-            //todo: somehow inform user or fallback to different method
-            //stop our activity initialization code
-            return;
-        }
-
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GPS_REQUEST_CODE) {
-            if(resultCode == RESULT_OK) {
-                //GPS successfully updated / enabled, we can continue
-//                initViews();
-            } else {
-                //no Google Play, or user denied installing
-                //you should probably fallback somehow or inform user
-                //here I only exit application
-                finish();
-            }
-        }
     }
 
     @Override
@@ -111,6 +81,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setRotateGesturesEnabled(false);
         mMap.setOnMarkerClickListener(this);
 
+        trackLocationManager.setMap(googleMap);
+
         RouteBuild br = new RouteBuild(this, mMap);
         br.parseGpxFile(route);
 
@@ -120,6 +92,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.maps_menu, menu);
+
+        this.menuEnableGpsItem = menu.findItem(R.id.show_my_location);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -130,10 +104,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.clear();
                 break;
             case show_my_location:
-                enableMyLocation();
+                trackLocationManager.enabledLocation(item);
                 break;
             case record_track:
-                recordTrack();
+                trackLocationManager.recordTrack();
                 break;
             case no_map:
                 setTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
@@ -155,26 +129,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void recordTrack() {
-        LocationService ls= new LocationService();
-        ls.setContext(getApplicationContext());
-        ls.onInitializeTasks();
-    }
-
-    private void enableMyLocation() {
-
-        LocationService ls= new LocationService();
-        ls.setContext(getApplicationContext());
-        ls.onInitializeTasks();
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            PermissionUtils.requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
-//                    Manifest.permission.ACCESS_FINE_LOCATION, true);
-//        } else if (mMap != null) {
-//            mMap.setMyLocationEnabled(true);
-//        }
     }
 
     @Override
@@ -199,7 +153,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (PermissionUtils.isPermissionGranted(permissions, grantResults,
                 Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-            enableMyLocation();
+//            enableMyLocation();
         } else {
             mPermissionDenied = true;
         }

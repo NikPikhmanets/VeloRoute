@@ -52,7 +52,7 @@
         android:id="@+id/headLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#7000">
+        android:background="@color/layoutBackground">
 
         <TextView
             android:id="@+id/nameRouteLabel"

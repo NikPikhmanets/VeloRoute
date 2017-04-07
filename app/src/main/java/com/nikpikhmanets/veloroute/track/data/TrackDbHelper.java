@@ -22,6 +22,7 @@ public class TrackDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_TRACK_TABLE = "CREATE TABLE " + TrackEntry.TABLE_NAME + " ("
                 + TrackEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + TrackEntry.COLUMN_NAME + " TEXT NOT NULL DEFAULT 0, "
+                + TrackEntry.COLUMN_DATE + " TEXT NOT NULL DEFAULT 0, "
                 + TrackEntry.COLUMN_LAT + " REAL NOT NULL DEFAULT 0, "
                 + TrackEntry.COLUMN_LON + " REAL NOT NULL DEFAULT 0, "
                 + TrackEntry.COLUMN_SPEED + " REAL NOT NULL DEFAULT 0, "

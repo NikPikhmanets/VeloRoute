@@ -4,7 +4,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-
     <string name="title_activity_maps">Map</string>
 
     <string name="no_view_map">no show</string>
@@ -12,56 +11,13 @@
     <string name="satellite_mode_map">satellite</string>
     <string name="terrain_mode_map">terrain</string>
     <string name="hybrid_mode_map">hybrid</string>
-    <string name="enable_gps">turn on_GPS</string>
+    <string name="enable_gps">Turn on GPS</string>
+    <string name="disable_gps">Turn off GPS</string>
     <string name="enable_record">turn on recording</string>
 
-    <!--SETTINGS-->
-
-    <string-array name="entries">
-        <item>English</item>
-        <item>Русский</item>
-        <item>Українська</item>
-    </string-array>
-
-    <string-array name="Directory">
-        <item>Внутренняя память</item>
-        <item>SDCard</item>
-    </string-array>
-
-    <string-array name="entry_map_style">
-        <item>No show map</item>
-        <item>Normal map</item>
-        <item>Terrain</item>
-        <item>Satellite</item>
-        <item>Hybrid</item>
-    </string-array>
-
     <string name="default_map_style">default_map_style</string>
-    <string-array name="entry_map_style_value">
-        <item>no_map</item>
-        <item>normal</item>
-        <item>terrain</item>
-        <item>satellite</item>
-        <item>hybrid</item>
-    </string-array>
-
-    <string-array name="entry_width_line">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-    </string-array>
 
     <string name="width_line">width_line</string>
-
-    <!--SETTINGS-->
-
 
     <string name="menu_home">Route</string>
     <string name="menu_source_water">Water sources</string>
@@ -78,22 +34,6 @@
     <string name="ground_asphalt">Road/Dirt, %:</string>
 
     <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
 
     <string name="text_sign_in_g">or sign in with G+</string>
     <string name="text_sign_in_anon">or sign in anonymously</string>
@@ -173,5 +113,22 @@
 
     <string name="text_name">Name: </string>
     <string name="text_email">E-mail: </string>
+
+    <string name="search_gps_signal">Search GPS signal…</string>
+    <string name="empty">Empty</string>
+    <string name="service_title">VeloRoute</string>
+
+    <string name="service_gpsstatus">Трек: %1$s (%2$s по %3$d спутникам)</string>
+    <string name="service_connectiondisabled">Сеть отключена, запись трека по сетевому положению невозможна.</string>
+    <string name="service_gpsproblem">Не поступает информация о положении</string>
+
+    <string name="service_networkstatus">Logging: %1$s (%2$s with cell tower and wifi)</string>
+    <string name="service_gpsnostatus">Logging: %1$s (Precision %2$s)</string>
+
+    <string name="general_settings">General settings</string>
+    <string name="m">m</string>
+    <string name="km">km</string>
+    <string name="km_h">km/h</string>
+    <string name="h">h</string>
 
 </resources>

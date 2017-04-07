@@ -4,10 +4,20 @@
     android:layout_height="match_parent"
     tools:context="com.nikpikhmanets.veloroute.fragments.TrackFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listMyRoute"
+    <ListView
+        android:id="@+id/listTrack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_list_track" />
+
+    <TextView
+        android:id="@+id/textViewEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

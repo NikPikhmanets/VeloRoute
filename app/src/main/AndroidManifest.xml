@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".App"
@@ -49,16 +48,16 @@
             android:name=".place.PlaceViewDialog"
             android:theme="@style/Theme.App.Translucent.NoTitleBar" />
 
-        <service
-            android:name=".track.LocationService"
-            android:exported="true"
-            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
-            <intent-filter>
-                <action android:name="com.google.android.gms.gcm.SERVICE_ACTION_INITIALIZE" />
-            </intent-filter>
-        </service>
+        <provider
+            android:name=".track.data.TrackProvider"
+            android:authorities="com.nikpikhmanets.veloroute"
+            android:exported="false" />
 
-        <activity android:name=".activities.UserInfoActivity"></activity>
+        <service
+            android:name=".track.location.LocationService"
+            android:enabled="true" />
+
+        <activity android:name=".activities.UserInfoActivity" />
     </application>
 
 </manifest>
