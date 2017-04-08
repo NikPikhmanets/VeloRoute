@@ -18,8 +18,6 @@ import com.nikpikhmanets.veloroute.R;
 
 public class AboutFragment extends DialogFragment {
 
-    private TextView tvVersion;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,11 +27,11 @@ public class AboutFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvVersion = (TextView) view.findViewById(R.id.tv_version);
+        TextView tvVersion = (TextView) view.findViewById(R.id.tv_version);
         getDialog().setCanceledOnTouchOutside(false);
         try {
             PackageInfo info = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
-            tvVersion.setText(getResources().getString(R.string.version) + info.versionName);
+            tvVersion.setText(getResources().getString(R.string.version) + info.versionName + " " + getString(R.string.build) + info.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

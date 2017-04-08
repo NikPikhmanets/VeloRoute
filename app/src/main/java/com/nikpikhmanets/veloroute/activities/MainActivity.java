@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
@@ -188,7 +189,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Toast.makeText(this, R.string.msg_err_google_auth, Toast.LENGTH_SHORT).show();
+        signOut();
     }
 
 

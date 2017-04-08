@@ -24,6 +24,12 @@ public abstract class DialogUtils {
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
         progressDialog.setTitle(title);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, context.getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
         return progressDialog;
     }
 

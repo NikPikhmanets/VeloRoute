@@ -64,6 +64,7 @@
 
     <string name="msg_err_auth_failed">Authentication failed.</string>
     <string name="msg_err_sign_up_failed">sign up error</string>
+    <string name="msg_err_google_auth">oops! Some problems with G+ auth</string>
 
     <string name="title_filter_distance">distance:</string>
     <string name="title_sort">Sort</string>
@@ -76,7 +77,7 @@
     <string name="bundle_lat">lat</string>
     <string name="bundle_lng">lng</string>
     <string name="bundle_name_place">name</string>
-    <string name="version">Version </string>
+    <string name="version" translatable="false">Version </string>
     <string name="text_about">Application is a guide in the search for interesting bike routes and interesting places</string>
     <string name="delete_marker">Clear maps</string>
     <string name="menu_sign_out">sign out</string>
@@ -130,5 +131,8 @@
     <string name="km">km</string>
     <string name="km_h">km/h</string>
     <string name="h">h</string>
+    <string name="cancel">Cancel</string>
+    <string name="build" translatable="false">build:</string>
+
 
 </resources>

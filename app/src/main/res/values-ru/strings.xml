@@ -92,4 +92,6 @@
 
     <string name="general_settings">Основные настройки</string>
     <string name="search_gps_signal">Поиск GPS сигнала…</string>
+    <string name="msg_err_google_auth">Ой! что-то пошло не так</string>
+    <string name="cancel">Отмена</string>
 </resources>
