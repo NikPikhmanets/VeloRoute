@@ -52,7 +52,6 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
     private DatabaseReference currentRouteMarkedByUserRef;
 
 
-
     private Route route;
     private float rating;
     private int votes;
@@ -80,7 +79,6 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         currentRouteMarkedByUserRef.addValueEventListener(routeMarkedEventListener);
 
         setViewDescriptionRoute();
-
     }
 
     @Override
