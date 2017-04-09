@@ -94,4 +94,11 @@
     <string name="search_gps_signal">Поиск GPS сигнала…</string>
     <string name="msg_err_google_auth">Ой! что-то пошло не так</string>
     <string name="cancel">Отмена</string>
+    <string name="empty">Пусто</string>
+    <string name="err_check_data">Ошибка проверки данных</string>
+    <string name="km">км</string>
+    <string name="km_h">км/ч</string>
+    <string name="m">м</string>
+    <string name="title_sign_in">Вход</string>
+    <string name="msg_err_google_signin">Ошибка авторизации через Google</string>
 </resources>

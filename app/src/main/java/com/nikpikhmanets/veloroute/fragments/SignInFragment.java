@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +68,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
                 if (!TextUtils.isEmpty(eMail) && !TextUtils.isEmpty(pass)) {
                     signInWithEmail(eMail, pass);
                 } else {
-                    Toast.makeText(getContext(), "one of fields is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.msg_empty_fields, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -97,7 +96,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().setTitle("SignIn");
+        getActivity().setTitle(R.string.title_sign_in);
         mGoogleApiClient = GoogleApiUtils.getGoogleApiClient(getActivity(), this);
     }
 
@@ -113,7 +112,7 @@ public class SignInFragment extends Fragment implements GoogleApiClient.OnConnec
         if (result.isSuccess()) {
             signInWithGoogle(result.getSignInAccount());
         } else {
-            Toast.makeText(getContext(), "Google Sign In failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.msg_err_google_signin, Toast.LENGTH_SHORT).show();
         }
     }
 

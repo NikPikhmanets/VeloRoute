@@ -25,6 +25,7 @@ import com.nikpikhmanets.veloroute.App;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.download.CheckData;
+import com.nikpikhmanets.veloroute.interfaces.OnDownloadCompleteListener;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
 import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
@@ -39,7 +40,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements OnDownloadCompleteListener {
 
     public static final String KEY_FILTER_CHECKED_ID = "filter_checked_id";
     public static final String KEY_SORTING_CHECKED_ID = "sort_by_checked_id";
@@ -94,7 +95,7 @@ public class MainFragment extends Fragment {
 
             App.CHECK_DATA_BASE = false;
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-            CheckData checkData = new CheckData(getContext());
+            CheckData checkData = new CheckData(getContext(), this);
             checkData.showProgressDialog(getString(R.string.check_data));
             checkData.setRouteList(routesList, PlaceListSingle.getListPlace());
             checkData.startCheckData();
@@ -264,4 +265,8 @@ public class MainFragment extends Fragment {
         }
     };
 
+    @Override
+    public void onDownloadCompletedOrCanceled() {
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+    }
 }

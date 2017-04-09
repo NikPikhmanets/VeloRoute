@@ -1,12 +1,10 @@
 package com.nikpikhmanets.veloroute.download;
 
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +18,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
+import com.nikpikhmanets.veloroute.interfaces.OnDownloadCompleteListener;
 import com.nikpikhmanets.veloroute.place.Place;
 import com.nikpikhmanets.veloroute.route.Route;
 
@@ -39,7 +38,7 @@ public class CheckData {
     private String pathFilePhoto;
 
     private Context context;
-
+    private OnDownloadCompleteListener completeListener;
     private ProgressDialog mProgressDialog;
 
     private List<Route> routeList;
@@ -52,8 +51,9 @@ public class CheckData {
     private CheckGpxFile checkGpxFile = new CheckGpxFile();
     private CheckPlacePhoto checkPlacePhoto = new CheckPlacePhoto();
 
-    public CheckData(Context context) {
+    public CheckData(Context context, OnDownloadCompleteListener completeListener) {
         this.context = context;
+        this.completeListener = completeListener;
     }
 
     public void setRouteList(List<Route> routeList, List<Place> placeList) {
@@ -201,7 +201,8 @@ public class CheckData {
         if (max == count) {
             mProgressDialog.dismiss();
             Log.d(TAG, "showDownloadDialog: completed");
-            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+//            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            completeListener.onDownloadCompletedOrCanceled();
         }
 
     }
@@ -241,7 +242,8 @@ public class CheckData {
                 .setNegativeButton("Отмена",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+//                                ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                                completeListener.onDownloadCompletedOrCanceled();
                                 dialog.cancel();
                             }
                         });
