@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemPlaceClickListener;
 
@@ -70,7 +73,12 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.Plac
 
         void bind(Place place) {
             File file = new File(itemView.getContext().getApplicationInfo().dataDir + "/image_place/", place.getImageList().get(0));
-             Glide.with(itemView.getContext()).load(file).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
+            if (file.exists()) {
+                Glide.with(itemView.getContext()).load(file).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagePlace);
+            } else {
+                StorageReference reference = FirebaseStorage.getInstance().getReference("/image_place/" + place.getImageList().get(0));
+                Glide.with(itemView.getContext()).using(new FirebaseImageLoader()).load(reference).into(imagePlace);
+            }
             textNamePlace.setText(place.getName());
             textDescrPlace.setText(place.getDescription());
         }

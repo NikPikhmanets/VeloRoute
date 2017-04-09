@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
 
 import java.io.File;
@@ -45,10 +48,17 @@ public class PlaceViewPagerAdapter extends PagerAdapter {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_viewpager_photo_place, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.img_pager_item);
-        File file = new File(mContext.getApplicationInfo().dataDir + "/image_place/", imageList.get(position));
-        Glide.with(mContext).load(file).into(imageView);
-        container.addView(itemView, 0);
 
+        File file = new File(mContext.getApplicationInfo().dataDir + "/image_place/", imageList.get(position));
+        if (file.exists()) {
+            Glide.with(mContext).load(file).into(imageView);
+        } else {
+
+            StorageReference reference = FirebaseStorage.getInstance().getReference("/image_place/" + imageList.get(position));
+            Glide.with(mContext).using(new FirebaseImageLoader()).load(reference).into(imageView);
+        }
+
+        container.addView(itemView, 0);
         return itemView;
     }
 

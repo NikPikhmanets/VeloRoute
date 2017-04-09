@@ -17,7 +17,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.nikpikhmanets.veloroute.R;
-import com.nikpikhmanets.veloroute.interfaces.OnDownloadCompleteListener;
 import com.nikpikhmanets.veloroute.place.Place;
 import com.nikpikhmanets.veloroute.route.Route;
 
@@ -44,7 +43,6 @@ public class CheckData {
     private String pathFilePhoto;
 
     private Context context;
-    private OnDownloadCompleteListener completeListener;
     private ProgressDialog mProgressDialog;
 
     private List<Route> routeList;
@@ -187,7 +185,7 @@ public class CheckData {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setCancelable(false);
+            mProgressDialog.setCancelable(true);
         }
         mProgressDialog.setMessage(caption);
         mProgressDialog.show();
@@ -211,7 +209,6 @@ public class CheckData {
             mProgressDialog.dismiss();
             Log.d(TAG, "showDownloadDialog: completed");
             SHOW_DOWNLOAD_DIALOG = false;
-            completeListener.onDownloadCompletedOrCanceled();
         }
 
     }
