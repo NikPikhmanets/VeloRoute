@@ -3,6 +3,7 @@ package com.nikpikhmanets.veloroute.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -92,7 +93,7 @@ public class MainFragment extends Fragment {
         if (boolCheckUpdate && App.CHECK_DATA_BASE) {
 
             App.CHECK_DATA_BASE = false;
-
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
             CheckData checkData = new CheckData(getContext());
             checkData.showProgressDialog(getString(R.string.check_data));
             checkData.setRouteList(routesList, PlaceListSingle.getListPlace());

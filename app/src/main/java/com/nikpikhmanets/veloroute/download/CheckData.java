@@ -1,14 +1,17 @@
 package com.nikpikhmanets.veloroute.download;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.PreferenceManager;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,7 +33,7 @@ public class CheckData {
 
     final private int ID_GET_META_DATA = 11;
     final private int ID_DOWNLOAD_DATA = 22;
-
+    private static final String TAG = "tag";
     private String typeFLASH = "directory";
     private String pathFileGpx;
     private String pathFilePhoto;
@@ -190,12 +193,17 @@ public class CheckData {
             mProgressDialog.setMax(max);
             mProgressDialog.setProgress(0);
             mProgressDialog.setProgressPercentFormat(null);
+            mProgressDialog.setCancelable(false);
             mProgressDialog.show();
         } else {
             mProgressDialog.setProgress(count);
         }
-        if (max == count)
+        if (max == count) {
             mProgressDialog.dismiss();
+            Log.d(TAG, "showDownloadDialog: completed");
+            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        }
+
     }
 
     private void showMessageDialog(String title, String message) {
@@ -209,6 +217,7 @@ public class CheckData {
                     }
                 })
                 .create();
+        ad.setCancelable(false);
         ad.show();
     }
 
@@ -232,10 +241,12 @@ public class CheckData {
                 .setNegativeButton("Отмена",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
                                 dialog.cancel();
                             }
                         });
         AlertDialog alert = builder.create();
+        alert.setCancelable(false);
         alert.show();
     }
 
