@@ -27,6 +27,8 @@ public class TrackDbHelper extends SQLiteOpenHelper {
                 + TrackEntry.COLUMN_LON + " REAL NOT NULL DEFAULT 0, "
                 + TrackEntry.COLUMN_SPEED + " REAL NOT NULL DEFAULT 0, "
                 + TrackEntry.COLUMN_HEIGHT + " REAL NOT NULL DEFAULT 0);";
+
+        db.execSQL(SQL_CREATE_TRACK_TABLE);
     }
 
     @Override

@@ -32,7 +32,6 @@ import com.nikpikhmanets.veloroute.place.PlaceListSingle;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,22 +109,28 @@ public class RouteBuild implements GpxParser.GpxParserListener {
     }
 
     private void downloadGpxFile(String filePath) {
-        File localFile = null;
-        StorageReference gpxReference = FirebaseStorage.getInstance().getReference(filePath);
-        try {
-            localFile = File.createTempFile("other", "gpx");
-            localFile.deleteOnExit();
+//        File localFile = null;
+//
+//
+//        try {
+//            localFile = File.createTempFile("other", "gpx");
+//            localFile.deleteOnExit();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        assert localFile != null;
+//        final File finalLocalFile = localFile;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert localFile != null;
-        final File finalLocalFile = localFile;
-        gpxReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+        String path = context.getApplicationInfo().dataDir;
+        final File fileGpx = new File(path + filePath);
+
+        StorageReference gpxReference = FirebaseStorage.getInstance().getReference(filePath);
+        gpxReference.getFile(fileGpx).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                 try {
-                    InputStream input = new FileInputStream(finalLocalFile);
+                    InputStream input = new FileInputStream(fileGpx);
                     new GpxParser(input, mGpxParserListener, null).parse();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

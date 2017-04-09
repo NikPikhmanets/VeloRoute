@@ -263,7 +263,6 @@ public class CheckData {
                 .setNegativeButton(R.string.cancel,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                completeListener.onDownloadCompletedOrCanceled();
                                 dialog.cancel();
                             }
                         });

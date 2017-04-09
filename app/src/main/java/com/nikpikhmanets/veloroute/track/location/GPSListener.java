@@ -102,27 +102,25 @@ public class GPSListener implements LocationListener {
 //        } else {
 //            Timber.e(String.format("Storing location track/segment (%d,%d).", mTrackId, mSegmentId));
 //        }
-//        ContentValues args = new ContentValues();
-//
-//        args.put(ContentConstants.Waypoints.LATITUDE, Double.valueOf(location.getLatitude()));
-//        args.put(ContentConstants.Waypoints.LONGITUDE, Double.valueOf(location.getLongitude()));
-//        args.put(ContentConstants.Waypoints.SPEED, Float.valueOf(location.getSpeed()));
-//        args.put(ContentConstants.Waypoints.TIME, Long.valueOf(System.currentTimeMillis()));
-//        if (location.hasAccuracy()) {
-//            args.put(ContentConstants.Waypoints.ACCURACY, Float.valueOf(location.getAccuracy()));
-//        }
-//        if (location.hasAltitude()) {
-//            args.put(ContentConstants.Waypoints.ALTITUDE, Double.valueOf(location.getAltitude()));
-//
-//        }
-//        if (location.hasBearing()) {
-//            args.put(ContentConstants.Waypoints.BEARING, Float.valueOf(location.getBearing()));
-//        }
-//
-//        Uri waypointInsertUri = Uri.withAppendedPath(ContentConstants.Tracks.CONTENT_URI, mTrackId + "/segments/" + mSegmentId +
-//                "/waypoints");
-//        Uri inserted = mService.getContentResolver().insert(waypointInsertUri, args);
-//        mWaypointId = Long.parseLong(inserted.getLastPathSegment());
+        ContentValues args = new ContentValues();
+
+        args.put(TrackLocationManager.LATITUDE, location.getLatitude());
+        args.put(TrackLocationManager.LONGITUDE, location.getLongitude());
+        args.put(TrackLocationManager.SPEED, location.getSpeed());
+        args.put(TrackLocationManager.TIME, System.currentTimeMillis());
+        if (location.hasAccuracy()) {
+            args.put(TrackLocationManager.ACCURACY, location.getAccuracy());
+        }
+        if (location.hasAltitude()) {
+            args.put(TrackLocationManager.ALTITUDE, location.getAltitude());
+
+        }
+        if (location.hasBearing()) {
+            args.put(TrackLocationManager.BEARING, location.getBearing());
+        }
+
+//        Uri trackInsertUri = Uri.withAppendedPath(TrackContract.TrackEntry.CONTENT_URI, mTrackId);
+//        Uri inserted = mService.getContentResolver().insert(trackInsertUri, args);
     }
 
 }

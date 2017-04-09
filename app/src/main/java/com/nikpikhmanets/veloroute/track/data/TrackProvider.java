@@ -59,7 +59,8 @@ public class TrackProvider extends ContentProvider {
             default:
                 break;
         }
-
+        assert cursor != null;
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
 
@@ -91,13 +92,13 @@ public class TrackProvider extends ContentProvider {
 
     private Uri insertTrack(Uri uri, ContentValues values) {
         String name = values.getAsString(TrackContract.TrackEntry.COLUMN_NAME);
-        if(name != null){
+        if (name != null) {
             throw new IllegalArgumentException("Guest requires a name");
         }
 
         SQLiteDatabase dataBase = mTrackHelper.getWritableDatabase();
         long id = dataBase.insert(TrackContract.TrackEntry.TABLE_NAME, null, values);
-        if(id == -1){
+        if (id == -1) {
             Log.e(TAG, "Failed to insert row for " + uri);
             return null;
         }
@@ -110,7 +111,7 @@ public class TrackProvider extends ContentProvider {
 
         SQLiteDatabase dataBase = mTrackHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
-        switch (match){
+        switch (match) {
             case TRACK:
                 return dataBase.delete(TrackContract.TrackEntry.TABLE_NAME, selection, selectionArgs);
             case TRACK_ID:

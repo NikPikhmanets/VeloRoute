@@ -77,7 +77,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(this);
 
         trackLocationManager.setMap(googleMap);
-
         RouteBuild br = new RouteBuild(this, mMap);
         br.parseGpxFile(route);
 

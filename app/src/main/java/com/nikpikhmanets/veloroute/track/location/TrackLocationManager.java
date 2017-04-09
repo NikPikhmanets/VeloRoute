@@ -25,6 +25,15 @@ import java.util.Locale;
 
 public class TrackLocationManager {
 
+
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUDE = "longitude";
+    public static final String TIME = "time";
+    public static final String SPEED = "speed";
+    public static final String ACCURACY = "accuracy";
+    public static final String ALTITUDE = "altitude";
+    public static final String BEARING = "bearing";
+
     private Marker marker;
     private GoogleMap mMap;
 
