@@ -1,6 +1,7 @@
 package com.nikpikhmanets.veloroute.track.location;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +11,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+
+import com.nikpikhmanets.veloroute.App;
 
 public class GPSListener implements LocationListener {
 
@@ -87,7 +90,12 @@ public class GPSListener implements LocationListener {
         mService.sendBroadcast(intent);
     }
 
-    public void storeLocation(Location location) {
+    private void storeLocation(Location location) {
+
+        if(App.FLAG_SAVE_TRACK){
+
+            ContentValues args = new ContentValues();
+        }
 //        if (!isLogging() || mTrackId < 0 || mSegmentId < 0) {
 //            Timber.e(String.format("Storing location without Logging (%b) or track (%d,%d).", isLogging(), mTrackId, mSegmentId));
 //            return;

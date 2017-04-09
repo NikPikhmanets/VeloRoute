@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,7 @@ public abstract class PermissionUtils {
         private static final String ARGUMENT_FINISH_ACTIVITY = "finish";
 
         private boolean mFinishActivity = false;
+
         public static PermissionDeniedDialog newInstance(boolean finishActivity) {
             Bundle arguments = new Bundle();
             arguments.putBoolean(ARGUMENT_FINISH_ACTIVITY, finishActivity);
@@ -46,6 +48,7 @@ public abstract class PermissionUtils {
             return dialog;
         }
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             mFinishActivity = getArguments().getBoolean(ARGUMENT_FINISH_ACTIVITY);

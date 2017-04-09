@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,6 +23,8 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
 
     private TextView textDescription;
     private TextView coordinate;
+
+    private ViewPager viewPager;
 
     private Place localPlace;
 
@@ -91,13 +94,20 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void setReference() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPagerPhotoPlace);
+        viewPager = (ViewPager) findViewById(R.id.viewPagerPhotoPlace);
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
 
         mAdapter = new PlaceViewPagerAdapter(PlaceActivity.this, localPlace.getImageList());
         viewPager.setAdapter(mAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         setUiPageViewController();
     }
 
@@ -125,7 +135,7 @@ public class PlaceActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+        viewPager.getParent().requestDisallowInterceptTouchEvent(true);
     }
 
     @Override

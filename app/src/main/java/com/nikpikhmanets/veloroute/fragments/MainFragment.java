@@ -3,7 +3,6 @@ package com.nikpikhmanets.veloroute.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,7 +24,6 @@ import com.nikpikhmanets.veloroute.App;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.RouteActivity;
 import com.nikpikhmanets.veloroute.download.CheckData;
-import com.nikpikhmanets.veloroute.interfaces.OnDownloadCompleteListener;
 import com.nikpikhmanets.veloroute.interfaces.OnFilterChange;
 import com.nikpikhmanets.veloroute.interfaces.OnRecyclerItemRouteClickListener;
 import com.nikpikhmanets.veloroute.interfaces.OnSortingChangeListener;
@@ -40,12 +38,12 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class MainFragment extends Fragment implements OnDownloadCompleteListener {
+public class MainFragment extends Fragment {
 
     public static final String KEY_FILTER_CHECKED_ID = "filter_checked_id";
     public static final String KEY_SORTING_CHECKED_ID = "sort_by_checked_id";
     public static final String ARG_CHECKED_ID = "checked_id";
-//    public static final String TAG = "tag";
+    //    public static final String TAG = "tag";
     private static final String PREFERENCE_CHECK_DATA = "updateDate";
     public static final String EXTRA_ROUTE = "ROUTE";
 
@@ -54,7 +52,7 @@ public class MainFragment extends Fragment implements OnDownloadCompleteListener
     private List<Route> routesList;
     private RouteAdapter adapter;
 
-
+    CheckData checkData;
     private boolean boolCheckUpdate;
 
     private DatabaseReference routesReference = FirebaseUtils.getRoutesReference();
@@ -87,16 +85,17 @@ public class MainFragment extends Fragment implements OnDownloadCompleteListener
             sortingCheckedId = savedInstanceState.getInt(KEY_SORTING_CHECKED_ID);
         }
 
-
+        setRetainInstance(true);
+        if (checkData != null) {
+            checkData.repaintDialog();
+        }
     }
 
     private void checkUpdate() {
         if (boolCheckUpdate && App.CHECK_DATA_BASE) {
-
             App.CHECK_DATA_BASE = false;
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-            CheckData checkData = new CheckData(getContext(), this);
-            checkData.showProgressDialog(getString(R.string.check_data));
+
+            checkData = new CheckData(getContext());
             checkData.setRouteList(routesList, PlaceListSingle.getListPlace());
             checkData.startCheckData();
         }
@@ -148,6 +147,7 @@ public class MainFragment extends Fragment implements OnDownloadCompleteListener
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_FILTER_CHECKED_ID, filterCheckedId);
         outState.putInt(KEY_SORTING_CHECKED_ID, sortingCheckedId);
+
     }
 
     private void showFilterFragment() {
@@ -264,9 +264,4 @@ public class MainFragment extends Fragment implements OnDownloadCompleteListener
 
         }
     };
-
-    @Override
-    public void onDownloadCompletedOrCanceled() {
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-    }
 }

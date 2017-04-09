@@ -8,7 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.nikpikhmanets.veloroute.R;
 
@@ -17,6 +16,8 @@ import com.nikpikhmanets.veloroute.R;
  */
 
 public class AboutFragment extends DialogFragment {
+
+//    private TextView tvVersion;
 
     @Nullable
     @Override
@@ -27,11 +28,11 @@ public class AboutFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView tvVersion = (TextView) view.findViewById(R.id.tv_version);
+//        tvVersion = (TextView) view.findViewById(R.id.tv_version);
         getDialog().setCanceledOnTouchOutside(false);
         try {
             PackageInfo info = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
-            tvVersion.setText(getResources().getString(R.string.version) + info.versionName + " " + getString(R.string.build) + info.versionCode);
+            getDialog().setTitle(getResources().getString(R.string.version) + info.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

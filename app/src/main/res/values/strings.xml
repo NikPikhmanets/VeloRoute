@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">VeloRoute</string>
 
-    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
-    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="title_activity_maps">Map</string>
 
@@ -13,9 +13,10 @@
     <string name="hybrid_mode_map">hybrid</string>
     <string name="enable_gps">Turn on GPS</string>
     <string name="disable_gps">Turn off GPS</string>
-    <string name="enable_record">turn on recording</string>
+    <string name="enable_record_track">Turn on record track</string>
+    <string name="disable_record_track">Turn off record track</string>
 
-    <string name="default_map_style" translatable="false">default_map_style</string>
+    <string name="default_map_style">default_map_style</string>
 
     <string name="width_line">width_line</string>
 
@@ -33,7 +34,7 @@
     <string name="distance">Distance</string>
     <string name="ground_asphalt">Road/Dirt, %:</string>
 
-    <string name="pref_title_sync_frequency" translatable="false">Sync frequency</string>
+    <string name="pref_title_sync_frequency">Sync frequency</string>
 
     <string name="text_sign_in_g">or sign in with G+</string>
     <string name="text_sign_in_anon">or sign in anonymously</string>
@@ -45,7 +46,7 @@
     <string name="hint_confirm_pass">confirm pass</string>
     <string name="hint_enter_name">enter name or nickname</string>
 
-    <string name="btn_name">name</string>
+    <string name="btn_name">Name</string>
     <string name="btn_distance">distance</string>
     <string name="btn_road">road</string>
     <string name="btn_sign_in">sign in</string>
@@ -64,27 +65,25 @@
 
     <string name="msg_err_auth_failed">Authentication failed.</string>
     <string name="msg_err_sign_up_failed">sign up error</string>
-    <string name="msg_err_google_auth">oops! Some problems with G+ auth</string>
 
     <string name="title_filter_distance">distance:</string>
     <string name="title_sort">Sort</string>
     <string name="title_sign_up">Sign Up</string>
-    <string name="title_sign_in">Sign In</string>
     <string name="title_anon">anonymous</string>
     <string name="title_sort_by">sort_by:</string>
     <string name="msg_wait">wait…</string>
     <string name="check_data">Check data…</string>
 
-    <string name="bundle_lat" translatable="false">lat</string>
-    <string name="bundle_lng" translatable="false">lng</string>
-    <string name="bundle_name_place" translatable="false">name</string>
-    <string name="version" translatable="false">Version </string>
+    <string name="bundle_lat">lat</string>
+    <string name="bundle_lng">lng</string>
+    <string name="bundle_name_place">name</string>
+    <string name="version">Version </string>
     <string name="text_about">Application is a guide in the search for interesting bike routes and interesting places</string>
     <string name="delete_marker">Clear maps</string>
     <string name="menu_sign_out">sign out</string>
 
     <string name="all_route">All route</string>
-    <string name="long_route">Long routes</string>
+    <string name="long_route">Long route</string>
     <string name="middle_route">Middle route</string>
     <string name="short_route">Short route</string>
     <string name="filter_route">Filter route</string>
@@ -94,7 +93,7 @@
     <string name="no">No</string>
     <string name="oops">Oops!</string>
     <string name="unknown_route">Unknown route</string>
-    <string name="failed_to_load_route">route loading failed</string>
+    <string name="failed_to_load_route">Failed to load route</string>
     <string name="open_route">Open Route</string>
     <string name="started">Started</string>
     <string name="source_water">Source water</string>
@@ -109,7 +108,7 @@
     <string name="coordinate">Coordinate</string>
     <string name="on_maps">On maps</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="err_check_data">Data checking error</string>
+    <string name="err_check_data">Data verification error</string>
     <string name="download_wait">Download. Wait…</string>
     <string name="msg_confirm_sign_out">Are you sure you want to sign out ?</string>
 
@@ -118,23 +117,28 @@
 
     <string name="search_gps_signal">Search GPS signal…</string>
     <string name="empty">Empty</string>
-    <string name="service_title" translatable="false">VeloRoute</string>
+    <string name="service_title">VeloRoute</string>
 
-    <string name="service_gpsstatus" translatable="false">Трек: %1$s (%2$s по %3$d спутникам)</string>
+    <string name="service_gpsstatus">Трек: %1$s (%2$s по %3$d спутникам)</string>
     <string name="service_connectiondisabled">Сеть отключена, запись трека по сетевому положению невозможна.</string>
-    <string name="service_gpsproblem" translatable="false">Не поступает информация о положении</string>
+    <string name="service_gpsproblem">Не поступает информация о положении</string>
 
-    <string name="service_networkstatus" translatable="false">Logging: %1$s (%2$s with cell tower and wifi)</string>
-    <string name="service_gpsnostatus" translatable="false">Logging: %1$s (Precision %2$s)</string>
+    <string name="service_networkstatus">Logging: %1$s (%2$s with cell tower and wifi)</string>
+    <string name="service_gpsnostatus">Logging: %1$s (Precision %2$s)</string>
 
     <string name="general_settings">General settings</string>
     <string name="m">m</string>
     <string name="km">km</string>
     <string name="km_h">km/h</string>
     <string name="h">h</string>
-    <string name="cancel">Cancel</string>
-    <string name="build" translatable="false">build:</string>
+    <string name="update_base_data">You must update the database size</string>
+    <string name="update">Update</string>
+    <string name="bbyte">byte</string>
+    <string name="kByte">kByte</string>
+    <string name="mByte">mByte</string>
+    <string name="msg_err_google_auth">oops! Some problems with G+ auth</string>
+    <string name="title_sign_in">Sign In</string>
     <string name="msg_err_google_signin">Google Sign In failed</string>
-
+    <string name="cancel">Cancel</string>
 
 </resources>

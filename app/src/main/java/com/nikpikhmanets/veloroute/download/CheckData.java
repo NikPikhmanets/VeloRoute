@@ -1,6 +1,5 @@
 package com.nikpikhmanets.veloroute.download;
 
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,6 +31,13 @@ public class CheckData {
 
     final private int ID_GET_META_DATA = 11;
     final private int ID_DOWNLOAD_DATA = 22;
+    private boolean SHOW_PROGRESS_DIALOG = false;
+    private boolean SHOW_DOWNLOAD_DIALOG = false;
+
+    private int currentCount;
+    private int maxCount;
+
+
     private static final String TAG = "tag";
     private String typeFLASH = "directory";
     private String pathFileGpx;
@@ -51,9 +57,8 @@ public class CheckData {
     private CheckGpxFile checkGpxFile = new CheckGpxFile();
     private CheckPlacePhoto checkPlacePhoto = new CheckPlacePhoto();
 
-    public CheckData(Context context, OnDownloadCompleteListener completeListener) {
+    public CheckData(Context context) {
         this.context = context;
-        this.completeListener = completeListener;
     }
 
     public void setRouteList(List<Route> routeList, List<Place> placeList) {
@@ -62,6 +67,8 @@ public class CheckData {
     }
 
     public void startCheckData() {
+
+        showProgressDialog(context.getString(R.string.check_data));
         getTypeFlashSetting();
         if (checkForDirectory()) {
             missingFileList.clear();
@@ -133,6 +140,8 @@ public class CheckData {
                 if (counterFile != missingFileList.size()) {
                     downloadFile(missingFileList.get(counterFile));
                 }
+                maxCount = missingFileList.size() - 1;
+                currentCount = counterFile;
                 showDownloadDialog(missingFileList.size() - 1, counterFile);
                 break;
         }
@@ -168,13 +177,13 @@ public class CheckData {
         return false;
     }
 
-
     private void getTypeFlashSetting() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         typeFLASH = prefs.getString("directory", context.getResources().getStringArray(Directory)[0]);
     }
 
-    public void showProgressDialog(String caption) {
+    private void showProgressDialog(String caption) {
+        SHOW_PROGRESS_DIALOG = true;
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setIndeterminate(true);
@@ -185,7 +194,7 @@ public class CheckData {
     }
 
     private void showDownloadDialog(int max, int count) {
-
+        SHOW_DOWNLOAD_DIALOG = true;
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); // устанавливаем стиль
@@ -201,10 +210,21 @@ public class CheckData {
         if (max == count) {
             mProgressDialog.dismiss();
             Log.d(TAG, "showDownloadDialog: completed");
-//            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            SHOW_DOWNLOAD_DIALOG = false;
             completeListener.onDownloadCompletedOrCanceled();
         }
 
+    }
+
+    public void repaintDialog() {
+        if (mProgressDialog != null && SHOW_PROGRESS_DIALOG) {
+            mProgressDialog = null;
+            showProgressDialog(context.getString(R.string.check_data));
+        }
+        if (mProgressDialog != null && SHOW_DOWNLOAD_DIALOG) {
+            mProgressDialog = null;
+            showDownloadDialog(maxCount, currentCount);
+        }
     }
 
     private void showMessageDialog(String title, String message) {
@@ -224,6 +244,7 @@ public class CheckData {
 
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            SHOW_PROGRESS_DIALOG = false;
             mProgressDialog.dismiss();
             mProgressDialog = null;
         }
@@ -231,18 +252,17 @@ public class CheckData {
 
     private void showSizeForDownloadDialog(Long size) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("Необходимо обновить базу данных размером " + checkSize(size))
-                .setPositiveButton("обновить", new DialogInterface.OnClickListener() {
+        builder.setMessage(context.getString(R.string.update_base_data) + " " + checkSize(size))
+                .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         counterFile = 0;
                         downloadFile(missingFileList.get(counterFile));
                     }
                 })
-                .setNegativeButton("Отмена",
+                .setNegativeButton(R.string.cancel,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-//                                ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
                                 completeListener.onDownloadCompletedOrCanceled();
                                 dialog.cancel();
                             }
@@ -253,14 +273,13 @@ public class CheckData {
     }
 
     private String checkSize(Long size) {
-
         String sizeStr = "";
         if (size < 1024) {
-            sizeStr = size + " байт";
+            sizeStr = size + " " + context.getString(R.string.bbyte);
         } else if (size > 1024 && size < 1024 * 1000) {
-            sizeStr = size / 1024 /* + "," + size % 1024*/ + " кбайт";
+            sizeStr = size / 1024 /* + "," + size % 1024*/ + " " + context.getString(R.string.kByte);
         } else if (size > 1024 * 1000) {
-            sizeStr = size / 1024000/* + "," + size % 102400*/ + " мбайт";
+            sizeStr = size / 1024000/* + "," + size % 102400*/ + " " + context.getString(R.string.mByte);
         }
         return sizeStr;
     }

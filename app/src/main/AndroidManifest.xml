@@ -44,10 +44,6 @@
         <activity
             android:name=".activities.AuthActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".place.PlaceViewDialog"
-            android:theme="@style/Theme.App.Translucent.NoTitleBar" />
-
         <provider
             android:name=".track.data.TrackProvider"
             android:authorities="com.nikpikhmanets.veloroute"

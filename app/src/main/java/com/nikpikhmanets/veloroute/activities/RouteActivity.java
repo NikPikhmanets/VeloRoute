@@ -135,7 +135,19 @@ public class RouteActivity extends AppCompatActivity implements View.OnClickList
         initView();
 
         if (route != null) {
-            nameRoute.setText(route.getName_ru());
+
+            String locale = getResources().getConfiguration().locale.toString();
+            switch (locale) {
+                case "ru_RU":
+                    nameRoute.setText(route.getName_ru());
+                    break;
+                case "uk_UA":
+                    nameRoute.setText(route.getName_ua());
+                    break;
+                default:
+                    nameRoute.setText(route.getName_en());
+                    break;
+            }
 
             Glide.with(this).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageRoute);
 

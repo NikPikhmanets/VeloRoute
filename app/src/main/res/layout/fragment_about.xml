@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_version"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_weight="0"
-        tools:text="Version x.x.x"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tv_version"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:layout_weight="0"-->
+        <!--tools:text="Version x.x.x"/>-->
 
     <TextView
         android:id="@+id/tv_about"

@@ -89,12 +89,28 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteListVie
         }
 
         void bind(Route route) {
-            tvName.setText(route.getName_ru());
+
+            setNameRoute(route);
             tvRoad.setText(getTypeRoad(route));
-            tvLength.setText(String.format("%s км", route.getLength()));
+            tvLength.setText(String.format("%s " + context.getString(R.string.km), route.getLength()));
             Glide.with(itemView.getContext()).load(route.getImageURL()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivRouteImage);
             rbRating.setRating(route.getRating());
             tvRating.setText(String.format(Locale.US, "%.1f", route.getRating()));
+        }
+
+        private void setNameRoute(Route route) {
+            String locale = context.getResources().getConfiguration().locale.toString();
+            switch (locale) {
+                case "ru_RU":
+                    tvName.setText(route.getName_ru());
+                    break;
+                case "uk_UA":
+                    tvName.setText(route.getName_ua());
+                    break;
+                default:
+                    tvName.setText(route.getName_en());
+                    break;
+            }
         }
 
         @NonNull

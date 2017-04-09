@@ -17,17 +17,27 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.nikpikhmanets.veloroute.App;
 import com.nikpikhmanets.veloroute.R;
 import com.nikpikhmanets.veloroute.activities.MapsActivity;
+
+import java.util.Locale;
 
 public class TrackLocationManager {
 
     private Marker marker;
     private GoogleMap mMap;
 
-    private LinearLayout infoTrackLayout;
     private LinearLayout statusGpsLayout;
     private TextView textStatusGps;
+
+    private LinearLayout infoTrackLayout;
+    private TextView altitudeTextView;
+    private TextView distanceTextView;
+    private TextView avgSpeedTextView;
+    private TextView speedTextView;
+    private TextView timeRideTextView;
+    private TextView maxSpeedTextView;
 
     private GpsDataReceiver gpsDataReceiver = new GpsDataReceiver();
 
@@ -45,7 +55,14 @@ public class TrackLocationManager {
 
         this.statusGpsLayout = (LinearLayout) mapsActivity.findViewById(R.id.statusLayout);
         this.textStatusGps = (TextView) mapsActivity.findViewById(R.id.textStatusGps);
+
         this.infoTrackLayout = (LinearLayout) mapsActivity.findViewById(R.id.infoTrackLayout);
+        this.altitudeTextView = (TextView) mapsActivity.findViewById(R.id.altitudeTextView);
+        this.distanceTextView = (TextView) mapsActivity.findViewById(R.id.distanceTextView);
+        this.avgSpeedTextView = (TextView) mapsActivity.findViewById(R.id.avgSpeedTextView);
+        this.speedTextView = (TextView) mapsActivity.findViewById(R.id.speedTextView);
+        this.timeRideTextView = (TextView) mapsActivity.findViewById(R.id.timeRideTextView);
+        this.maxSpeedTextView = (TextView) mapsActivity.findViewById(R.id.maxSpeedTextView);
     }
 
     public void enabledLocation(MenuItem mItem) {
@@ -56,8 +73,8 @@ public class TrackLocationManager {
             statusGpsLayout.setVisibility(View.INVISIBLE);
             textStatusGps.setText("");
 
-            mapsActivity.stopService(new Intent(mapsActivity, LocationService.class));
-            mapsActivity.unregisterReceiver(gpsDataReceiver);
+            App.FLAG_USER_LOCATION = false;
+            stopLocationService();
             deleteMarkerUserLocation();
             mItem.setTitle(R.string.enable_gps);
         } else {
@@ -66,20 +83,49 @@ public class TrackLocationManager {
             statusGpsLayout.setVisibility(View.VISIBLE);
             textStatusGps.setText(R.string.search_gps_signal);
 
-            mapsActivity.registerReceiver(gpsDataReceiver, new IntentFilter(BROADCAST_ACTION_USER_LOCATION));
-            mapsActivity.startService(new Intent(mapsActivity, LocationService.class));
+            App.FLAG_USER_LOCATION = true;
+            startLocationService();
             mItem.setTitle(R.string.disable_gps);
         }
     }
 
-    public void recordTrack(){
+    private void startLocationService() {
+        mapsActivity.registerReceiver(gpsDataReceiver, new IntentFilter(BROADCAST_ACTION_USER_LOCATION));
+        mapsActivity.startService(new Intent(mapsActivity, LocationService.class));
+    }
 
+    private void stopLocationService() {
+        mapsActivity.stopService(new Intent(mapsActivity, LocationService.class));
+        mapsActivity.unregisterReceiver(gpsDataReceiver);
+    }
+
+    public void recordTrack(MenuItem item) {
+        if (item.getTitle().equals(mapsActivity.getString(R.string.enable_record_track))) {
+
+            App.FLAG_SAVE_TRACK = true;
+
+            if (!App.FLAG_USER_LOCATION) {
+
+                statusGpsLayout.setVisibility(View.VISIBLE);
+                textStatusGps.setText(R.string.search_gps_signal);
+                startLocationService();
+            }
+
+            item.setTitle(mapsActivity.getString(R.string.disable_record_track));
+        } else {
+
+            App.FLAG_SAVE_TRACK = true;
+            if (!App.FLAG_USER_LOCATION) {
+                stopLocationService();
+            }
+            item.setTitle(mapsActivity.getString(R.string.enable_record_track));
+        }
     }
 
     private void setMarkerUserLocation(Location location) {
 
         if (mMap != null) {
-            if(marker != null)
+            if (marker != null)
                 deleteMarkerUserLocation();
 
             statusGpsLayout.setVisibility(View.INVISIBLE);
@@ -107,12 +153,43 @@ public class TrackLocationManager {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null) {
+
                 Location location = intent.getParcelableExtra(EXTRA_LOCATION);
-                setMarkerUserLocation(location);
+
+                if (location != null) {
+                    setMarkerUserLocation(location);
+                    showInfoUserLocation(location);
+                }
             }
         }
     }
 
+    private void showInfoUserLocation(Location location) {
+
+        infoTrackLayout.setVisibility(View.VISIBLE);
+        float speed = 0;
+        float accuracy = 0;
+        double altitude = 0;
+        float bearing = 0;
+
+        if (location.hasSpeed()) {
+            speed = location.getSpeed();
+            speedTextView.setText(String.format(Locale.getDefault(), "%.2f", speed));
+        }
+
+        if (location.hasAccuracy())
+            accuracy = location.getAccuracy();
+
+        if (location.hasAltitude()) {
+            altitude = location.getAltitude();
+            altitudeTextView.setText(String.format(Locale.getDefault(), "%.2f", altitude));
+        }
+
+        if (location.hasBearing())
+            bearing = location.getBearing();
+
+
+    }
 
 //    private Context context;
 //

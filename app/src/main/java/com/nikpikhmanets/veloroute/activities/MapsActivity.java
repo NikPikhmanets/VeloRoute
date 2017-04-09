@@ -1,10 +1,8 @@
 package com.nikpikhmanets.veloroute.activities;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
@@ -43,9 +41,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     MenuItem menuEnableGpsItem;
 
     TrackLocationManager trackLocationManager;
-
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private boolean mPermissionDenied = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +102,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 trackLocationManager.enabledLocation(item);
                 break;
             case record_track:
-                trackLocationManager.recordTrack();
+//                showMissingPermissionError();
+                trackLocationManager.recordTrack(item);
                 break;
             case no_map:
                 setTypeGoogleMap(GoogleMap.MAP_TYPE_NONE);
@@ -131,32 +127,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-        if (mPermissionDenied) {
-            showMissingPermissionError();
-            mPermissionDenied = false;
-        }
-    }
-
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            return;
-        }
-        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
-                Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-//            enableMyLocation();
-        } else {
-            mPermissionDenied = true;
-        }
     }
 
     private void setTypeGoogleMap(int type) {
@@ -169,10 +142,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         List<Place> list = PlaceListSingle.getListPlace();
         for (int i = 0; i < list.size(); i++) {
             if (marker.getTitle().equals(list.get(i).getName())) {
-                Intent intent = new Intent(this, PlaceViewDialog.class);
-                intent.putExtra("img", list.get(i).getImageList().get(0));
-                intent.putExtra("txt", list.get(i).getDescription());
-                startActivity(intent);
+                final PlaceViewDialog dialog = new PlaceViewDialog();
+
+                Bundle args = new Bundle();
+                args.putString("title", list.get(i).getName());
+                args.putString("img", list.get(i).getImageList().get(0));
+                args.putString("txt", list.get(i).getDescription());
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), list.get(i).getName());
             }
         }
         return true;

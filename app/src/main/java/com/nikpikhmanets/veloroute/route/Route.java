@@ -106,6 +106,14 @@ public class Route implements Parcelable {
         return name_ru;
     }
 
+    public String getName_en() {
+        return name_en;
+    }
+
+    public String getName_ua() {
+        return name_ua;
+    }
+
     public void setName_ru(String name_ru) {
         this.name_ru = name_ru;
     }

@@ -14,7 +14,7 @@
             <item
                 android:id="@+id/record_track"
                 android:orderInCategory="1"
-                android:title="@string/enable_record"
+                android:title="@string/enable_record_track"
                 app:showAsAction="never" />
             <!--<item-->
             <!--android:id="@+id/delete_route"-->
