@@ -1,6 +1,7 @@
 package com.nikpikhmanets.veloroute.activities;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -32,7 +33,10 @@ public class UserInfoActivity extends AppCompatActivity {
         format = getResources().getString(R.string.text_email) + "%s";
         tvEmail.setText(String.format(format, user.getEmail()));
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

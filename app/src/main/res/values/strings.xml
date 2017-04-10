@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">VeloRoute</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <string name="title_activity_maps">Map</string>
 
@@ -16,9 +16,9 @@
     <string name="enable_record_track">Turn on record track</string>
     <string name="disable_record_track">Turn off record track</string>
 
-    <string name="default_map_style">default_map_style</string>
+    <string name="default_map_style" translatable="false">default_map_style</string>
 
-    <string name="width_line">width_line</string>
+    <string name="width_line" translatable="false">width_line</string>
 
     <string name="menu_home">Route</string>
     <string name="menu_source_water">Water sources</string>
@@ -34,7 +34,7 @@
     <string name="distance">Distance</string>
     <string name="ground_asphalt">Road/Dirt, %:</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_sync_frequency" translatable="false">Sync frequency</string>
 
     <string name="text_sign_in_g">or sign in with G+</string>
     <string name="text_sign_in_anon">or sign in anonymously</string>
@@ -74,9 +74,9 @@
     <string name="msg_wait">wait…</string>
     <string name="check_data">Check data…</string>
 
-    <string name="bundle_lat">lat</string>
-    <string name="bundle_lng">lng</string>
-    <string name="bundle_name_place">name</string>
+    <string name="bundle_lat" translatable="false">lat</string>
+    <string name="bundle_lng" translatable="false">lng</string>
+    <string name="bundle_name_place" translatable="false">name</string>
     <string name="version">Version </string>
     <string name="text_about">Application is a guide in the search for interesting bike routes and interesting places</string>
     <string name="delete_marker">Clear maps</string>
@@ -117,14 +117,14 @@
 
     <string name="search_gps_signal">Search GPS signal…</string>
     <string name="empty">Empty</string>
-    <string name="service_title">VeloRoute</string>
+    <string name="service_title" translatable="false">VeloRoute</string>
 
-    <string name="service_gpsstatus">Трек: %1$s (%2$s по %3$d спутникам)</string>
-    <string name="service_connectiondisabled">Сеть отключена, запись трека по сетевому положению невозможна.</string>
-    <string name="service_gpsproblem">Не поступает информация о положении</string>
+    <string name="service_gpsstatus" translatable="false">Трек: %1$s (%2$s по %3$d спутникам)</string>
+    <string name="service_connectiondisabled" translatable="false">Сеть отключена, запись трека по сетевому положению невозможна.</string>
+    <string name="service_gpsproblem" translatable="false">Не поступает информация о положении</string>
 
-    <string name="service_networkstatus">Logging: %1$s (%2$s with cell tower and wifi)</string>
-    <string name="service_gpsnostatus">Logging: %1$s (Precision %2$s)</string>
+    <string name="service_networkstatus" translatable="false">Logging: %1$s (%2$s with cell tower and wifi)</string>
+    <string name="service_gpsnostatus" translatable="false">Logging: %1$s (Precision %2$s)</string>
 
     <string name="general_settings">General settings</string>
     <string name="m">m</string>

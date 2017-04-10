@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="state_choices">
+    <string-array name="state_choices" translatable="false">
         <item>Active</item>
         <item>Paused</item>
         <item>Stopped</item>
     </string-array>
 
-    <string-array name="pref_sync_frequency_titles">
+    <string-array name="pref_sync_frequency_titles" translatable="false">
         <item>15 minutes</item>
         <item>30 minutes</item>
         <item>1 hour</item>
@@ -14,7 +14,7 @@
         <item>6 hours</item>
         <item>Never</item>
     </string-array>
-    <string-array name="pref_sync_frequency_values">
+    <string-array name="pref_sync_frequency_values" translatable="false">
         <item>15</item>
         <item>30</item>
         <item>60</item>
@@ -23,7 +23,7 @@
         <item>-1</item>
     </string-array>
 
-    <string-array name="entry_map_style_value">
+    <string-array name="entry_map_style_value" translatable="false">
         <item>no_map</item>
         <item>normal</item>
         <item>terrain</item>
@@ -31,7 +31,7 @@
         <item>hybrid</item>
     </string-array>
 
-    <string-array name="entry_width_line">
+    <string-array name="entry_width_line" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -44,13 +44,13 @@
         <item>10</item>
     </string-array>
 
-    <string-array name="entries">
+    <string-array name="entries" translatable="false">
         <item>English</item>
         <item>Русский</item>
         <item>Українська</item>
     </string-array>
 
-    <string-array name="Directory">
+    <string-array name="Directory" translatable="false">
         <item>Внутренняя память</item>
         <item>SDCard</item>
     </string-array>

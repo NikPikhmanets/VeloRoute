@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entry_map_style">
+        <item>Не отображать карту</item>
+        <item>Звичайна мапа</item>
+        <item>Рельєф</item>
+        <item>Супутник</item>
+        <item>Гібридна</item>
+    </string-array>
+</resources>

@@ -17,7 +17,6 @@ import com.nikpikhmanets.veloroute.R;
 
 public class AboutFragment extends DialogFragment {
 
-//    private TextView tvVersion;
 
     @Nullable
     @Override
@@ -28,7 +27,6 @@ public class AboutFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        tvVersion = (TextView) view.findViewById(R.id.tv_version);
         getDialog().setCanceledOnTouchOutside(false);
         try {
             PackageInfo info = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
