@@ -4,38 +4,46 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="Главная" />
+            android:checked="true"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_sourceWater"
-            android:icon="@drawable/ic_local_drink_black_24dp"
-            android:title="Источники воды" />
+            android:icon="@drawable/ic_menu_drink"
+            android:title="@string/menu_source_water" />
+        <item
+            android:id="@+id/nav_weekendPlace"
+            android:icon="@drawable/ic_menu_weekend"
+            android:title="@string/menu_weekend_place" />
         <item
             android:id="@+id/nav_places"
-            android:icon="@drawable/ic_place_black_24dp"
-            android:title="Достопримечательности" />
+            android:icon="@drawable/ic_menu_place"
+            android:title="@string/menu_places" />
         <item
             android:id="@+id/nav_myRoute"
-            android:icon="@drawable/ic_directions_bike_black_24dp"
-            android:title="Мои треки" />
+            android:icon="@drawable/ic_menu_bike"
+            android:title="@string/menu_my_track" />
         <item
-            android:id="@+id/nav_maps"
-            android:icon="@drawable/ic_map_black_24dp"
-            android:title="Карта" />
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/menu_settings" />
 
     </group>
 
-    <item android:title="Допольнительно">
-        <menu>
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Настройки" />
-            <item
-                android:id="@+id/nav_about"
-                android:icon="@drawable/ic_info_black_24dp"
-                android:title="О программе" />
-        </menu>
-    </item>
+    <group android:checkableBehavior="single">
+        <!--<item-->
+            <!--android:id="@+id/nav_maps"-->
+            <!--android:icon="@drawable/ic_menu_map"-->
+            <!--android:title="@string/menu_maps" />-->
+    </group>
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_menu_info"
+        android:title="@string/menu_about" />
+
+    <item
+        android:id="@+id/nav_log_out"
+        android:title="@string/menu_sign_out" />
 
 </menu>

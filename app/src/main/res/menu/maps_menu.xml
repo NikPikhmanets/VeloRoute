@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_menu_navigation"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/show_my_location"
+                android:orderInCategory="1"
+                android:title="@string/enable_gps"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/record_track"
+                android:orderInCategory="1"
+                android:title="@string/enable_record_track"
+                app:showAsAction="never" />
+            <!--<item-->
+            <!--android:id="@+id/delete_route"-->
+            <!--android:orderInCategory="1"-->
+            <!--android:title="@string/enable_record"-->
+            <!--app:showAsAction="never" />-->
+        </menu>
+    </item>
+    <item
+        android:icon="@drawable/icon_bar_maps"
+        android:title=""
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/delete_marker"
+                android:orderInCategory="1"
+                android:title="@string/delete_marker"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/no_map"
+                android:orderInCategory="2"
+                android:title="@string/no_view_map"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/normal_map"
+                android:orderInCategory="2"
+                android:title="@string/normal_mode_map"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/satellite_map"
+                android:orderInCategory="2"
+                android:title="@string/satellite_mode_map"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/terrain_map"
+                android:orderInCategory="2"
+                android:title="@string/terrain_mode_map"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/hybrid_map"
+                android:orderInCategory="2"
+                android:title="@string/hybrid_mode_map"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>

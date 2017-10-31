@@ -1,0 +1,743 @@
+﻿<?xml version="1.0"?>
+<gpx version="1.1" creator="GPS Visualizer http://www.gpsvisualizer.com/" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<wpt lat="49.163058" lon="30.889425">
+  <name>ГУБСЬКИЙ</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.16305, 30.88942</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.071436" lon="31.029563">
+  <name>ПРИВАЛ</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.07143, 31.02956</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.937304" lon="31.353601">
+  <name>ПРИВАЛ</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.9373, 31.3536</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.916474" lon="31.374174">
+  <name>ТОВМАЧ</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.91647, 31.37417</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.083043" lon="30.572078">
+  <name>БЕРІЗКА</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: &lt;br>КООРДИНАТИ: 49.08304, 30.57207</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.103652" lon="30.786789">
+  <name>КРИНИЧКА</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.10365, 30.78678</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.099445" lon="31.187676">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.09944, 31.18767</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.938128" lon="31.021508">
+  <name>БЕРІЗКИ</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.93812, 31.0215</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.078457" lon="30.629086">
+  <name>ДУБОВИЧОК</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.07845, 30.62908</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.03154" lon="30.944829">
+  <name>АЛЬТАНКА</name>
+  <desc>опис: ЗВЕНИГОРОДЬКИЙ ЛІСГОСП&lt;br>&lt;br>описание: &lt;br>КООРДИНАТИ: 49.03154, 30.94482</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.580187" lon="32.089094">
+  <name>БЕРІЗКА</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.58018, 32.08909</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.632649" lon="31.975701">
+  <name>У ДУБКАХ</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.63264, 31.9757</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.807539" lon="31.557401">
+  <name>САДИБА</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.80753, 31.5574</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.724209" lon="31.583665">
+  <name>СОСНЯК</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.7242, 31.58366</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.613376" lon="32.128789">
+  <name>ДУБКИ</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.61337, 32.12878</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.861229" lon="31.892425">
+  <name>КОЗАЦЬКА КРИНИЦЯ</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.86122, 31.89242</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.646561" lon="31.985703">
+  <name>СІКАЧ</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.64656, 31.9857</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.326905" lon="32.758405">
+  <name>БУХТА "ЯЛИНСЬКА"</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.3269, 32.7584</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.608319" lon="31.993347">
+  <name>У СОСНАХ</name>
+  <desc>опис: ЗОЛОТОНІСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.60831, 31.99334</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.9653" lon="32.033853">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.9653, 32.03385</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.004646" lon="32.020706">
+  <name>ТАРАПУН</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.00464, 32.0207</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.936348" lon="32.064133">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.93634, 32.06413</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.079541" lon="32.082334">
+  <name>72-й КВАРТАЛ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.07954, 32.08233</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.105521" lon="32.132825">
+  <name>ТАРАСОВА КРИНИЦЯ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.10552, 32.13282</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.09609" lon="32.223519">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.09609, 32.22351</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.120027" lon="32.233923">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.12002, 32.23392</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.131145" lon="32.246006">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.13114, 32.246</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.147673" lon="32.255329">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.14767, 32.25532</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.155194" lon="32.254044">
+  <name>ДЖЕРЕЛО СВЯТОГО ОНУФРІЯ ВЕЛИКОГО</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.15519, 32.25404</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.153276" lon="32.258688">
+  <name>МОНАСТИРСЬКИЙ СТАВ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.15327, 32.25868</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.154448" lon="32.270382">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.15444, 32.27038</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.138148" lon="32.344385">
+  <name>ДЖЕРЕЛО "ЖИВУН"</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.13814, 32.34438</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.981073" lon="31.720062">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.98107, 31.72006</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.950072" lon="31.689058">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.95007, 31.68905</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.934041" lon="31.722404">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.93404, 31.7224</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.929599" lon="31.756242">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАМ'ЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.92959, 31.75624</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.805369" lon="31.330756">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.80536, 31.33075</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.737635" lon="31.422711">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.73763, 31.42271</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.703638" lon="31.306886">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.70363, 31.30688</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.705387" lon="31.274914">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.70538, 31.27491</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.592459" lon="31.496551">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.59245, 31.49655</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.577126" lon="31.555711">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.57712, 31.55571</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.576884" lon="31.555797">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: КАНІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.57688, 31.55579</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.31425" lon="31.214546">
+  <name>СТАВКИ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.31425, 31.21454</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.313435" lon="31.209461">
+  <name>МОНАСТИРИЩЕ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.31343, 31.20946</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.457836" lon="31.108811">
+  <name>КЕМПІНГ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.45783, 31.10881</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.546782" lon="31.122796">
+  <name>ХОЛОДОК</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.54678, 31.12279</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.524757" lon="31.501817">
+  <name>ВІЛЬШНИКИ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.52475, 31.50181</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.533538" lon="31.506197">
+  <name>КАЗКОВИЙ ЛІС</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.53353, 31.50619</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.474986" lon="31.565641">
+  <name>КРИНИЧКА</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.47498, 31.56564</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.457229" lon="31.534518">
+  <name>ХОЛОДОК</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.45722, 31.53451</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.502711" lon="31.322343">
+  <name>СТОРОЖОВЕ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.50271, 31.32234</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.558894" lon="31.433009">
+  <name>ГРИБОК</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.55889, 31.433</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.439328" lon="31.213306">
+  <name>ПРИВАЛ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.43932, 31.2133</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.415019" lon="31.314386">
+  <name>У СОСНАХ</name>
+  <desc>опис: КОРСУНЬ-ШЕВЧЕНКІВСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.41501, 31.31438</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.286985" lon="30.885485">
+  <name>ХОЛОДОК</name>
+  <desc>опис: ЛИСЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.28698, 30.88548</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.224336" lon="31.03994">
+  <name>ШАМПАНЬ</name>
+  <desc>опис: ЛИСЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.22433, 31.03994</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.29618" lon="31.714425">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.29618, 31.71442</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.294559" lon="31.716248">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.29455, 31.71624</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.268955" lon="31.741801">
+  <name>КОЛО КРИНИЧКИ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.26895, 31.7418</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.255865" lon="31.705294">
+  <name>В ДУБКАХ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.25586, 31.70529</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.254426" lon="31.732806">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.25442, 31.7328</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.249525" lon="31.760475">
+  <name>НА ГРАФСЬКІЙ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.24952, 31.76047</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.19797" lon="31.746743">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.19797, 31.74674</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.190017" lon="31.559804">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.19001, 31.5598</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.218731" lon="31.671482">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.21873, 31.67148</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.212658" lon="31.667165">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.21265, 31.66716</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.20092" lon="31.667268">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.20092, 31.66726</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.191734" lon="31.681103">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.19173, 31.6811</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.220391" lon="31.684986">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.22039, 31.68498</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.188549" lon="31.727462">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.18854, 31.72746</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.428542" lon="31.569925">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.42854, 31.56992</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.435122" lon="31.493448">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.43512, 31.49344</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.435303" lon="31.504085">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.4353, 31.50408</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.430327" lon="31.544503">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.43032, 31.5445</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.395749" lon="31.526299">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.39574, 31.52629</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.405153" lon="31.487429">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.40515, 31.48742</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.39007" lon="31.515038">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.39007, 31.51503</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.392538" lon="31.453098">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.39253, 31.45309</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.374115" lon="31.584246">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.37411, 31.58424</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.373252" lon="31.602234">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.37325, 31.60223</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.366583" lon="31.564517">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.36658, 31.56451</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.353688" lon="31.626761">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.35368, 31.62676</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.236167" lon="31.640081">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.23616, 31.64008</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.314353" lon="31.656627">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.31435, 31.65662</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.301102" lon="31.701244">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.3011, 31.70124</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.277775" lon="31.678088">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.27777, 31.67808</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.291883" lon="31.697536">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.29188, 31.69753</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.287595" lon="31.654228">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.28759, 31.65422</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.28748" lon="31.652863">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.28748, 31.65286</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.323233" lon="31.636547">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.32323, 31.63654</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.297986" lon="31.70087">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.29798, 31.70087</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.290188" lon="31.696446">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.29018, 31.69644</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.349034" lon="31.637803">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.34903, 31.6378</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.352529" lon="31.613874">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.35252, 31.61387</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.329122" lon="31.571962">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.32912, 31.57196</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.320646" lon="31.554368">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.32064, 31.55436</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.332348" lon="31.618337">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.33234, 31.61833</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.276113" lon="31.513362">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.27611, 31.51336</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.30565" lon="31.527566">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.30565, 31.52756</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.283564" lon="31.474638">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.28356, 31.47463</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.306617" lon="31.552307">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.30661, 31.5523</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.320368" lon="31.478691">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.32036, 31.47869</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.257145" lon="31.406423">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.25714, 31.40642</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.270176" lon="31.374979">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.27017, 31.37497</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.283552" lon="31.371804">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.28355, 31.3718</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.326363" lon="31.302349">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.32636, 31.30234</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.208183" lon="31.241188">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.20818, 31.24118</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.123652" lon="31.375115">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.12365, 31.37511</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.169776" lon="32.017139">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.16977, 32.01713</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.183346" lon="32.025843">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.18334, 32.02584</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.181598" lon="31.971831">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.18159, 31.97183</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.174398" lon="32.025843">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: СМІЛЯНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.17439, 32.02584</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.954297" lon="30.208186">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.95429, 30.20818</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.959707" lon="30.378783">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.9597, 30.37878</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.031121" lon="29.810322">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.03112, 29.81032</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.891634" lon="29.746501">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.89163, 29.7465</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.756787" lon="30.047096">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.75678, 30.04709</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.794792" lon="30.427049">
+  <name>ДЖЕРЕЛО</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.79479, 30.42704</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.714067" lon="30.251719">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.71406, 30.25171</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.688161" lon="30.241564">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.68816, 30.24156</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.574148" lon="30.006197">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.57414, 30.00619</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.894342" lon="30.448639">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.89434, 30.44863</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="48.868088" lon="30.658452">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: УМАНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 48.86808, 30.65845</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.428613" lon="31.677264">
+  <name>АЛЬТАНКА</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.42861, 31.67726</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.412197" lon="31.632879">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.41219, 31.63287</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.513242" lon="31.796343">
+  <name>ДЖЕРЕЛО</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.51324, 31.79634</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.521587" lon="31.832135">
+  <name>МОШНОГІР'Я</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.52158, 31.83213</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.540165" lon="31.85488">
+  <name>ЛІСОВИЧОК</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.54016, 31.85487</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.530013" lon="31.88992">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.53001, 31.88991</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.49526" lon="31.844923">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.49526, 31.84492</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.497413" lon="31.858163">
+  <name>ГРИБОК</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.49741, 31.85816</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.487573" lon="31.833519">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.48757, 31.83351</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.494542" lon="31.904962">
+  <name>БЕРІЗКА</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.49454, 31.90496</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.482109" lon="31.914146">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.4821, 31.91414</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.476985" lon="31.950742">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.47698, 31.95074</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.479585" lon="31.9379">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.47958, 31.9379</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.362966" lon="31.793532">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.36296, 31.79353</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.331628" lon="31.812885">
+  <name>АЛЬТАНКА</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.33162, 31.81288</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.267444" lon="31.874959">
+  <name>РЕКРЕАЦІЙНИЙ ПУНКТ</name>
+  <desc>опис: ЧЕРКАСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.26744, 31.87495</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.274054" lon="32.272599">
+  <name>У БЕРІЗКАХ</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.27405, 32.27259</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.196413" lon="32.361256">
+  <name>ЗАТИШОК</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.19641, 32.36125</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.113831" lon="32.638073">
+  <name>ВЕДМЕДИКИ</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.11383, 32.63807</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.064884" lon="32.811649">
+  <name>РВАНІ ПАРУСИ</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.06488, 32.81164</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.010431" lon="32.538078">
+  <name>ДУБОЧОК</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.01043, 32.53807</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.057095" lon="32.44955">
+  <name>ЗАТИШОК</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.05709, 32.44955</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.082314" lon="32.536416">
+  <name>ТРИ КРИНИЦІ</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.08231, 32.53641</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+<wpt lat="49.200577" lon="32.345807">
+  <name>БЕРЕЖИНА</name>
+  <desc>опис: ЧИГИРИНСЬКИЙ ЛІСГОСП&lt;br>КООРДИНАТИ: 49.20057, 32.3458</desc>
+  <sym>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</sym>
+</wpt>
+</gpx>

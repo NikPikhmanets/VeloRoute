@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_route"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nikpikhmanets.veloroute.activities.RouteActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageRoute"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="60dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/example_route" />
+
+            <Button
+                android:id="@+id/showOnMaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_show_route_shape"
+                android:foregroundGravity="bottom|right"
+                android:text="@string/show_route" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.1" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/headLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground">
+
+        <TextView
+            android:id="@+id/nameRouteLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            tools:text="Холодный яр" />
+
+        <TextView
+            android:id="@+id/distanceRouteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameRouteLabel"
+            android:layout_margin="5dp"
+            android:text="@string/distance"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameRouteLabel"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/distanceRouteLabel"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold"
+            tools:text="120 km" />
+
+
+        <TextView
+            android:id="@+id/roadRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/groundRouteLabel"
+            android:layout_alignBottom="@+id/groundRouteLabel"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold"
+            tools:text="10/90" />
+
+        <TextView
+            android:id="@+id/groundRouteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/distance"
+            android:layout_alignBottom="@+id/distance"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toStartOf="@+id/roadRoute"
+            android:text="@string/ground_asphalt"
+            android:textColor="@color/white" />
+
+        <RatingBar
+            android:id="@+id/rb_label_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            style="?android:attr/ratingBarStyleSmall"
+            android:isIndicator="true"
+            android:layout_below="@id/distanceRouteLabel"
+            android:clickable="true"
+            android:stepSize="0.01"
+            android:rating="2.3"/>
+
+        <TextView
+            android:id="@+id/tv_label_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_below="@id/distanceRouteLabel"
+            android:layout_toEndOf="@id/rb_label_rating"
+            tools:text="2.5"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

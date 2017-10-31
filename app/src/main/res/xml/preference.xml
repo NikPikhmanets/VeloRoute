@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/general_settings">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="updateDate"
+            android:summary="Проверка новых маршрутов при старте"
+            android:title="Обновление данных" />
+
+        <!--<ListPreference-->
+            <!--android:defaultValue="Внутренняя память"-->
+            <!--android:entries="@array/Directory"-->
+            <!--android:entryValues="@array/Directory"-->
+            <!--android:key="directory"-->
+            <!--android:summary="Установите место хранения данных"-->
+            <!--android:title="Тип памяти" />-->
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Настройки карты">
+
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/entry_map_style"
+            android:entryValues="@array/entry_map_style_value"
+            android:key="@string/default_map_style"
+            android:summary="Установите тип карты по умолчанию"
+            android:title="Тип карты по умолчанию" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="animation_map"
+            android:summary="Включить анимацию карты"
+            android:title="Анимацию карты" />
+
+        <ListPreference
+            android:defaultValue="3"
+            android:entries="@array/entry_width_line"
+            android:entryValues="@array/entry_width_line"
+            android:key="width_line"
+            android:summary="Установите толщину линии маршрута"
+            android:title="Толщина линини маршрута" />
+
+    </PreferenceCategory>
+
+
+</android.support.v7.preference.PreferenceScreen>
